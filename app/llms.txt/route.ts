@@ -1,5 +1,5 @@
 import { site } from '@/content/site';
-import { absoluteUrl, isPlaceholder } from '@/lib/seo';
+import { absoluteUrl, isPlaceholder, obfuscatedEmail } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
@@ -21,7 +21,7 @@ export function GET() {
     `## ${llms.contactTitle}`,
     '',
     `- ${llms.websiteLabel}: ${absoluteUrl('/')}`,
-    ...(isPlaceholder(site.email) ? [] : [`- ${llms.mailLabel}: ${site.email}`]),
+    `- ${llms.mailLabel}: ${obfuscatedEmail()}`,
     ...(isPlaceholder(site.linkedin) ? [] : [`- ${llms.linkedinLabel}: ${site.linkedin}`]),
     `- ${llms.locationLabel}: ${site.city}, ${site.country}`,
     '',

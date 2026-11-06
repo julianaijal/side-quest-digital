@@ -93,18 +93,11 @@
   font-weight: $fw-semibold;
   letter-spacing: -0.02em;
   color: $theme-accent;
-  text-underline-offset: 7px;
-  text-decoration-thickness: 2px;
   overflow-wrap: anywhere;
-
-  &:hover {
-    color: $theme-accent-hover;
-  }
 
   @include below($bp-sm) {
     font-size: 1.25rem;
     letter-spacing: $ls-base;
-    text-underline-offset: 5px;
   }
 }
 

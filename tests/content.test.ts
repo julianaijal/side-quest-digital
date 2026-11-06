@@ -5,7 +5,7 @@ import { site } from '../content/site.ts';
 // Literal code samples that are shown as code, not as copy.
 const codePaths = new Set(['snippets.robots', 'snippets.component']);
 // Keys that hold identifiers, not visible copy.
-const idKeys = new Set(['id', 'snippet', 'domain', 'email']);
+const idKeys = new Set(['id', 'snippet', 'domain', 'emailUser', 'emailDomain']);
 
 function collectStrings(value: unknown, path: string, out: Array<[string, string]>): void {
   if (codePaths.has(path) || idKeys.has(path.split('.').pop() ?? '')) return;
