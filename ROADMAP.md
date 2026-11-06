@@ -23,7 +23,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] Doctype, `lang="en"`, UTF-8 charset, viewport that allows zooming, one `<title>`
 - [ ] Meta description and canonical URL
 - [ ] Favicons: SVG, `/favicon.ico`, `apple-touch-icon`, maskable icon
-- [ ] `theme-color` and `color-scheme` meta (light only for v1)
+- [x] `theme-color` and `color-scheme` meta (dark only)
 - [ ] Open Graph: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
 - [ ] Consider the Popover API for the mobile menu (current version uses React state)
 
@@ -99,6 +99,13 @@ Goal: Julian edits copy without touching code. The site stays static and fast.
 - [ ] Draft preview for unpublished changes.
 
 ## Later ideas
+
+From the Nacht 2 design, left out of the first version on purpose:
+
+- [ ] Availability badge with a start month ("Room for a new project from [month]") instead of the eyebrow
+- [ ] Facts row under the hero (years in SEO, migrations, frontend background)
+- [ ] Work section with anonymised cases (situation, approach, result), once there are real projects
+- [ ] Day rate in the about facts
 
 - [ ] Bring back the Process section (`components/Steps`, copy in `site.steps`) once there is a real way of working to show
 
