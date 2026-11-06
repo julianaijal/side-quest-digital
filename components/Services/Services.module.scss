@@ -248,37 +248,6 @@
   padding: 4px 10px;
 }
 
-// Web vitals
-.caption {
-  font-size: 0.75rem;
-  font-weight: $fw-semibold;
-  color: $theme-text-3;
-}
-
-.vital {
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 64px;
-  gap: 10px;
-  align-items: center;
-
-  @include below($bp-sm) {
-    grid-template-columns: 40px minmax(0, 1fr) 64px;
-  }
-}
-
-.bar {
-  height: 6px;
-  border-radius: 3px;
-  background: $theme-accent;
-}
-
-.threshold {
-  font-variant-numeric: tabular-nums;
-  color: $theme-text-card;
-  text-align: right;
-  white-space: nowrap;
-}
-
 // Dashboard
 .dashboard {
   padding: space(4);
