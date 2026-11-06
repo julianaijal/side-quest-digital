@@ -117,12 +117,12 @@ export const site = {
   about: {
     title: 'Hi, I’m Julian.',
     paragraphs: [
-      'I’ve worked in SEO since 2014, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
+      'I’ve worked in SEO since 2011, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
       'Through Side Quest Digital I take on a limited number of projects, so each one gets proper time and attention.',
     ],
     facts: [
       { label: 'Based in', value: 'Amsterdam', mobile: true },
-      { label: 'In SEO since', value: '2014', mobile: true },
+      { label: 'In SEO since', value: '2011', mobile: true },
       { label: 'Works in', value: 'English and Dutch', mobile: false },
     ],
     // Set photo to e.g. '/julian.jpg' (in public/) once it exists.
