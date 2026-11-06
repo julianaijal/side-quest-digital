@@ -79,7 +79,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 
 ### Open placeholders (all in `content/site.ts`, except where noted)
 
-- [ ] Email address
+- [x] Email address (`julian [@] side-quest-digital.com`, mailbox at TransIP)
 - [x] LinkedIn profile URL
 - [x] KVK number
 - [ ] Photo of Julian plus alt text
