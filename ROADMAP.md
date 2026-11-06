@@ -103,6 +103,8 @@ Goal: Julian edits copy without touching code. The site stays static and fast.
 
 ## Later ideas
 
+- [ ] Bring back the Process section (`components/Steps`, copy in `site.steps`) once there is a real way of working to show
+
 - [ ] Subpages (for example case descriptions without client names, or articles), with View Transitions between pages
 - [ ] Cookieless analytics, if wanted
 - [ ] Dutch version
