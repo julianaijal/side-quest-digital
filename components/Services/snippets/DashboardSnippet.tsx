@@ -26,7 +26,7 @@ export function DashboardSnippet({ snippets }: { snippets: Site['snippets'] }) {
         <path d="M0 60 H320" stroke="var(--theme-border)" strokeDasharray="2 4" />
         <path
           d="M0 84 C 30 80, 50 74, 80 70 S 130 66, 160 52 S 220 40, 250 34 S 300 20, 320 16 L320 100 L0 100 Z"
-          fill="var(--theme-tint-2)"
+          fill="var(--theme-chart-area)"
         />
         <path
           d="M0 84 C 30 80, 50 74, 80 70 S 130 66, 160 52 S 220 40, 250 34 S 300 20, 320 16"
@@ -38,9 +38,10 @@ export function DashboardSnippet({ snippets }: { snippets: Site['snippets'] }) {
         <path
           d="M0 94 C 40 92, 70 90, 110 86 S 180 80, 220 72 S 290 62, 320 56"
           fill="none"
-          stroke="var(--theme-marker)"
-          strokeWidth="2.5"
+          stroke="var(--theme-action)"
+          strokeWidth="2"
           strokeLinecap="round"
+          strokeDasharray="1 5"
         />
       </svg>
     </figure>

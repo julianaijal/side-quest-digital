@@ -23,11 +23,9 @@ const snippetsById = {
 
 export function ServiceCard({ item, snippets }: { item: ServiceItem; snippets: Site['snippets'] }) {
   const Snippet = snippetsById[item.snippet];
-  const tags = 'tags' in item ? item.tags : undefined;
-
   const body = (
     <>
-      <span className={styles.iconTile}>{icons[item.snippet]}</span>
+      {icons[item.snippet]}
       <h3 className={styles.title}>{item.title}</h3>
       <p className={styles.text}>{item.text}</p>
     </>
@@ -38,15 +36,6 @@ export function ServiceCard({ item, snippets }: { item: ServiceItem; snippets: S
       <article className={`${styles.card} ${styles.wide}`}>
         <div className={styles.cardBody}>
           {body}
-          {tags && (
-            <ul className={styles.tags}>
-              {tags.map((tag) => (
-                <li key={tag} className={styles.tag}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
         <Snippet snippets={snippets} />
       </article>
