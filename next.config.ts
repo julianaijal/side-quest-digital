@@ -1,9 +1,7 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
-};
+// Cache Components stays off: the page is fully static, and OpenNext on
+// Workers serves it from build output. Revisit with the headless CMS.
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
