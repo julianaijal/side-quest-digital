@@ -76,7 +76,10 @@
   color: $theme-text;
   text-decoration: none;
   opacity: 0.78;
-  transition: opacity 0.15s ease;
+
+  @include motion-ok {
+    transition: opacity 0.15s ease;
+  }
 
   &:hover {
     color: $theme-text;
