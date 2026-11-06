@@ -32,3 +32,13 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 ### Commit messages
 
 Follow [Conventional Commits 1.0](https://www.conventionalcommits.org), with the type list and rules of [commitlint config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). CI checks the format of every commit in a pull request and the branch name (`scripts/git-workflow.ts`, decision 25):
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
