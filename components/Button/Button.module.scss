@@ -20,7 +20,7 @@
 .small {
   height: $touch-min;
   padding: 0 20px;
-  font-size: 1rem;
+  font-size: $fs-small;
 }
 
 .primary {
@@ -33,14 +33,13 @@
   }
 }
 
+// Ghost button: a quiet pill on the band colour, no border.
 .secondary {
-  background: transparent;
-  border: 1px solid $theme-border-strong;
+  background: $theme-band;
   color: $theme-text;
 
   &:hover {
-    background: $theme-tint-2;
-    border-color: $theme-marker;
+    background: $theme-surface;
     color: $theme-text;
   }
 }
