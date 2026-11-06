@@ -5,6 +5,7 @@ import { Services } from '@/components/Services/Services';
 import { Steps } from '@/components/Steps/Steps';
 import { About } from '@/components/About/About';
 import { Contact } from '@/components/Contact/Contact';
+import { Footer } from '@/components/Footer/Footer';
 
 export default async function Home() {
   const site = await getSite();
@@ -18,6 +19,7 @@ export default async function Home() {
         <About site={site} />
         <Contact site={site} />
       </main>
+      <Footer site={site} />
     </>
   );
 }
