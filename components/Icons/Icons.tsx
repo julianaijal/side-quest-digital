@@ -37,21 +37,6 @@ export function DiamondSolid({ size = 10, className }: IconProps) {
   );
 }
 
-/** Large diamond on top of the contact block. */
-export function DiamondLarge({ size = 36, className }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 28 28" aria-hidden="true" className={className}>
-      <path
-        d="M14 2 L26 14 L14 26 L2 14 Z"
-        fill="var(--theme-marker)"
-        stroke="var(--theme-accent)"
-        strokeWidth="1.75"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function SearchIcon({ size = 24, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true" className={className} {...stroke}>
