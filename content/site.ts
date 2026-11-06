@@ -12,8 +12,6 @@ export const site = {
   city: 'Amsterdam',
   country: 'Netherlands',
   replyTime: '[two working days]',
-  yearsExperience: '[X]',
-  availability: '[X] days per month',
 
   meta: {
     title: 'Side Quest Digital · SEO and web development in Amsterdam',
@@ -124,13 +122,13 @@ export const site = {
     eyebrow: 'About',
     title: 'Hi, I’m Julian.',
     paragraphs: [
-      'I’m a senior SEO specialist with a background in frontend development. For [X] years I have worked on the visibility of large and small websites, often right where SEO and code meet.',
-      'Next to my day job, I take on a limited number of projects through Side Quest Digital. That way I keep time and attention for each one.',
+      'I’ve worked in SEO since 2014, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
+      'Through Side Quest Digital I take on a limited number of projects, so each one gets proper time and attention.',
     ],
     facts: [
       { label: 'Based in', value: 'Amsterdam', mobile: true },
+      { label: 'In SEO since', value: '2014', mobile: true },
       { label: 'Works in', value: 'English and Dutch', mobile: false },
-      { label: 'Available', value: '[X] days per month', mobile: true },
     ],
     // Set photo to e.g. '/julian.jpg' (in public/) once it exists.
     photo: null as string | null,

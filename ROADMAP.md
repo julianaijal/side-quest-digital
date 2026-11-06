@@ -80,10 +80,8 @@ Checklist from [specification.website](https://specification.website/checklist/)
 ### Open placeholders (all in `content/site.ts`, except where noted)
 
 - [ ] Email address
-- [ ] LinkedIn profile URL
+- [x] LinkedIn profile URL
 - [ ] KVK number
-- [ ] Years of experience
-- [ ] Availability (days per month)
 - [ ] Reply time
 - [ ] Photo of Julian plus alt text
 - [x] Domain (`site.domain`, used for canonical, sitemap and JSON-LD): `side-quest-digital.com`
