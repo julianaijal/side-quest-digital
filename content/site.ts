@@ -23,7 +23,6 @@ export const site = {
 
   nav: [
     { label: 'Services', href: '#services' },
-    { label: 'Process', href: '#process' },
     { label: 'About', href: '#about' },
   ],
   navCta: { label: 'Contact', href: '#contact' },
@@ -109,6 +108,7 @@ export const site = {
     dashboardLegend: ['Organic', 'Conversions'],
   },
 
+  // Not shown for now (see ROADMAP.md). Kept so the Steps section can return.
   steps: {
     eyebrow: 'Process',
     title: 'From first question to live and measured.',
@@ -158,7 +158,6 @@ export const site = {
     intro:
       'Side Quest Digital is the freelance practice of Julian Aijal, a senior SEO specialist with a background in frontend development, based in Amsterdam.',
     servicesTitle: 'Services',
-    stepsTitle: 'Process',
     contactTitle: 'Contact',
     websiteLabel: 'Website',
     mailLabel: 'Email',
