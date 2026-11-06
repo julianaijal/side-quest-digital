@@ -5,7 +5,9 @@ import { CheckIcon, CopyIcon } from '@/components/Icons/Icons';
 import styles from './Contact.module.scss';
 
 type Props = {
-  text: string;
+  /** The address in two parts, joined only on click so it is never in the HTML. */
+  user: string;
+  domain: string;
   /** id of the element that shows the text, selected as a fallback. */
   targetId: string;
   label: string;
@@ -24,7 +26,7 @@ function selectTarget(id: string) {
   selection.addRange(range);
 }
 
-export function CopyButton({ text, targetId, label, copiedLabel }: Props) {
+export function CopyButton({ user, domain, targetId, label, copiedLabel }: Props) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -33,7 +35,7 @@ export function CopyButton({ text, targetId, label, copiedLabel }: Props) {
   async function copy() {
     try {
       if (!navigator.clipboard) throw new Error('Clipboard API unavailable');
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(`${user}@${domain}`);
     } catch {
       selectTarget(targetId);
       return;

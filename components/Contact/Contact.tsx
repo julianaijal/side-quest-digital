@@ -1,5 +1,6 @@
 import type { Site } from '@/content/site';
 import { ClockIcon, LinkedInIcon } from '@/components/Icons/Icons';
+import { obfuscatedEmail } from '@/lib/seo';
 import { CopyButton } from './CopyButton';
 import { LocalTime } from './LocalTime';
 import styles from './Contact.module.scss';
@@ -17,11 +18,12 @@ export function Contact({ site }: { site: Site }) {
           </h2>
           <p className={styles.text}>{contact.text}</p>
           <div className={styles.email}>
-            <a id={EMAIL_ID} href={`mailto:${site.email}`} className={styles.emailLink}>
-              {site.email}
-            </a>
+            <p id={EMAIL_ID} className={styles.emailLink}>
+              {obfuscatedEmail()}
+            </p>
             <CopyButton
-              text={site.email}
+              user={site.emailUser}
+              domain={site.emailDomain}
               targetId={EMAIL_ID}
               label={contact.copyLabel}
               copiedLabel={contact.copiedLabel}
