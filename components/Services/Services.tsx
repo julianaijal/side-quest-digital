@@ -5,10 +5,10 @@ import styles from './Services.module.scss';
 export function Services({ site }: { site: Site }) {
   const { services, snippets } = site;
   return (
-    <section id="diensten" className={styles.section} aria-labelledby="diensten-title">
+    <section id="services" className={styles.section} aria-labelledby="services-title">
       <div className={styles.header}>
         <p className={styles.eyebrow}>{services.eyebrow}</p>
-        <h2 id="diensten-title" className={styles.heading}>
+        <h2 id="services-title" className={styles.heading}>
           {services.title}
         </h2>
       </div>
