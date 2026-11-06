@@ -1,61 +1,50 @@
 @use '@/styles/tokens' as *;
 @use '@/styles/layout' as *;
 
+.band {
+  background: $theme-band;
+}
+
 .section {
   @include container;
-  padding-block: space(6) $section-y;
+  padding-block: $section-y;
   display: flex;
   flex-direction: column;
-  gap: space(7);
+  gap: 40px;
 
   @include below($bp-sm) {
-    padding-block: space(4) $section-y-mobile;
-    gap: 26px;
+    padding-block: $section-y-mobile;
+    gap: 20px;
   }
-}
-
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: space(3);
-  max-width: 640px;
-
-  @include below($bp-sm) {
-    gap: 14px;
-  }
-}
-
-.eyebrow {
-  @include eyebrow;
 }
 
 .heading {
   @include h2;
+  max-width: 640px;
 }
 
 // Bento grid
 .bento {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: space(5);
+  gap: $card-gap;
 
   @include below($bp-bento) {
     grid-template-columns: minmax(0, 1fr);
   }
 
   @include below($bp-sm) {
-    gap: 14px;
+    gap: space(3);
   }
 }
 
 .card {
   background: $theme-surface;
-  border: 1px solid $theme-border;
   border-radius: $radius-lg;
   padding: space(6);
   display: flex;
   flex-direction: column;
-  gap: space(4);
+  gap: 14px;
 
   @include below($bp-sm) {
     padding: space(5);
@@ -84,7 +73,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: space(4);
+  gap: 14px;
 
   @include below($bp-sm) {
     flex: none;
@@ -92,29 +81,15 @@
   }
 }
 
-.iconTile {
-  width: 48px;
-  height: 48px;
-  border-radius: $radius-md;
-  background: $theme-tint-2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
   color: $theme-accent;
 
   @include below($bp-sm) {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-
-  @include below($bp-sm) {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -125,38 +100,7 @@
 .text {
   font-size: $fs-body;
   line-height: $lh-body;
-  color: $theme-text-2;
-
-  @include below($bp-sm) {
-    line-height: 1.6;
-  }
-}
-
-.tags {
-  list-style: none;
-  margin: auto 0 0;
-  padding: 0;
-  display: flex;
-  gap: space(2);
-  flex-wrap: wrap;
-
-  // The mobile design shows no tags.
-  @include below($bp-sm) {
-    display: none;
-  }
-}
-
-.tag {
-  font-size: 0.75rem;
-  font-weight: $fw-semibold;
-  line-height: 1.5;
-  letter-spacing: $ls-tag;
-  text-transform: uppercase;
-  color: $theme-accent;
-  background: $theme-tint;
-  border: 1px solid $theme-tint-border;
-  padding: 6px 10px;
-  border-radius: $radius-sm;
+  color: $theme-text-card;
 }
 
 // Snippets
@@ -164,7 +108,6 @@
   margin: auto 0 0;
   min-width: 0;
   background: $theme-inset;
-  border: 1px solid $theme-border;
   border-radius: $radius-md;
   font-size: 0.8125rem;
 
@@ -254,7 +197,7 @@
   font-size: 0.8125rem;
   line-height: 1.8;
   letter-spacing: 0;
-  color: $theme-text;
+  color: $theme-text-2;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
@@ -269,15 +212,8 @@
   display: block;
 }
 
-.lineNumber {
-  display: inline-block;
-  min-width: 3ch;
-  color: $theme-text-3;
-  user-select: none;
-
-  @include below($bp-sm) {
-    display: none;
-  }
+.directive {
+  color: $theme-accent;
 }
 
 // AI answer
@@ -285,7 +221,6 @@
   align-self: flex-end;
   max-width: 90%;
   background: $theme-surface;
-  border: 1px solid $theme-border;
   border-radius: 12px 12px 4px 12px;
   padding: space(2) space(3);
   line-height: 1.5;
@@ -293,7 +228,7 @@
 
 .answer {
   line-height: 1.55;
-  color: $theme-text-2;
+  color: $theme-text-card;
 
   strong {
     color: $theme-text;
@@ -308,7 +243,7 @@
   font-size: 0.75rem;
   font-weight: $fw-semibold;
   color: $theme-accent;
-  background: $theme-tint-2;
+  background: $theme-chip;
   border-radius: $radius-full;
   padding: 4px 10px;
 }
@@ -334,13 +269,12 @@
 .bar {
   height: 6px;
   border-radius: 3px;
-  background: $theme-marker;
+  background: $theme-accent;
 }
 
 .threshold {
-  font-family: $font-mono;
-  letter-spacing: 0;
-  color: $theme-text-2;
+  font-variant-numeric: tabular-nums;
+  color: $theme-text-card;
   text-align: right;
   white-space: nowrap;
 }
@@ -394,7 +328,7 @@
 }
 
 .swatchConversions {
-  background: $theme-marker;
+  background: $theme-action;
 }
 
 .chart {

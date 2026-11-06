@@ -38,14 +38,12 @@ export const site = {
   },
 
   services: {
-    eyebrow: 'Services',
     title: 'Four things, done well.',
     items: [
       {
         id: 'technical-seo',
         title: 'Technical SEO',
         text: 'Site audits, crawling and indexing, log file analysis and migrations. I find out what holds search engines back and write a plan your team can carry out.',
-        tags: ['Audits', 'Log files', 'Migrations'],
         wide: true,
         snippet: 'robots',
       },
@@ -67,7 +65,6 @@ export const site = {
         id: 'analytics',
         title: 'Analytics and tracking',
         text: 'A measurement plan, a clean implementation and dashboards you actually use. Where I can, I automate the recurring work.',
-        tags: ['Measurement plan', 'Dashboards', 'Automation'],
         wide: true,
         snippet: 'dashboard',
       },
