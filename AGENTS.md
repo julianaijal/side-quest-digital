@@ -21,6 +21,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - Motion is CSS only, wrapped in `prefers-reduced-motion: no-preference`. No UI or animation libraries.
 - No tracking cookies.
 - The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
+- `app/opengraph-image.png` and `app/apple-icon.png` are static files (Workers cannot read local fonts at runtime). Recreate the OG image when the hero title changes.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
 
 ## Git Workflow
