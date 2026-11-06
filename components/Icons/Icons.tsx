@@ -10,43 +10,29 @@ const stroke = {
   strokeLinejoin: 'round',
 } as const;
 
-export function LogoMark({ size = 28, className }: IconProps) {
+export function LogoMark({ size = 22, className }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 28 28" aria-hidden="true" className={className}>
-      <path d="M2 22 H26" stroke="var(--theme-border-strong)" strokeWidth="2" strokeLinecap="round" />
-      <path
-        d="M6 22 C 9 22, 9 10, 14 10 C 19 10, 19 22, 22 22"
-        fill="none"
-        stroke="var(--theme-accent)"
-        strokeWidth="2"
-        strokeDasharray="0.5 4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M14 3 L17.5 6.5 L14 10 L10.5 6.5 Z"
-        fill="var(--theme-marker)"
-        stroke="var(--theme-accent)"
-        strokeWidth="1.25"
-        strokeLinejoin="round"
-      />
+    <svg width={size} height={size} viewBox="0 0 22 22" aria-hidden="true" className={className}>
+      <path d="M11 1 L21 11 L11 21 L1 11 Z" fill="none" stroke="var(--theme-accent)" strokeWidth="1.75" />
+      <path d="M11 7 L15 11 L11 15 L7 11 Z" fill="var(--theme-action)" />
     </svg>
   );
 }
 
-/** Small outlined diamond, used in eyebrow labels. */
+/** Small solid sand diamond, used in the hero badge. */
 export function Diamond({ size = 10, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" aria-hidden="true" className={className}>
-      <path d="M5 0.5 L9.5 5 L5 9.5 L0.5 5 Z" fill="var(--theme-marker)" stroke="var(--theme-accent)" strokeWidth="1" />
+      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="var(--theme-action)" />
     </svg>
   );
 }
 
-/** Solid mint diamond, used in the footer. */
-export function DiamondSolid({ size = 12, className }: IconProps) {
+/** Small solid mint diamond, used in the footer. */
+export function DiamondSolid({ size = 10, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" aria-hidden="true" className={className}>
-      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="var(--theme-marker)" />
+      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="var(--theme-accent)" />
     </svg>
   );
 }
