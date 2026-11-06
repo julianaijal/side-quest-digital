@@ -7,7 +7,7 @@ const TIME_ZONE = 'Europe/Amsterdam';
 const UPDATE_MS = 30_000;
 
 function format(date: Date) {
-  return date.toLocaleTimeString('nl-NL', { timeZone: TIME_ZONE, hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleTimeString('en-GB', { timeZone: TIME_ZONE, hour: '2-digit', minute: '2-digit' });
 }
 
 /**
