@@ -9,6 +9,8 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - `npm run typecheck`: TypeScript without emit
 - `npm test`: content checks (copy rules)
 - `npm run build`: production build
+- `npm run preview`: build for Cloudflare and run it locally in the Workers runtime
+- `npm run deploy`: build for Cloudflare and deploy the Worker (needs `wrangler login`)
 
 ## Project rules
 
