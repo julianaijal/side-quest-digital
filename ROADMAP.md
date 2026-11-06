@@ -6,7 +6,9 @@
 - [x] SEO basics: metadata, JSON-LD, sitemap, robots, `llms.txt`, OG image, favicon
 - [ ] Validate JSON-LD in the Rich Results Test once the site is live
 - [ ] Lighthouse mobile 100 on all four categories
-- [ ] Deploy to Cloudflare Workers with `@opennextjs/cloudflare` (Wrangler config, build and deploy scripts, `NEXT_PUBLIC_SITE_URL` set)
+- [x] OpenNext and Wrangler config with `preview` and `deploy` scripts
+- [ ] First deploy to Cloudflare Workers (`wrangler login`, then `npm run deploy`)
+- [ ] Before a photo goes in: add the Cloudflare Images binding for `next/image`, or serve a pre optimized image
 - [ ] Domains at TransIP: point nameservers to Cloudflare, attach `side-quest-digital.com` to the Worker, redirect `www` and the `.nl`, `.online` and `.tech` domains to it with a 301
 
 ### Website specification checks
