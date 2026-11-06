@@ -1,0 +1,46 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.footer {
+  background: $color-ink;
+  color: $color-footer-text;
+}
+
+.inner {
+  @include container;
+  padding-block: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: space(4);
+  flex-wrap: wrap;
+  font-size: $fs-small;
+
+  @include below($bp-sm) {
+    padding-block: space(6);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: space(2);
+    font-size: 0.875rem;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: $fw-semibold;
+  color: $color-surface;
+
+  @include below($bp-sm) {
+    gap: space(2);
+    font-size: 1rem;
+  }
+}
+
+.diamond {
+  @include below($bp-sm) {
+    width: 10px;
+    height: 10px;
+  }
+}
