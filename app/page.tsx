@@ -4,6 +4,7 @@ import { Hero } from '@/components/Hero/Hero';
 import { Services } from '@/components/Services/Services';
 import { Steps } from '@/components/Steps/Steps';
 import { About } from '@/components/About/About';
+import { Contact } from '@/components/Contact/Contact';
 
 export default async function Home() {
   const site = await getSite();
@@ -15,6 +16,7 @@ export default async function Home() {
         <Services site={site} />
         <Steps site={site} />
         <About site={site} />
+        <Contact site={site} />
       </main>
     </>
   );
