@@ -2,7 +2,7 @@ import styles from './Hero.module.scss';
 
 // The side path motif, the one memorable element on the page: a full width
 // main road with a dotted mint path that leaves it, rises to a sand diamond on
-// a dark halo and rejoins the road. Paths match the Nacht 2 design files.
+// a dark halo and rejoins the road. Paths match the Night Reef design files.
 // A duplicate path in the page colour covers the dotted path and is animated
 // away to "draw" it (see Hero.module.scss).
 
