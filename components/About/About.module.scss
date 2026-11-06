@@ -1,0 +1,144 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.section {
+  @include container;
+  padding-block: $section-y;
+  display: flex;
+  align-items: center;
+  gap: space(8);
+  flex-wrap: wrap;
+
+  @include below($bp-sm) {
+    padding-block: $section-y-mobile;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+}
+
+.photo {
+  position: relative;
+  flex: 0 1 380px;
+  min-width: 260px;
+  aspect-ratio: 4 / 5;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  @include below($bp-sm) {
+    flex: none;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.image {
+  object-fit: cover;
+}
+
+.placeholder {
+  height: 100%;
+  border-radius: inherit;
+  background: $color-mint-50;
+  border: 1px solid $color-mint-200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: space(3);
+  color: $color-ink-2;
+
+  @include below($bp-sm) {
+    gap: 10px;
+  }
+}
+
+.person {
+  @include below($bp-sm) {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.placeholderText {
+  font-size: 0.875rem;
+  font-weight: $fw-semibold;
+}
+
+.text {
+  flex: 1 1 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include below($bp-sm) {
+    flex: none;
+    gap: 18px;
+  }
+}
+
+.eyebrow {
+  @include eyebrow;
+
+  @include below($bp-sm) {
+    margin-top: space(3);
+  }
+}
+
+.heading {
+  @include h2;
+}
+
+.paragraph {
+  font-size: 1.125rem;
+  line-height: $lh-body;
+  color: $color-ink-2;
+
+  @include below($bp-sm) {
+    font-size: 1rem;
+  }
+}
+
+.facts {
+  margin-top: space(2);
+  padding-top: space(5);
+  border-top: 1px solid $color-line;
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(7);
+
+  @include below($bp-sm) {
+    margin-top: space(1);
+    padding-top: space(4);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: space(4);
+  }
+}
+
+.desktopOnly {
+  @include below($bp-sm) {
+    display: none;
+  }
+}
+
+.label {
+  font-size: 0.875rem;
+  color: $color-ink-3;
+
+  @include below($bp-sm) {
+    font-size: 0.8125rem;
+  }
+}
+
+.value {
+  margin-top: space(1);
+  font-size: 1.0625rem;
+  font-weight: $fw-semibold;
+
+  @include below($bp-sm) {
+    margin-top: 2px;
+    font-size: 1rem;
+  }
+}
