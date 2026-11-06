@@ -1,46 +1,57 @@
-// Side Quest Digital design tokens v1
+// Side Quest Digital design tokens, "Nacht 2" (dark)
 // Based on the Julian Aijal design system (Inter, spacing scale, component set).
-// New: palette, light base, larger radii, tighter heading scale.
+// Colour split 60 30 10: sea green neutrals, mint brand colour, sand for action only.
 
-// Colors
-$color-paper:        #F6F5F0; // page background
-$color-surface:      #FFFFFF; // cards, alternating sections
-$color-line:         #E2E0D8; // borders, dividers
-$color-line-strong:  #C9C6BB; // secondary button border, main road in motif
-$color-ink:          #13201B; // headings, footer background (16:1 on paper)
-$color-ink-2:        #4A5650; // body text (7:1)
-$color-ink-3:        #5F6964; // metadata (5:1)
-$color-green-700:    #1E5A45; // buttons, links, labels (7:1)
-$color-green-900:    #13392C; // hover on green
-$color-mint-400:     #7DD3BE; // accent and markers only, never as text on light
-$color-mint-200:     #CDE8DA; // border on mint surfaces
-$color-mint-100:     #DDF1E6; // icon tile, halo, copied state
-$color-mint-50:      #EEF5F1; // panels, tags, contact block
-$color-footer-text:  #C9D1CC; // text on ink (11:1)
+// Neutrals (60)
+$color-zeenacht:   #0E1A18; // page background, snippet insets
+$color-diep:       #13221F; // section bands, contact block, badge, ghost button
+$color-rif:        #1A2B27; // cards on Diep, copy button, dividers
+$color-lijn:       #24362F; // main road in motif, hover on Rif
 
-// Theme roles. Components use these, never the palette above directly, so the
-// theme can change in one place. Values are the light theme for now.
-$theme-bg:            $color-paper;      // page background
-$theme-surface:       $color-surface;    // cards, nav menu, copy button
-$theme-inset:         $color-paper;      // snippet boxes inside cards
-$theme-border:        $color-line;       // borders, dividers
-$theme-border-strong: $color-line-strong; // secondary button border, main road
-$theme-text:          $color-ink;        // headings and strong text
-$theme-text-2:        $color-ink-2;      // body text
-$theme-text-3:        $color-ink-3;      // metadata
-$theme-accent:        $color-green-700;  // links, labels, icon strokes, focus ring
-$theme-accent-hover:  $color-green-900;  // hover on links
-$theme-action:        $color-green-700;  // primary button background
-$theme-action-hover:  $color-green-900;  // primary button hover
-$theme-on-action:     #FFFFFF;           // text on primary button
-$theme-marker:        $color-mint-400;   // markers, bars, underline accents
-$theme-on-marker:     $color-ink;        // text on a marker surface
-$theme-tint:          $color-mint-50;    // hero panel, tags, contact block
-$theme-tint-2:        $color-mint-100;   // icon tile, halo, hover and copied state
-$theme-tint-border:   $color-mint-200;   // border on tinted surfaces
-$theme-footer-bg:     $color-ink;        // footer background
-$theme-footer-text:   $color-footer-text; // footer text
-$theme-footer-brand:  #FFFFFF;           // footer wordmark
+// Text
+$color-schuim:     #E6ECE8; // headings, primary text (14.6:1 on Zeenacht)
+$color-mist:       #C2CEC8; // hero lead, first about paragraph (10.9:1)
+$color-kelp:       #A9BAB3; // running text in cards (8.7:1)
+$color-steen:      #9DB0A8; // metadata, section intros, footer (7.7:1)
+
+// Mint (30)
+$color-mint:       #8CCFB2; // icons, links, lines (10:1)
+$color-mint-deep:  #183A31; // chips
+$color-mint-area:  #163530; // chart area fill
+
+// Sand (10), action and quest marker only
+$color-zand:       #E9B96E; // primary button, marker (9.7:1)
+$color-zand-light: #F2CD91; // primary hover
+$color-zand-halo:  #2A2A1D; // halo behind the marker
+$color-on-zand:    #0E1A18; // text on sand
+
+// Theme roles. Components use these, never the palette above directly.
+$theme-bg:            $color-zeenacht;  // page background
+$theme-band:          $color-diep;      // full width section bands
+$theme-surface:       $color-rif;       // cards, copy button, mobile menu
+$theme-inset:         $color-zeenacht;  // snippet boxes inside cards
+$theme-border:        $color-rif;       // dividers
+$theme-border-strong: $color-lijn;      // main road, hover on surface
+$theme-text:          $color-schuim;    // headings and strong text
+$theme-text-2:        $color-mist;      // lead and intro paragraphs
+$theme-text-card:     $color-kelp;      // running text in cards
+$theme-text-3:        $color-steen;     // metadata, section intros, footer
+$theme-accent:        $color-mint;      // links, icons, lines, focus ring
+$theme-accent-hover:  $color-schuim;    // hover on links
+$theme-action:        $color-zand;      // primary button background
+$theme-action-hover:  $color-zand-light; // primary button hover
+$theme-on-action:     $color-on-zand;   // text on primary button
+$theme-marker:        $color-zand;      // the quest marker and small sand diamonds
+$theme-on-marker:     $color-on-zand;   // text on a marker surface
+$theme-halo:          $color-zand-halo; // halo behind the marker
+$theme-chip:          $color-mint-deep; // chips
+$theme-chart-area:    $color-mint-area; // chart area fill
+$theme-tint:          $color-diep;      // badge, photo placeholder, contact block
+$theme-tint-2:        $color-rif;       // hover on tint
+$theme-tint-border:   $color-lijn;      // border on tinted surfaces, where needed
+$theme-footer-bg:     $color-zeenacht;  // footer background
+$theme-footer-text:   $color-steen;     // footer text
+$theme-footer-brand:  $color-steen;     // footer wordmark
 
 // Theme roles that inline SVGs need, exposed as custom properties on :root.
 @mixin theme-custom-properties {
@@ -51,6 +62,10 @@ $theme-footer-brand:  #FFFFFF;           // footer wordmark
   --theme-marker: #{$theme-marker};
   --theme-tint: #{$theme-tint};
   --theme-tint-2: #{$theme-tint-2};
+  --theme-bg: #{$theme-bg};
+  --theme-halo: #{$theme-halo};
+  --theme-chart-area: #{$theme-chart-area};
+  --theme-action: #{$theme-action};
 }
 
 // Typography
