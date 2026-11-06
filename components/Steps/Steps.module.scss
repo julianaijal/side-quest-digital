@@ -2,8 +2,8 @@
 @use '@/styles/layout' as *;
 
 .section {
-  background: $color-surface;
-  border-block: 1px solid $color-line;
+  background: $theme-surface;
+  border-block: 1px solid $theme-border;
 }
 
 .inner {
@@ -48,7 +48,7 @@
   top: 23px;
   left: 24px;
   right: 24px;
-  border-top: 2px dotted $color-green-700;
+  border-top: 2px dotted $theme-accent;
 
   @include below($bp-md) {
     display: none;
@@ -61,7 +61,7 @@
     left: 21px;
     right: auto;
     border-top: 0;
-    border-left: 2px dotted $color-green-700;
+    border-left: 2px dotted $theme-accent;
   }
 }
 
@@ -96,9 +96,9 @@
   width: 48px;
   height: 48px;
   border-radius: $radius-full;
-  background: $color-surface;
-  border: 2px solid $color-green-700;
-  color: $color-green-700;
+  background: $theme-surface;
+  border: 2px solid $theme-accent;
+  color: $theme-accent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,8 +112,8 @@
 }
 
 .final {
-  background: $color-mint-400;
-  color: $color-ink;
+  background: $theme-marker;
+  color: $theme-on-marker;
 }
 
 .content {
@@ -140,7 +140,7 @@
 .text {
   font-size: $fs-body;
   line-height: $lh-lead;
-  color: $color-ink-2;
+  color: $theme-text-2;
 }
 
 @keyframes reveal {
@@ -163,10 +163,10 @@
 
 @keyframes arrive {
   from {
-    background-color: $color-surface;
+    background-color: $theme-surface;
   }
   to {
-    background-color: $color-mint-400;
+    background-color: $theme-marker;
   }
 }
 
