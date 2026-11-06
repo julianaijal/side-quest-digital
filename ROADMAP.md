@@ -3,9 +3,11 @@
 ## v1: one page site (current)
 
 - [ ] Homepage built from the final design (desktop 1440, mobile 390)
-- [ ] SEO basics: metadata, JSON-LD, sitemap, robots, `llms.txt`, OG image, favicon
+- [x] SEO basics: metadata, JSON-LD, sitemap, robots, `llms.txt`, OG image, favicon
+- [ ] Validate JSON-LD in the Rich Results Test once the site is live
 - [ ] Lighthouse mobile 100 on all four categories
-- [ ] Deploy to Vercel
+- [ ] Deploy to Cloudflare Workers with `@opennextjs/cloudflare` (Wrangler config, build and deploy scripts, `NEXT_PUBLIC_SITE_URL` set)
+- [ ] Domains at TransIP: point nameservers to Cloudflare (or add the records Cloudflare gives), attach the main domain to the Worker, redirect other domains and `www` to it with a 301
 
 ### Website specification checks
 
@@ -37,7 +39,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] Status messages announced (copy button uses `aria-live`)
 - [ ] No empty links or buttons, descriptive link text, landmarks
 
-**Security headers** (in `next.config.ts` or `vercel.json`)
+**Security headers** (in `next.config.ts` `headers()`, or Cloudflare rules)
 - [ ] HTTPS only with HSTS (`max-age`, `includeSubDomains`, no preload)
 - [ ] Content Security Policy, including `frame-ancestors`
 - [ ] `X-Content-Type-Options: nosniff`
@@ -57,7 +59,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] Core Web Vitals within the good thresholds
 - [ ] Images in AVIF or WebP with explicit dimensions, no lazy loading on the LCP element
 - [ ] Cache headers: immutable for hashed assets, revalidate for HTML
-- [ ] Brotli compression, HTTP/2 or HTTP/3 (Vercel default, verify)
+- [ ] Brotli compression, HTTP/2 or HTTP/3 (Cloudflare default, verify)
 - [ ] Fonts as WOFF2, subset, `font-display: swap` (via `next/font`)
 - [ ] Page eligible for the back/forward cache
 - [ ] `scrollbar-gutter: stable`, `dvh` instead of `100vh` where relevant
@@ -85,11 +87,11 @@ Checklist from [specification.website](https://specification.website/checklist/)
 
 Goal: Julian edits copy without touching code. The site stays static and fast.
 
-- [ ] Choose a headless CMS. Criteria: Dutch content, free or cheap at this size, good preview, no client side SDK needed at runtime, webhook for rebuilds on Vercel.
+- [ ] Choose a headless CMS. Criteria: Dutch content, free or cheap at this size, good preview, no client side SDK needed at runtime, webhook to trigger a rebuild or revalidation on Cloudflare.
 - [ ] Model the content after `content/site.ts`. Its shape is the contract: one singleton document for the page, with lists for services, steps and facts.
 - [ ] Swap the source behind `getSite()` in `content/getSite.ts`. Components only receive data as props, so they stay unchanged.
 - [ ] Keep `content/site.ts` as typed fallback and fixture for tests.
-- [ ] Revalidate on publish (webhook to Vercel or on demand revalidation) instead of fetching on every request.
+- [ ] Revalidate on publish (on demand revalidation through the OpenNext cache on Cloudflare) instead of fetching on every request.
 - [ ] Run the copy rules test (`tests/content.test.ts`) against CMS content in CI, or validate on save in the CMS.
 - [ ] Draft preview for unpublished changes.
 
