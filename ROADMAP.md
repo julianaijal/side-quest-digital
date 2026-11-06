@@ -100,7 +100,7 @@ Goal: Julian edits copy without touching code. The site stays static and fast.
 
 ## Later ideas
 
-From the Nacht 2 design, left out of the first version on purpose:
+From the Night Reef design, left out of the first version on purpose:
 
 - [ ] Availability badge with a start month ("Room for a new project from [month]") instead of the eyebrow
 - [ ] Facts row under the hero (years in SEO, migrations, frontend background)

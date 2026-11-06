@@ -18,7 +18,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - Never mention client names or show client logos.
 - No dashes or em dashes in visible copy, and avoid hyphenated words ("mail", not "e-mail").
 - No invented stats, scores or testimonials. Unknown facts stay as `[bracketed]` placeholders until Julian fills them in. Search for `[` to find them.
-- Dark theme only ("Nacht 2" palette): sea green neutrals, mint as brand colour, sand only for actions and the quest marker. Keep text at 7:1 or more against its background; never lower contrast with opacity.
+- Dark theme only ("Night Reef" palette): sea green neutrals, mint as brand colour, sand only for actions and the quest marker. Keep text at 7:1 or more against its background; never lower contrast with opacity.
 - Server components by default. Only `MobileMenu`, `CopyButton` and `LocalTime` are client components.
 - Motion is CSS only, wrapped in `prefers-reduced-motion: no-preference`. No UI or animation libraries.
 - No tracking cookies.
