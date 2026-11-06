@@ -7,6 +7,68 @@
 - [ ] Lighthouse mobile 100 on all four categories
 - [ ] Deploy to Vercel
 
+### Website specification checks
+
+Checklist from [specification.website](https://specification.website/checklist/). Only the items that apply to a static one page site without accounts, forms or feeds. Some may already be covered; tick them off after verifying on the deployed site.
+
+**Foundations**
+- [ ] Doctype, `lang="nl"`, UTF-8 charset, viewport that allows zooming, one `<title>`
+- [ ] Meta description and canonical URL
+- [ ] Favicons: SVG, `/favicon.ico`, `apple-touch-icon`, maskable icon
+- [ ] `theme-color` and `color-scheme` meta (light only for v1)
+- [ ] Open Graph: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
+- [ ] Consider the Popover API for the mobile menu (current version uses React state)
+
+**SEO**
+- [ ] `robots.txt` and XML sitemap
+- [ ] Explicit meta robots policy
+- [ ] Primary content and metadata server rendered
+- [ ] Custom 404 that returns a real 404 status (no soft 404)
+- [ ] Heading hierarchy without skipped levels
+- [ ] JSON-LD (`ProfessionalService`, `Person`)
+- [ ] Redirects: www and non www to one host with a permanent redirect, no chains
+
+**Accessibility**
+- [ ] Skip link as first focusable element
+- [ ] Contrast, visible focus, focus not hidden behind the sticky nav
+- [ ] Forced colors mode looks correct
+- [ ] Touch targets at least 44px
+- [ ] Reduced motion respected (all motion already behind `prefers-reduced-motion`)
+- [ ] Status messages announced (copy button uses `aria-live`)
+- [ ] No empty links or buttons, descriptive link text, landmarks
+
+**Security headers** (in `next.config.ts` or `vercel.json`)
+- [ ] HTTPS only with HSTS (`max-age`, `includeSubDomains`, no preload)
+- [ ] Content Security Policy, including `frame-ancestors`
+- [ ] `X-Content-Type-Options: nosniff`
+- [ ] `Referrer-Policy: strict-origin-when-cross-origin`
+- [ ] `Permissions-Policy`
+- [ ] Cross origin isolation headers (COOP, CORP) where they do not break anything
+- [ ] `/.well-known/security.txt`
+- [ ] DNS CAA records for the domain
+
+**Agent readiness**
+- [ ] `/llms.txt`
+- [ ] Markdown version of the page (`/index.md` or content negotiation)
+- [ ] `robots.txt` rules for named AI crawlers, optionally Content Signals
+- [ ] HTTP `Link` headers for discovery (sitemap, llms.txt)
+
+**Performance**
+- [ ] Core Web Vitals within the good thresholds
+- [ ] Images in AVIF or WebP with explicit dimensions, no lazy loading on the LCP element
+- [ ] Cache headers: immutable for hashed assets, revalidate for HTML
+- [ ] Brotli compression, HTTP/2 or HTTP/3 (Vercel default, verify)
+- [ ] Fonts as WOFF2, subset, `font-display: swap` (via `next/font`)
+- [ ] Page eligible for the back/forward cache
+- [ ] `scrollbar-gutter: stable`, `dvh` instead of `100vh` where relevant
+
+**Privacy and resilience**
+- [ ] Short privacy statement (no cookies, no tracking, what happens with mail)
+- [ ] Page content and navigation work without JavaScript
+- [ ] Web app manifest
+- [ ] External uptime monitoring
+- [ ] Domain reachable over IPv6 (AAAA record)
+
 ### Open placeholders (all in `content/site.ts`, except where noted)
 
 - [ ] Email address
