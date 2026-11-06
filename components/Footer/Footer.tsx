@@ -1,17 +1,10 @@
-import { cacheLife } from 'next/cache';
 import type { Site } from '@/content/site';
 import { DiamondSolid } from '@/components/Icons/Icons';
 import styles from './Footer.module.scss';
 
-// Cached so the page stays static; the year refreshes once a day.
-async function currentYear() {
-  'use cache';
-  cacheLife('days');
-  return new Date().getFullYear();
-}
-
-export async function Footer({ site }: { site: Site }) {
-  const year = await currentYear();
+// The page is prerendered, so the year is the build year and updates on deploy.
+export function Footer({ site }: { site: Site }) {
+  const year = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>

@@ -1,6 +1,8 @@
 import { site } from '@/content/site';
 import { absoluteUrl, isPlaceholder } from '@/lib/seo';
 
+export const dynamic = 'force-static';
+
 // Plain text summary for AI assistants and crawlers (llmstxt.org).
 // Built from the same content file as the page, so the two never drift.
 export function GET() {
