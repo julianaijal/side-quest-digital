@@ -1,6 +1,6 @@
 # Side Quest Digital
 
-One page website for Side Quest Digital, the freelance consultancy of Julian Aijal (Amsterdam). Next.js (App Router), TypeScript, SASS modules, deployed to Vercel.
+One page website for Side Quest Digital, the freelance consultancy of Julian Aijal (Amsterdam). Next.js (App Router), TypeScript, SASS modules, hosted on Cloudflare Workers via the OpenNext adapter (`@opennextjs/cloudflare`). Domains are registered at TransIP.
 
 ## Commands
 
@@ -20,6 +20,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - Server components by default. Only `MobileMenu`, `CopyButton` and `LocalTime` are client components.
 - Motion is CSS only, wrapped in `prefers-reduced-motion: no-preference`. No UI or animation libraries.
 - No tracking cookies.
+- The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
 
 ## Git Workflow
