@@ -2,43 +2,61 @@
 @use '@/styles/layout' as *;
 
 .hero {
-  @include container;
-  padding-block: $section-y;
-  display: flex;
-  align-items: center;
-  gap: 56px;
-  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: space(6);
+
+  // Between the two path variants the hero ends with plain spacing.
+  @include below($bp-md) {
+    padding-bottom: $section-y-mobile;
+  }
 
   @include below($bp-sm) {
-    padding-block: space(6) $section-y-mobile;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
+    padding-bottom: space(6);
+  }
+}
+
+.inner {
+  @include container;
+  position: relative;
+  padding-top: space(9);
+
+  @include below($bp-sm) {
+    padding-top: 40px;
   }
 }
 
 .text {
-  flex: 1 1 540px;
-  min-width: 0;
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
   display: flex;
   flex-direction: column;
   gap: 28px;
 
   @include below($bp-sm) {
-    flex: none;
     gap: 20px;
   }
 }
 
-.eyebrow {
-  @include eyebrow;
-  display: flex;
+// Availability style badge: a quiet pill with the sand marker.
+.badge {
+  align-self: flex-start;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+  padding: space(2) 14px;
+  background: $theme-band;
+  border-radius: $radius-full;
+  font-size: $fs-meta;
+  font-weight: $fw-medium;
+  line-height: 1.4;
+  color: $theme-text-2;
 
   @include below($bp-sm) {
-    margin-top: space(3);
     gap: space(2);
+    padding: 7px space(3);
+    font-size: $fs-label;
   }
 }
 
@@ -51,16 +69,16 @@
   }
 }
 
-.eyebrowMobile {
+.badgeMobile {
   display: none;
 }
 
 @include below($bp-sm) {
-  .eyebrowDesktop {
+  .badgeDesktop {
     display: none;
   }
 
-  .eyebrowMobile {
+  .badgeMobile {
     display: inline;
   }
 }
@@ -72,7 +90,7 @@
   letter-spacing: $ls-display;
 
   @include below($bp-sm) {
-    line-height: 1.1;
+    line-height: 1.06;
   }
 }
 
@@ -104,33 +122,27 @@
   }
 }
 
-// Illustration panel
-.art {
-  min-width: 0;
-  background: $theme-tint;
-  border-radius: $radius-xl;
-}
-
-.artDesktop {
-  flex: 0 1 440px;
-  padding: 40px space(5);
+// Side path: full width under the text on desktop, its own version on mobile.
+.pathDesktop {
+  max-width: 1440px;
+  margin: -40px auto 0;
 
   @include below($bp-md) {
     display: none;
   }
 }
 
-.artMobile {
+.pathMobile {
   display: none;
 
   @include below($bp-sm) {
     display: block;
-    border-radius: 20px;
-    padding: space(5) space(4);
+    margin-top: space(4);
   }
 }
 
 .svg {
+  display: block;
   width: 100%;
   height: auto;
 }
