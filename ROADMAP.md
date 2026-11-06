@@ -20,7 +20,7 @@
 Checklist from [specification.website](https://specification.website/checklist/). Only the items that apply to a static one page site without accounts, forms or feeds. Some may already be covered; tick them off after verifying on the deployed site.
 
 **Foundations**
-- [ ] Doctype, `lang="nl"`, UTF-8 charset, viewport that allows zooming, one `<title>`
+- [ ] Doctype, `lang="en"`, UTF-8 charset, viewport that allows zooming, one `<title>`
 - [ ] Meta description and canonical URL
 - [ ] Favicons: SVG, `/favicon.ico`, `apple-touch-icon`, maskable icon
 - [ ] `theme-color` and `color-scheme` meta (light only for v1)
@@ -93,7 +93,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 
 Goal: Julian edits copy without touching code. The site stays static and fast.
 
-- [ ] Choose a headless CMS. Criteria: Dutch content, free or cheap at this size, good preview, no client side SDK needed at runtime, webhook to trigger a rebuild or revalidation on Cloudflare.
+- [ ] Choose a headless CMS. Criteria: English content, free or cheap at this size, good preview, no client side SDK needed at runtime, webhook to trigger a rebuild or revalidation on Cloudflare.
 - [ ] Model the content after `content/site.ts`. Its shape is the contract: one singleton document for the page, with lists for services, steps and facts.
 - [ ] Swap the source behind `getSite()` in `content/getSite.ts`. Components only receive data as props, so they stay unchanged.
 - [ ] Keep `content/site.ts` as typed fallback and fixture for tests.
@@ -105,4 +105,4 @@ Goal: Julian edits copy without touching code. The site stays static and fast.
 
 - [ ] Subpages (for example case descriptions without client names, or articles), with View Transitions between pages
 - [ ] Cookieless analytics, if wanted
-- [ ] English version
+- [ ] Dutch version

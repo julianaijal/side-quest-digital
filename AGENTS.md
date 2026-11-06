@@ -14,7 +14,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 
 ## Project rules
 
-- All visible copy is Dutch and lives in `content/site.ts`. No CMS.
+- All visible copy is English (American spelling) and lives in `content/site.ts`. No CMS.
 - Never mention client names or show client logos.
 - No dashes or em dashes in visible copy, and avoid hyphenated words ("mail", not "e-mail").
 - No invented stats, scores or testimonials. Unknown facts stay as `[bracketed]` placeholders until Julian fills them in. Search for `[` to find them.
