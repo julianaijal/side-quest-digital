@@ -15,6 +15,11 @@ export function siteUrl(): string {
   return 'http://localhost:3000';
 }
 
+/** Email address in a form bots do not recognise: "julian [@] example.com". */
+export function obfuscatedEmail(): string {
+  return `${site.emailUser} [@] ${site.emailDomain}`;
+}
+
 /** Absolute URL for a path on this site. */
 export function absoluteUrl(path = '/'): string {
   return new URL(path, siteUrl()).toString();
@@ -26,7 +31,6 @@ export function jsonLd() {
   const businessId = `${url}#business`;
   const personId = `${url}#julian`;
   const sameAs = isPlaceholder(site.linkedin) ? undefined : [site.linkedin];
-  const email = isPlaceholder(site.email) ? undefined : site.email;
 
   return {
     '@context': 'https://schema.org',
@@ -37,7 +41,6 @@ export function jsonLd() {
         name: site.name,
         url,
         description: site.meta.description,
-        email,
         image: absoluteUrl('/opengraph-image'),
         areaServed: { '@type': 'Country', name: site.country },
         address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'NL' },

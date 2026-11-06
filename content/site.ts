@@ -6,7 +6,11 @@ export const site = {
   person: 'Julian Aijal',
   jobTitle: 'Senior SEO specialist',
   domain: 'side-quest-digital.com',
-  email: 'julian [@] side-quest-digital.com',
+  // The address is stored in two parts and shown as "julian [@] domain", so the
+  // full address never appears in the HTML for bots to harvest. The copy button
+  // joins the parts on click.
+  emailUser: 'julian',
+  emailDomain: 'side-quest-digital.com',
   linkedin: 'https://www.linkedin.com/in/jaijal',
   kvk: '42206724',
   city: 'Amsterdam',
