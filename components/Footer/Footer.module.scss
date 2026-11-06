@@ -2,8 +2,8 @@
 @use '@/styles/layout' as *;
 
 .footer {
-  background: $color-ink;
-  color: $color-footer-text;
+  background: $theme-footer-bg;
+  color: $theme-footer-text;
 }
 
 .inner {
@@ -30,7 +30,7 @@
   align-items: center;
   gap: 10px;
   font-weight: $fw-semibold;
-  color: $color-surface;
+  color: $theme-footer-brand;
 
   @include below($bp-sm) {
     gap: space(2);

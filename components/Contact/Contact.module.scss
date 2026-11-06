@@ -11,8 +11,8 @@
 }
 
 .block {
-  background: $color-mint-50;
-  border: 1px solid $color-mint-200;
+  background: $theme-tint;
+  border: 1px solid $theme-tint-border;
   border-radius: $radius-xl;
   padding: 80px space(7);
   display: flex;
@@ -47,7 +47,7 @@
   max-width: 520px;
   font-size: 1.1875rem;
   line-height: $lh-lead;
-  color: $color-ink-2;
+  color: $theme-text-2;
 
   @include below($bp-sm) {
     font-size: 1rem;
@@ -74,7 +74,7 @@
   letter-spacing: -0.02em;
   text-underline-offset: 7px;
   text-decoration-thickness: 2px;
-  text-decoration-color: $color-mint-400;
+  text-decoration-color: $theme-marker;
   overflow-wrap: anywhere;
 
   @include below($bp-sm) {
@@ -88,25 +88,25 @@
   height: $touch-min;
   padding: 0 space(4);
   border-radius: $radius-full;
-  border: 1px solid $color-mint-200;
-  background: $color-surface;
+  border: 1px solid $theme-tint-border;
+  background: $theme-surface;
   display: inline-flex;
   align-items: center;
   gap: space(2);
   font-size: $fs-small;
   font-weight: $fw-semibold;
-  color: $color-ink;
+  color: $theme-text;
   cursor: pointer;
 
   &:hover {
-    background: $color-mint-100;
-    border-color: $color-mint-400;
+    background: $theme-tint-2;
+    border-color: $theme-marker;
   }
 }
 
 .copyIcon {
   flex: none;
-  color: $color-green-700;
+  color: $theme-accent;
 }
 
 .meta {
@@ -115,7 +115,7 @@
   gap: 10px;
   font-size: $fs-small;
   line-height: 1.5;
-  color: $color-ink-2;
+  color: $theme-text-2;
 
   @include below($bp-sm) {
     align-items: flex-start;
@@ -133,7 +133,7 @@
 }
 
 .strong {
-  color: $color-ink;
+  color: $theme-text;
 }
 
 // Fixed width so the line does not shift when the time fills in.
@@ -150,13 +150,13 @@
   min-height: $touch-min;
   font-size: 1rem;
   font-weight: $fw-semibold;
-  color: $color-ink;
+  color: $theme-text;
   text-decoration: none;
 
   &:hover {
-    color: $color-ink;
+    color: $theme-text;
     text-decoration: underline;
-    text-decoration-color: $color-mint-400;
+    text-decoration-color: $theme-marker;
     text-underline-offset: 5px;
   }
 }

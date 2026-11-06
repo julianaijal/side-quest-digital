@@ -18,6 +18,41 @@ $color-mint-100:     #DDF1E6; // icon tile, halo, copied state
 $color-mint-50:      #EEF5F1; // panels, tags, contact block
 $color-footer-text:  #C9D1CC; // text on ink (11:1)
 
+// Theme roles. Components use these, never the palette above directly, so the
+// theme can change in one place. Values are the light theme for now.
+$theme-bg:            $color-paper;      // page background
+$theme-surface:       $color-surface;    // cards, nav menu, copy button
+$theme-inset:         $color-paper;      // snippet boxes inside cards
+$theme-border:        $color-line;       // borders, dividers
+$theme-border-strong: $color-line-strong; // secondary button border, main road
+$theme-text:          $color-ink;        // headings and strong text
+$theme-text-2:        $color-ink-2;      // body text
+$theme-text-3:        $color-ink-3;      // metadata
+$theme-accent:        $color-green-700;  // links, labels, icon strokes, focus ring
+$theme-accent-hover:  $color-green-900;  // hover on links
+$theme-action:        $color-green-700;  // primary button background
+$theme-action-hover:  $color-green-900;  // primary button hover
+$theme-on-action:     #FFFFFF;           // text on primary button
+$theme-marker:        $color-mint-400;   // markers, bars, underline accents
+$theme-on-marker:     $color-ink;        // text on a marker surface
+$theme-tint:          $color-mint-50;    // hero panel, tags, contact block
+$theme-tint-2:        $color-mint-100;   // icon tile, halo, hover and copied state
+$theme-tint-border:   $color-mint-200;   // border on tinted surfaces
+$theme-footer-bg:     $color-ink;        // footer background
+$theme-footer-text:   $color-footer-text; // footer text
+$theme-footer-brand:  #FFFFFF;           // footer wordmark
+
+// Theme roles that inline SVGs need, exposed as custom properties on :root.
+@mixin theme-custom-properties {
+  --theme-surface: #{$theme-surface};
+  --theme-border: #{$theme-border};
+  --theme-border-strong: #{$theme-border-strong};
+  --theme-accent: #{$theme-accent};
+  --theme-marker: #{$theme-marker};
+  --theme-tint: #{$theme-tint};
+  --theme-tint-2: #{$theme-tint-2};
+}
+
 // Typography
 $font-sans: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 $font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -102,6 +137,6 @@ $dur-copied:     2s; // copy button label reset
 }
 
 @mixin focus-ring {
-  outline: 2px solid $color-green-700;
+  outline: 2px solid $theme-accent;
   outline-offset: 3px;
 }

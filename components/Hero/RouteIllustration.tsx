@@ -41,11 +41,11 @@ export function RouteIllustration({ variant }: { variant: keyof typeof variants 
   const [, , w, h] = v.viewBox.split(' ');
   return (
     <svg viewBox={v.viewBox} width={w} height={h} className={styles.svg} aria-hidden="true">
-      <path d={v.road} stroke="#C9C6BB" strokeWidth={v.roadWidth} strokeLinecap="round" />
+      <path d={v.road} stroke="var(--theme-border-strong)" strokeWidth={v.roadWidth} strokeLinecap="round" />
       <path
         d={v.path}
         fill="none"
-        stroke="#1E5A45"
+        stroke="var(--theme-accent)"
         strokeWidth={v.pathWidth}
         strokeDasharray={v.dash}
         strokeLinecap="round"
@@ -55,15 +55,15 @@ export function RouteIllustration({ variant }: { variant: keyof typeof variants 
         d={v.path}
         pathLength={1}
         fill="none"
-        stroke="#EEF5F1"
+        stroke="var(--theme-tint)"
         strokeWidth={v.coverWidth}
         strokeDasharray="1 1"
       />
-      <circle cx={v.start.cx} cy={v.start.cy} r={v.start.r} fill="#EEF5F1" stroke="#1E5A45" strokeWidth={v.start.w} />
-      <circle cx={v.end.cx} cy={v.end.cy} r={v.end.r} fill="#1E5A45" />
+      <circle cx={v.start.cx} cy={v.start.cy} r={v.start.r} fill="var(--theme-tint)" stroke="var(--theme-accent)" strokeWidth={v.start.w} />
+      <circle cx={v.end.cx} cy={v.end.cy} r={v.end.r} fill="var(--theme-accent)" />
       <g className={styles.pop}>
-        <circle cx={v.halo.cx} cy={v.halo.cy} r={v.halo.r} fill="#DDF1E6" />
-        <path d={v.diamond} fill="#7DD3BE" stroke="#1E5A45" strokeWidth={v.diamondWidth} strokeLinejoin="round" />
+        <circle cx={v.halo.cx} cy={v.halo.cy} r={v.halo.r} fill="var(--theme-tint-2)" />
+        <path d={v.diamond} fill="var(--theme-marker)" stroke="var(--theme-accent)" strokeWidth={v.diamondWidth} strokeLinejoin="round" />
       </g>
     </svg>
   );

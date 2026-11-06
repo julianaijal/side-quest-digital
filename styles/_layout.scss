@@ -20,7 +20,7 @@ $bp-sm: 640px;
   line-height: 1;
   letter-spacing: $ls-label;
   text-transform: uppercase;
-  color: $color-green-700;
+  color: $theme-accent;
 
   @include below($bp-sm) {
     font-size: 0.75rem;

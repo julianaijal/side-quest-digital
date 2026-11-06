@@ -13,19 +13,19 @@ const stroke = {
 export function LogoMark({ size = 28, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 28 28" aria-hidden="true" className={className}>
-      <path d="M2 22 H26" stroke="#C9C6BB" strokeWidth="2" strokeLinecap="round" />
+      <path d="M2 22 H26" stroke="var(--theme-border-strong)" strokeWidth="2" strokeLinecap="round" />
       <path
         d="M6 22 C 9 22, 9 10, 14 10 C 19 10, 19 22, 22 22"
         fill="none"
-        stroke="#1E5A45"
+        stroke="var(--theme-accent)"
         strokeWidth="2"
         strokeDasharray="0.5 4"
         strokeLinecap="round"
       />
       <path
         d="M14 3 L17.5 6.5 L14 10 L10.5 6.5 Z"
-        fill="#7DD3BE"
-        stroke="#1E5A45"
+        fill="var(--theme-marker)"
+        stroke="var(--theme-accent)"
         strokeWidth="1.25"
         strokeLinejoin="round"
       />
@@ -37,7 +37,7 @@ export function LogoMark({ size = 28, className }: IconProps) {
 export function Diamond({ size = 10, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" aria-hidden="true" className={className}>
-      <path d="M5 0.5 L9.5 5 L5 9.5 L0.5 5 Z" fill="#7DD3BE" stroke="#1E5A45" strokeWidth="1" />
+      <path d="M5 0.5 L9.5 5 L5 9.5 L0.5 5 Z" fill="var(--theme-marker)" stroke="var(--theme-accent)" strokeWidth="1" />
     </svg>
   );
 }
@@ -46,7 +46,7 @@ export function Diamond({ size = 10, className }: IconProps) {
 export function DiamondSolid({ size = 12, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" aria-hidden="true" className={className}>
-      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#7DD3BE" />
+      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="var(--theme-marker)" />
     </svg>
   );
 }
@@ -57,8 +57,8 @@ export function DiamondLarge({ size = 36, className }: IconProps) {
     <svg width={size} height={size} viewBox="0 0 28 28" aria-hidden="true" className={className}>
       <path
         d="M14 2 L26 14 L14 26 L2 14 Z"
-        fill="#7DD3BE"
-        stroke="#1E5A45"
+        fill="var(--theme-marker)"
+        stroke="var(--theme-accent)"
         strokeWidth="1.75"
         strokeLinejoin="round"
       />

@@ -40,14 +40,14 @@
 .placeholder {
   height: 100%;
   border-radius: inherit;
-  background: $color-mint-50;
-  border: 1px solid $color-mint-200;
+  background: $theme-tint;
+  border: 1px solid $theme-tint-border;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: space(3);
-  color: $color-ink-2;
+  color: $theme-text-2;
 
   @include below($bp-sm) {
     gap: 10px;
@@ -94,7 +94,7 @@
 .paragraph {
   font-size: 1.125rem;
   line-height: $lh-body;
-  color: $color-ink-2;
+  color: $theme-text-2;
 
   @include below($bp-sm) {
     font-size: 1rem;
@@ -104,7 +104,7 @@
 .facts {
   margin-top: space(2);
   padding-top: space(5);
-  border-top: 1px solid $color-line;
+  border-top: 1px solid $theme-border;
   display: flex;
   flex-wrap: wrap;
   gap: space(7);
@@ -126,7 +126,7 @@
 
 .label {
   font-size: 0.875rem;
-  color: $color-ink-3;
+  color: $theme-text-3;
 
   @include below($bp-sm) {
     font-size: 0.8125rem;

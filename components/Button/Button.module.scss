@@ -24,23 +24,23 @@
 }
 
 .primary {
-  background: $color-green-700;
-  color: #fff;
+  background: $theme-action;
+  color: $theme-on-action;
 
   &:hover {
-    background: $color-green-900;
-    color: #fff;
+    background: $theme-action-hover;
+    color: $theme-on-action;
   }
 }
 
 .secondary {
   background: transparent;
-  border: 1px solid $color-line-strong;
-  color: $color-ink;
+  border: 1px solid $theme-border-strong;
+  color: $theme-text;
 
   &:hover {
-    background: $color-mint-100;
-    border-color: $color-mint-400;
-    color: $color-ink;
+    background: $theme-tint-2;
+    border-color: $theme-marker;
+    color: $theme-text;
   }
 }
