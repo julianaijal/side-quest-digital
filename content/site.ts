@@ -8,7 +8,7 @@ export const site = {
   domain: 'side-quest-digital.com',
   email: '[hello@side-quest-digital.com]',
   linkedin: 'https://www.linkedin.com/in/jaijal',
-  kvk: '[12345678]',
+  kvk: '42206724',
   city: 'Amsterdam',
   country: 'Netherlands',
 
