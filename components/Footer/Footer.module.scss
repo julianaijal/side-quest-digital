@@ -8,20 +8,19 @@
 
 .inner {
   @include container;
-  padding-block: 40px;
+  padding-block: space(6) 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: space(4);
   flex-wrap: wrap;
-  font-size: $fs-small;
+  font-size: $fs-meta;
 
   @include below($bp-sm) {
-    padding-block: space(6);
+    padding-block: space(5) space(6);
     flex-direction: column;
     align-items: flex-start;
-    gap: space(2);
-    font-size: 0.875rem;
+    gap: 6px;
   }
 }
 
@@ -29,18 +28,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: $fw-semibold;
   color: $theme-footer-brand;
-
-  @include below($bp-sm) {
-    gap: space(2);
-    font-size: 1rem;
-  }
 }
 
 .diamond {
-  @include below($bp-sm) {
-    width: 10px;
-    height: 10px;
-  }
+  flex: none;
 }
