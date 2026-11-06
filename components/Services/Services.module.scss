@@ -1,0 +1,403 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.section {
+  @include container;
+  padding-block: space(6) $section-y;
+  display: flex;
+  flex-direction: column;
+  gap: space(7);
+
+  @include below($bp-sm) {
+    padding-block: space(4) $section-y-mobile;
+    gap: 26px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+  max-width: 640px;
+
+  @include below($bp-sm) {
+    gap: 14px;
+  }
+}
+
+.eyebrow {
+  @include eyebrow;
+}
+
+.heading {
+  @include h2;
+}
+
+// Bento grid
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: space(5);
+
+  @include below($bp-bento) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @include below($bp-sm) {
+    gap: 14px;
+  }
+}
+
+.card {
+  background: $color-surface;
+  border: 1px solid $color-line;
+  border-radius: $radius-lg;
+  padding: space(6);
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+
+  @include below($bp-sm) {
+    padding: space(5);
+    gap: space(3);
+  }
+}
+
+.wide {
+  grid-column: span 2;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: space(6);
+
+  @include below($bp-bento) {
+    grid-column: auto;
+  }
+
+  @include below($bp-sm) {
+    flex-direction: column;
+    gap: space(3);
+  }
+}
+
+.cardBody {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+
+  @include below($bp-sm) {
+    flex: none;
+    gap: space(3);
+  }
+}
+
+.iconTile {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  background: $color-mint-100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-green-700;
+
+  @include below($bp-sm) {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+
+  @include below($bp-sm) {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.title {
+  @include h3;
+}
+
+.text {
+  font-size: $fs-body;
+  line-height: $lh-body;
+  color: $color-ink-2;
+
+  @include below($bp-sm) {
+    line-height: 1.6;
+  }
+}
+
+.tags {
+  list-style: none;
+  margin: auto 0 0;
+  padding: 0;
+  display: flex;
+  gap: space(2);
+  flex-wrap: wrap;
+
+  // The mobile design shows no tags.
+  @include below($bp-sm) {
+    display: none;
+  }
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: $fw-semibold;
+  line-height: 1.5;
+  letter-spacing: $ls-tag;
+  text-transform: uppercase;
+  color: $color-green-700;
+  background: $color-mint-50;
+  border: 1px solid $color-mint-200;
+  padding: 6px 10px;
+  border-radius: $radius-sm;
+}
+
+// Snippets
+.snippet {
+  margin: auto 0 0;
+  min-width: 0;
+  background: $color-paper;
+  border: 1px solid $color-line;
+  border-radius: $radius-md;
+  font-size: 0.8125rem;
+
+  @include below($bp-sm) {
+    margin-top: space(1);
+  }
+}
+
+.wide > .snippet {
+  flex: 1 1 300px;
+  margin: 0;
+  align-self: stretch;
+
+  @include below($bp-sm) {
+    flex: none;
+    margin-top: space(1);
+  }
+}
+
+.stack {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include below($bp-sm) {
+    padding: space(3);
+  }
+}
+
+.strong {
+  font-weight: $fw-semibold;
+}
+
+.onlyMobile {
+  display: none;
+}
+
+@include below($bp-sm) {
+  .onlyDesktop {
+    display: none;
+  }
+
+  .onlyMobile {
+    display: inline;
+  }
+}
+
+// robots.txt
+.robots {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fileBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid $color-line;
+  font-size: 0.75rem;
+  color: $color-ink-3;
+
+  @include below($bp-sm) {
+    padding: space(2) space(3);
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $color-green-700;
+}
+
+.code {
+  margin: 0;
+  padding: space(4) 14px;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  letter-spacing: 0;
+  color: $color-ink;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  @include below($bp-sm) {
+    padding: space(3);
+    font-size: 0.75rem;
+    line-height: 1.75;
+  }
+}
+
+.codeLine {
+  display: block;
+}
+
+.lineNumber {
+  display: inline-block;
+  min-width: 3ch;
+  color: $color-ink-3;
+  user-select: none;
+
+  @include below($bp-sm) {
+    display: none;
+  }
+}
+
+// AI answer
+.bubble {
+  align-self: flex-end;
+  max-width: 90%;
+  background: $color-surface;
+  border: 1px solid $color-line;
+  border-radius: 12px 12px 4px 12px;
+  padding: space(2) space(3);
+  line-height: 1.5;
+}
+
+.answer {
+  line-height: 1.55;
+  color: $color-ink-2;
+
+  strong {
+    color: $color-ink;
+  }
+}
+
+.source {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: $fw-semibold;
+  color: $color-green-700;
+  background: $color-mint-100;
+  border-radius: $radius-full;
+  padding: 4px 10px;
+}
+
+// Web vitals
+.caption {
+  font-size: 0.75rem;
+  font-weight: $fw-semibold;
+  color: $color-ink-3;
+}
+
+.vital {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 64px;
+  gap: 10px;
+  align-items: center;
+
+  @include below($bp-sm) {
+    grid-template-columns: 40px minmax(0, 1fr) 64px;
+  }
+}
+
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: $color-mint-400;
+}
+
+.threshold {
+  font-family: $font-mono;
+  letter-spacing: 0;
+  color: $color-ink-2;
+  text-align: right;
+  white-space: nowrap;
+}
+
+// Dashboard
+.dashboard {
+  padding: space(4);
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+
+  @include below($bp-sm) {
+    padding: space(3);
+    gap: 10px;
+  }
+}
+
+.dashboardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: space(3);
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: $color-ink-3;
+}
+
+.legend {
+  display: flex;
+  gap: space(3);
+
+  @include below($bp-sm) {
+    gap: 10px;
+  }
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch {
+  width: 10px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.swatchOrganic {
+  background: $color-green-700;
+}
+
+.swatchConversions {
+  background: $color-mint-400;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+}
