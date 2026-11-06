@@ -10,10 +10,10 @@ export function Footer({ site }: { site: Site }) {
       <div className={styles.inner}>
         <span className={styles.brand}>
           <DiamondSolid className={styles.diamond} />
-          {site.name}
+          {site.name}, {site.city}
         </span>
         <span>
-          {site.footer.kvkLabel} {site.kvk} · {site.city} · © {year}
+          {site.footer.kvkLabel} {site.kvk}, © {year}
         </span>
       </div>
     </footer>
