@@ -152,6 +152,19 @@ export const site = {
   footer: {
     kvkLabel: 'KVK',
   },
+
+  // Plain text summary served at /llms.txt.
+  llms: {
+    intro:
+      'Side Quest Digital is de freelance praktijk van Julian Aijal, senior SEO specialist met een achtergrond in frontend development, gevestigd in Amsterdam.',
+    servicesTitle: 'Diensten',
+    stepsTitle: 'Werkwijze',
+    contactTitle: 'Contact',
+    websiteLabel: 'Website',
+    mailLabel: 'Mail',
+    linkedinLabel: 'LinkedIn',
+    locationLabel: 'Locatie',
+  },
 } as const;
 
 export type Site = typeof site;
