@@ -80,7 +80,7 @@
   max-width: 560px;
   font-size: $fs-lead;
   line-height: $lh-lead;
-  color: $color-ink-2;
+  color: $theme-text-2;
 }
 
 .actions {
@@ -107,7 +107,7 @@
 // Illustration panel
 .art {
   min-width: 0;
-  background: $color-mint-50;
+  background: $theme-tint;
   border-radius: $radius-xl;
 }
 

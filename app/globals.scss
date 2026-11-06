@@ -7,14 +7,15 @@
 }
 
 html {
+  @include theme-custom-properties;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background: $color-paper;
-  color: $color-ink;
+  background: $theme-bg;
+  color: $theme-text;
   font-family: $font-sans;
   font-size: $fs-body;
   line-height: $lh-body;
@@ -54,10 +55,10 @@ svg {
 }
 
 a {
-  color: $color-green-700;
+  color: $theme-accent;
 
   &:hover {
-    color: $color-green-900;
+    color: $theme-accent-hover;
   }
 }
 
