@@ -7,7 +7,7 @@
 - [ ] Validate JSON-LD in the Rich Results Test once the site is live
 - [ ] Lighthouse mobile 100 on all four categories
 - [ ] Deploy to Cloudflare Workers with `@opennextjs/cloudflare` (Wrangler config, build and deploy scripts, `NEXT_PUBLIC_SITE_URL` set)
-- [ ] Domains at TransIP: point nameservers to Cloudflare (or add the records Cloudflare gives), attach the main domain to the Worker, redirect other domains and `www` to it with a 301
+- [ ] Domains at TransIP: point nameservers to Cloudflare, attach `side-quest-digital.com` to the Worker, redirect `www` and the `.nl`, `.online` and `.tech` domains to it with a 301
 
 ### Website specification checks
 
@@ -80,7 +80,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] Availability (days per month)
 - [ ] Reply time
 - [ ] Photo of Julian plus alt text
-- [ ] Domain (`site.domain`, used for canonical, sitemap and JSON-LD)
+- [x] Domain (`site.domain`, used for canonical, sitemap and JSON-LD): `side-quest-digital.com`
 - [ ] Optional footer line with the measured page weight, once measured
 
 ## v2: headless CMS

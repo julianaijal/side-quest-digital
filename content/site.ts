@@ -5,7 +5,7 @@ export const site = {
   name: 'Side Quest Digital',
   person: 'Julian Aijal',
   jobTitle: 'Senior SEO specialist',
-  domain: '[domein]',
+  domain: 'side-quest-digital.com',
   email: '[hallo@sidequestdigital.nl]',
   linkedin: 'https://www.linkedin.com/in/[profiel]',
   kvk: '[12345678]',
