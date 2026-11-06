@@ -22,9 +22,9 @@ export const site = {
   },
 
   nav: [
-    { label: 'Services', href: '#diensten' },
-    { label: 'Process', href: '#werkwijze' },
-    { label: 'About', href: '#over' },
+    { label: 'Services', href: '#services' },
+    { label: 'Process', href: '#process' },
+    { label: 'About', href: '#about' },
   ],
   navCta: { label: 'Contact', href: '#contact' },
   navLabel: 'Main menu',

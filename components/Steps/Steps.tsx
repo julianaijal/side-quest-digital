@@ -5,11 +5,11 @@ export function Steps({ site }: { site: Site }) {
   const { steps } = site;
   const last = steps.items.length - 1;
   return (
-    <section id="werkwijze" className={styles.section} aria-labelledby="werkwijze-title">
+    <section id="process" className={styles.section} aria-labelledby="process-title">
       <div className={styles.inner}>
         <div className={styles.header}>
           <p className={styles.eyebrow}>{steps.eyebrow}</p>
-          <h2 id="werkwijze-title" className={styles.heading}>
+          <h2 id="process-title" className={styles.heading}>
             {steps.title}
           </h2>
         </div>

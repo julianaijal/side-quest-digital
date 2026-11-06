@@ -6,7 +6,7 @@ import styles from './About.module.scss';
 export function About({ site }: { site: Site }) {
   const { about } = site;
   return (
-    <section id="over" className={styles.section} aria-labelledby="over-title">
+    <section id="about" className={styles.section} aria-labelledby="about-title">
       <div className={styles.photo}>
         {about.photo ? (
           <Image
@@ -25,7 +25,7 @@ export function About({ site }: { site: Site }) {
       </div>
       <div className={styles.text}>
         <p className={styles.eyebrow}>{about.eyebrow}</p>
-        <h2 id="over-title" className={styles.heading}>
+        <h2 id="about-title" className={styles.heading}>
           {about.title}
         </h2>
         {about.paragraphs.map((paragraph) => (

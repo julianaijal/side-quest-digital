@@ -23,7 +23,7 @@ export function Hero({ site }: { site: Site }) {
           <ButtonLink href={`mailto:${site.email}`} className={styles.primary}>
             {hero.primaryCta}
           </ButtonLink>
-          <ButtonLink href="#diensten" variant="secondary" className={styles.secondary}>
+          <ButtonLink href="#services" variant="secondary" className={styles.secondary}>
             {hero.secondaryCta}
           </ButtonLink>
         </div>
