@@ -56,6 +56,16 @@ export function SparkleIcon({ size = 24, className }: IconProps) {
   );
 }
 
+export function GaugeIcon({ size = 24, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true" className={className} {...stroke}>
+      <path d="M4 17a8 8 0 1 1 16 0" />
+      <path d="M12 17l4-5" />
+      <path d="M12 17h.01" />
+    </svg>
+  );
+}
+
 export function CodeIcon({ size = 24, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true" className={className} {...stroke}>

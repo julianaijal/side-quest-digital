@@ -38,7 +38,7 @@ export const site = {
   },
 
   services: {
-    title: 'Four things, done well.',
+    title: 'Five things, done well.',
     items: [
       {
         id: 'technical-seo',
@@ -48,6 +48,13 @@ export const site = {
         snippet: 'robots',
       },
       {
+        id: 'performance',
+        title: 'Performance',
+        text: 'Faster pages for visitors and search engines. I measure Core Web Vitals with real user data, find what slows your site down and fix it with your developers.',
+        wide: false,
+        snippet: 'web-vitals',
+      },
+      {
         id: 'geo',
         title: 'GEO and AI visibility',
         text: 'How does your brand show up in AI search engines and assistants? I map where you are mentioned and what you can do about it.',
@@ -55,18 +62,20 @@ export const site = {
         snippet: 'ai-answer',
       },
       {
-        id: 'webdev',
-        title: 'Web development',
-        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
-        wide: false,
-        snippet: 'component',
-      },
-      {
         id: 'analytics',
         title: 'Analytics and tracking',
         text: 'A measurement plan, a clean implementation and dashboards you actually use. Where I can, I automate the recurring work.',
         wide: true,
         snippet: 'dashboard',
+      },
+      {
+        id: 'webdev',
+        title: 'Web development',
+        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
+        wide: true,
+        // Spans the full last row so five cards fill the bento without a gap.
+        full: true,
+        snippet: 'component',
       },
     ],
   },
@@ -89,6 +98,13 @@ export const site = {
     aiAnswerBrand: '[your brand]',
     aiAnswerAfter: ', with a wide range and …',
     aiSource: 'Source: [yoursite].com',
+    vitalsLabel: 'Thresholds for a good Core Web Vitals score',
+    vitalsCaption: 'Core Web Vitals · threshold for good',
+    vitals: [
+      { metric: 'LCP', threshold: '≤ 2.5 s' },
+      { metric: 'INP', threshold: '≤ 200 ms' },
+      { metric: 'CLS', threshold: '≤ 0.1' },
+    ],
     componentLabel: 'Example of an accessible component in code',
     componentFile: 'ServiceCard.tsx',
     componentLang: 'TSX',
