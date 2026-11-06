@@ -49,7 +49,7 @@ All visible copy lives in `content/site.ts`. Values in `[brackets]` are placehol
 
 ## Design
 
-Dark "Nacht 2" theme: sea green neutrals, mint as the brand colour, and sand only for actions and the quest marker. Components use semantic theme roles (`$theme-bg`, `$theme-accent`, …) rather than raw palette colours, and inline SVGs read the same roles as CSS custom properties.
+Dark "Night Reef" theme: sea green neutrals, mint as the brand colour, and sand only for actions and the quest marker. Components use semantic theme roles (`$theme-bg`, `$theme-accent`, …) rather than raw palette colours, and inline SVGs read the same roles as CSS custom properties.
 
 ## SEO and AI visibility
 
