@@ -159,7 +159,7 @@
 // Fixed width so the line does not shift when the time fills in.
 .time {
   display: inline-block;
-  min-width: 5ch;
+  min-width: 4.4ch; // four digits and a colon
   font-variant-numeric: tabular-nums;
 }
 
