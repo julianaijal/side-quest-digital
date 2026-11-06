@@ -7,15 +7,16 @@ type Props = {
   variant?: 'primary' | 'secondary';
   size?: 'default' | 'small';
   className?: string;
+  onClick?: () => void;
 };
 
 /** Call to action styled as a button. Always an anchor. */
-export function ButtonLink({ href, children, variant = 'primary', size = 'default', className }: Props) {
+export function ButtonLink({ href, children, variant = 'primary', size = 'default', className, onClick }: Props) {
   const classes = [styles.button, styles[variant], size === 'small' && styles.small, className]
     .filter(Boolean)
     .join(' ');
   return (
-    <a href={href} className={classes}>
+    <a href={href} className={classes} onClick={onClick}>
       {children}
     </a>
   );
