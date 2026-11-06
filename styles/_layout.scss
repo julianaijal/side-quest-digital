@@ -1,0 +1,42 @@
+@use 'tokens' as *;
+
+// The designs cover 1440 (desktop) and 390 (mobile). Below this width the
+// mobile layout from homepage-mobile.dc.html applies.
+$bp-sm: 640px;
+
+@mixin container {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: $gutter;
+
+  @include below($bp-sm) {
+    padding-inline: $gutter-mobile;
+  }
+}
+
+@mixin eyebrow {
+  font-size: $fs-label;
+  font-weight: $fw-semibold;
+  line-height: 1;
+  letter-spacing: $ls-label;
+  text-transform: uppercase;
+  color: $color-green-700;
+
+  @include below($bp-sm) {
+    font-size: 0.75rem;
+  }
+}
+
+@mixin h2 {
+  font-size: $fs-h2;
+  line-height: $lh-heading;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-h2;
+}
+
+@mixin h3 {
+  font-size: $fs-h3;
+  line-height: $lh-h3;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-h3;
+}

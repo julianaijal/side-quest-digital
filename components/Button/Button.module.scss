@@ -1,0 +1,46 @@
+@use '@/styles/tokens' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: $radius-full;
+  font-size: 1.0625rem;
+  font-weight: $fw-semibold;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.small {
+  height: $touch-min;
+  padding: 0 20px;
+  font-size: 1rem;
+}
+
+.primary {
+  background: $color-green-700;
+  color: #fff;
+
+  &:hover {
+    background: $color-green-900;
+    color: #fff;
+  }
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid $color-line-strong;
+  color: $color-ink;
+
+  &:hover {
+    background: $color-mint-100;
+    border-color: $color-mint-400;
+    color: $color-ink;
+  }
+}
