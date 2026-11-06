@@ -9,7 +9,11 @@
 - [x] OpenNext and Wrangler config with `preview` and `deploy` scripts
 - [x] First deploy to Cloudflare Workers (`wrangler login`, then `npm run deploy`). Behind Zscaler, set `NODE_EXTRA_CA_CERTS` to the Zscaler root CA first.
 - [ ] Before a photo goes in: add the Cloudflare Images binding for `next/image`, or serve a pre optimized image
-- [ ] Domains at TransIP: point nameservers to Cloudflare, attach `side-quest-digital.com` to the Worker, redirect `www` and the `.nl`, `.online` and `.tech` domains to it with a 301
+- [x] Nameservers of `.com`, `.nl` and `.tech` at TransIP point to Cloudflare
+- [x] `side-quest-digital.com` live as custom domain of the Worker, `workers.dev` disabled
+- [ ] 301 from `www.side-quest-digital.com` to the apex (Cloudflare redirect rule)
+- [ ] 301 from `.nl` and `.tech` (apex and `www`) to `https://side-quest-digital.com`, once the zones are active
+- [ ] `side-quest-digital.online`: registry `serverHold`, resolve with TransIP first, then add to Cloudflare and redirect
 
 ### Website specification checks
 
