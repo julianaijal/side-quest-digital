@@ -1,0 +1,107 @@
+// Side Quest Digital design tokens v1
+// Based on the Julian Aijal design system (Inter, spacing scale, component set).
+// New: palette, light base, larger radii, tighter heading scale.
+
+// Colors
+$color-paper:        #F6F5F0; // page background
+$color-surface:      #FFFFFF; // cards, alternating sections
+$color-line:         #E2E0D8; // borders, dividers
+$color-line-strong:  #C9C6BB; // secondary button border, main road in motif
+$color-ink:          #13201B; // headings, footer background (16:1 on paper)
+$color-ink-2:        #4A5650; // body text (7:1)
+$color-ink-3:        #5F6964; // metadata (5:1)
+$color-green-700:    #1E5A45; // buttons, links, labels (7:1)
+$color-green-900:    #13392C; // hover on green
+$color-mint-400:     #7DD3BE; // accent and markers only, never as text on light
+$color-mint-200:     #CDE8DA; // border on mint surfaces
+$color-mint-100:     #DDF1E6; // icon tile, halo, copied state
+$color-mint-50:      #EEF5F1; // panels, tags, contact block
+$color-footer-text:  #C9D1CC; // text on ink (11:1)
+
+// Typography
+$font-sans: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+$fs-display: clamp(2.375rem, 1.6rem + 3.2vw, 4rem);     // 38 to 64
+$fs-h2:      clamp(1.875rem, 1.55rem + 1.3vw, 2.5rem);  // 30 to 40
+$fs-h3:      clamp(1.25rem, 1.2rem + 0.2vw, 1.375rem);  // 20 to 22
+$fs-lead:    clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem); // 17 to 20
+$fs-body:    clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);   // 16 to 17
+$fs-small:   0.9375rem; // 15
+$fs-label:   0.8125rem; // 13
+
+$lh-display: 1.05;
+$lh-heading: 1.15;
+$lh-h3:      1.3;
+$lh-body:    1.65;
+$lh-lead:    1.6;
+
+$ls-base:    -0.01em;
+$ls-display: -0.03em;
+$ls-h2:      -0.025em;
+$ls-h3:      -0.015em;
+$ls-label:   0.08em;
+$ls-tag:     0.05em;
+
+$fw-regular:  400;
+$fw-medium:   500;
+$fw-semibold: 600;
+$fw-bold:     700;
+
+// Spacing (unchanged from personal system, plus 112)
+$space: (
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 24px,
+  6: 32px,
+  7: 48px,
+  8: 64px,
+  9: 96px,
+  10: 112px
+);
+
+@function space($key) {
+  @return map-get($space, $key);
+}
+
+// Radii
+$radius-sm:   6px;   // tag
+$radius-md:   12px;  // icon tile, snippet box
+$radius-lg:   16px;  // card, photo
+$radius-xl:   24px;  // hero panel, contact block
+$radius-full: 9999px; // buttons
+
+// Layout
+$max-width:         70rem; // 1120px
+$gutter:            24px;
+$gutter-mobile:     16px;
+$nav-height:        80px;
+$nav-height-mobile: 64px;
+$section-y:         112px;
+$section-y-mobile:  64px;
+$touch-min:         44px;
+
+// Breakpoints
+$bp-bento: 960px; // bento grid collapses to one column
+$bp-md:    860px; // hero art hidden, horizontal step line hidden
+
+@mixin below($bp) {
+  @media (max-width: $bp) { @content; }
+}
+
+// Motion
+$ease-draw:      cubic-bezier(.4, 0, .2, 1);
+$dur-draw:       1.6s;
+$dur-pop:        0.5s;
+$dur-copied:     2s; // copy button label reset
+
+@mixin motion-ok {
+  @media (prefers-reduced-motion: no-preference) { @content; }
+}
+
+@mixin focus-ring {
+  outline: 2px solid $color-green-700;
+  outline-offset: 3px;
+}
