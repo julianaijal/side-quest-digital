@@ -7,7 +7,7 @@ export const site = {
   jobTitle: 'Senior SEO specialist',
   domain: 'side-quest-digital.com',
   email: '[hello@side-quest-digital.com]',
-  linkedin: 'https://www.linkedin.com/in/[profile]',
+  linkedin: 'https://www.linkedin.com/in/jaijal',
   kvk: '[12345678]',
   city: 'Amsterdam',
   country: 'Netherlands',
