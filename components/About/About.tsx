@@ -24,7 +24,6 @@ export function About({ site }: { site: Site }) {
         )}
       </div>
       <div className={styles.text}>
-        <p className={styles.eyebrow}>{about.eyebrow}</p>
         <h2 id="about-title" className={styles.heading}>
           {about.title}
         </h2>

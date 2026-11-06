@@ -115,7 +115,6 @@ export const site = {
   },
 
   about: {
-    eyebrow: 'About',
     title: 'Hi, I’m Julian.',
     paragraphs: [
       'I’ve worked in SEO since 2014, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
