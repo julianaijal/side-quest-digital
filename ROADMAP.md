@@ -82,7 +82,6 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] Email address
 - [x] LinkedIn profile URL
 - [ ] KVK number
-- [ ] Reply time
 - [ ] Photo of Julian plus alt text
 - [x] Domain (`site.domain`, used for canonical, sitemap and JSON-LD): `side-quest-digital.com`
 - [ ] Optional footer line with the measured page weight, once measured
