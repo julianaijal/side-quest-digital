@@ -1,15 +1,17 @@
 import type { ReactNode } from 'react';
 import type { ServiceItem, Site } from '@/content/site';
-import { ChartIcon, CodeIcon, SearchIcon, SparkleIcon } from '@/components/Icons/Icons';
+import { ChartIcon, CodeIcon, GaugeIcon, SearchIcon, SparkleIcon } from '@/components/Icons/Icons';
 import { AiAnswerSnippet } from './snippets/AiAnswerSnippet';
 import { DashboardSnippet } from './snippets/DashboardSnippet';
 import { RobotsSnippet } from './snippets/RobotsSnippet';
 import { ComponentSnippet } from './snippets/ComponentSnippet';
+import { WebVitalsSnippet } from './snippets/WebVitalsSnippet';
 import styles from './Services.module.scss';
 
 const icons: Record<ServiceItem['snippet'], ReactNode> = {
   robots: <SearchIcon className={styles.icon} />,
   'ai-answer': <SparkleIcon className={styles.icon} />,
+  'web-vitals': <GaugeIcon className={styles.icon} />,
   component: <CodeIcon className={styles.icon} />,
   dashboard: <ChartIcon className={styles.icon} />,
 };
@@ -17,6 +19,7 @@ const icons: Record<ServiceItem['snippet'], ReactNode> = {
 const snippetsById = {
   robots: RobotsSnippet,
   'ai-answer': AiAnswerSnippet,
+  'web-vitals': WebVitalsSnippet,
   component: ComponentSnippet,
   dashboard: DashboardSnippet,
 } as const;
@@ -33,7 +36,7 @@ export function ServiceCard({ item, snippets }: { item: ServiceItem; snippets: S
 
   if (item.wide) {
     return (
-      <article className={`${styles.card} ${styles.wide}`}>
+      <article className={`${styles.card} ${styles.wide} ${'full' in item && item.full ? styles.full : ''}`}>
         <div className={styles.cardBody}>
           {body}
         </div>
