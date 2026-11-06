@@ -30,8 +30,7 @@ export function Contact({ site }: { site: Site }) {
         <p className={styles.meta}>
           <ClockIcon className={styles.clock} />
           <span>
-            {contact.timePrefix} <strong className={styles.strong}><LocalTime /></strong> {contact.timeSuffix}{' '}
-            {site.replyTime}
+            {contact.timePrefix} <strong className={styles.strong}><LocalTime /></strong> {contact.timeSuffix}
           </span>
         </p>
         <a href={site.linkedin} className={styles.linkedin}>

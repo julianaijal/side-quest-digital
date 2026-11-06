@@ -11,7 +11,6 @@ export const site = {
   kvk: '[12345678]',
   city: 'Amsterdam',
   country: 'Netherlands',
-  replyTime: '[two working days]',
 
   meta: {
     title: 'Side Quest Digital · SEO and web development in Amsterdam',
@@ -143,7 +142,7 @@ export const site = {
     copyLabel: 'Copy address',
     copiedLabel: 'Copied',
     timePrefix: 'It’s',
-    timeSuffix: 'in Amsterdam · I usually reply within',
+    timeSuffix: 'in Amsterdam.',
     linkedinLabel: 'Or find me on LinkedIn',
   },
 
