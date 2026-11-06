@@ -4,20 +4,20 @@ import { ChartIcon, CodeIcon, SearchIcon, SparkleIcon } from '@/components/Icons
 import { AiAnswerSnippet } from './snippets/AiAnswerSnippet';
 import { DashboardSnippet } from './snippets/DashboardSnippet';
 import { RobotsSnippet } from './snippets/RobotsSnippet';
-import { WebVitalsSnippet } from './snippets/WebVitalsSnippet';
+import { ComponentSnippet } from './snippets/ComponentSnippet';
 import styles from './Services.module.scss';
 
 const icons: Record<ServiceItem['snippet'], ReactNode> = {
   robots: <SearchIcon className={styles.icon} />,
   'ai-answer': <SparkleIcon className={styles.icon} />,
-  'web-vitals': <CodeIcon className={styles.icon} />,
+  component: <CodeIcon className={styles.icon} />,
   dashboard: <ChartIcon className={styles.icon} />,
 };
 
 const snippetsById = {
   robots: RobotsSnippet,
   'ai-answer': AiAnswerSnippet,
-  'web-vitals': WebVitalsSnippet,
+  component: ComponentSnippet,
   dashboard: DashboardSnippet,
 } as const;
 

@@ -57,9 +57,9 @@ export const site = {
       {
         id: 'webdev',
         title: 'Web development',
-        text: 'Fast, accessible websites that search engines understand, built from scratch or improved step by step.',
+        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
         wide: false,
-        snippet: 'web-vitals',
+        snippet: 'component',
       },
       {
         id: 'analytics',
@@ -89,12 +89,15 @@ export const site = {
     aiAnswerBrand: '[your brand]',
     aiAnswerAfter: ', with a wide range and …',
     aiSource: 'Source: [yoursite].com',
-    vitalsLabel: 'Thresholds for a good Core Web Vitals score',
-    vitalsCaption: 'Core Web Vitals · threshold for good',
-    vitals: [
-      { metric: 'LCP', threshold: '≤ 2.5 s' },
-      { metric: 'INP', threshold: '≤ 200 ms' },
-      { metric: 'CLS', threshold: '≤ 0.1' },
+    componentLabel: 'Example of an accessible component in code',
+    componentFile: 'ServiceCard.tsx',
+    componentLang: 'TSX',
+    // Literal code: attribute names like "aria-labelledby" are syntax, not copy.
+    component: [
+      '<article aria-labelledby={id}>',
+      '  <h3 id={id}>{title}</h3>',
+      '  <p>{text}</p>',
+      '</article>',
     ],
     dashboardAriaLabel: 'Illustration of a dashboard',
     dashboardLabel: 'Dashboard · example',
