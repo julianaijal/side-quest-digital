@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
-    locale: 'nl_NL',
+    locale: 'en_US',
     url: '/',
     siteName: site.name,
     title: site.meta.title,
@@ -41,7 +41,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="nl" className={inter.variable}>
+    <html lang="en" className={inter.variable}>
       <body>
         {children}
         <script
