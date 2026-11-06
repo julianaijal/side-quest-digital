@@ -1,0 +1,174 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.hero {
+  @include container;
+  padding-block: $section-y;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
+
+  @include below($bp-sm) {
+    padding-block: space(6) $section-y-mobile;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+}
+
+.text {
+  flex: 1 1 540px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  @include below($bp-sm) {
+    flex: none;
+    gap: 20px;
+  }
+}
+
+.eyebrow {
+  @include eyebrow;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @include below($bp-sm) {
+    margin-top: space(3);
+    gap: space(2);
+  }
+}
+
+.diamond {
+  flex: none;
+
+  @include below($bp-sm) {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+.eyebrowMobile {
+  display: none;
+}
+
+@include below($bp-sm) {
+  .eyebrowDesktop {
+    display: none;
+  }
+
+  .eyebrowMobile {
+    display: inline;
+  }
+}
+
+.title {
+  font-size: $fs-display;
+  line-height: $lh-display;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-display;
+
+  @include below($bp-sm) {
+    line-height: 1.1;
+  }
+}
+
+.lead {
+  max-width: 560px;
+  font-size: $fs-lead;
+  line-height: $lh-lead;
+  color: $color-ink-2;
+}
+
+.actions {
+  display: flex;
+  gap: space(3);
+  flex-wrap: wrap;
+  padding-top: space(2);
+
+  @include below($bp-sm) {
+    padding-top: 0;
+  }
+}
+
+@include below($bp-sm) {
+  .primary {
+    width: 100%;
+  }
+
+  .secondary {
+    display: none;
+  }
+}
+
+// Illustration panel
+.art {
+  min-width: 0;
+  background: $color-mint-50;
+  border-radius: $radius-xl;
+}
+
+.artDesktop {
+  flex: 0 1 440px;
+  padding: 40px space(5);
+
+  @include below($bp-md) {
+    display: none;
+  }
+}
+
+.artMobile {
+  display: none;
+
+  @include below($bp-sm) {
+    display: block;
+    border-radius: 20px;
+    padding: space(5) space(4);
+  }
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+}
+
+// Motion: the cover path sits fully revealed by default (dashoffset -1),
+// so without animation the dotted path is complete.
+.cover {
+  stroke-dashoffset: -1;
+}
+
+@keyframes uncover {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@include motion-ok {
+  .cover {
+    animation: uncover $dur-draw $ease-draw 0.3s both;
+  }
+
+  .pop {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pop $dur-pop ease-out $dur-draw both;
+  }
+}
