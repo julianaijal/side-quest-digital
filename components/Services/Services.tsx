@@ -1,0 +1,21 @@
+import type { Site } from '@/content/site';
+import { ServiceCard } from './ServiceCard';
+import styles from './Services.module.scss';
+
+export function Services({ site }: { site: Site }) {
+  const { services, snippets } = site;
+  return (
+    <section id="services" className={styles.band} aria-labelledby="services-title">
+      <div className={styles.section}>
+        <h2 id="services-title" className={styles.heading}>
+          {services.title}
+        </h2>
+        <div className={styles.bento}>
+          {services.items.map((item) => (
+            <ServiceCard key={item.id} item={item} snippets={snippets} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

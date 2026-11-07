@@ -1,0 +1,161 @@
+// Side Quest Digital design tokens, "Night Reef" (dark)
+// Based on the Julian Aijal design system (Inter, spacing scale, component set).
+// Colour split 60 30 10: sea green neutrals, mint brand colour, sand for action only.
+
+// Neutrals (60)
+$color-zeenacht:   #0E1A18; // page background, snippet insets
+$color-diep:       #13221F; // section bands, contact block, badge, ghost button
+$color-rif:        #1A2B27; // cards on Diep, copy button, dividers
+$color-lijn:       #24362F; // main road in motif, hover on Rif
+
+// Text
+$color-schuim:     #E6ECE8; // headings, primary text (14.6:1 on Zeenacht)
+$color-mist:       #C2CEC8; // hero lead, first about paragraph (10.9:1)
+$color-kelp:       #A9BAB3; // running text in cards (8.7:1)
+$color-steen:      #9DB0A8; // metadata, section intros, footer (7.7:1)
+
+// Mint (30)
+$color-mint:       #8CCFB2; // icons, links, lines (10:1)
+$color-mint-deep:  #183A31; // chips
+$color-mint-area:  #163530; // chart area fill
+
+// Sand (10), action and quest marker only
+$color-zand:       #E9B96E; // primary button, marker (9.7:1)
+$color-zand-light: #F2CD91; // primary hover
+$color-zand-halo:  #2A2A1D; // halo behind the marker
+$color-on-zand:    #0E1A18; // text on sand
+
+// Theme roles. Components use these, never the palette above directly.
+$theme-bg:            $color-zeenacht;  // page background
+$theme-band:          $color-diep;      // full width section bands
+$theme-surface:       $color-rif;       // cards, copy button, mobile menu
+$theme-inset:         $color-zeenacht;  // snippet boxes inside cards
+$theme-border:        $color-rif;       // dividers
+$theme-border-strong: $color-lijn;      // main road, hover on surface
+$theme-text:          $color-schuim;    // headings and strong text
+$theme-text-2:        $color-mist;      // lead and intro paragraphs
+$theme-text-card:     $color-kelp;      // running text in cards
+$theme-text-3:        $color-steen;     // metadata, section intros, footer
+$theme-accent:        $color-mint;      // links, icons, lines, focus ring
+$theme-accent-hover:  $color-schuim;    // hover on links
+$theme-action:        $color-zand;      // primary button background
+$theme-action-hover:  $color-zand-light; // primary button hover
+$theme-on-action:     $color-on-zand;   // text on primary button
+$theme-marker:        $color-zand;      // the quest marker and small sand diamonds
+$theme-on-marker:     $color-on-zand;   // text on a marker surface
+$theme-halo:          $color-zand-halo; // halo behind the marker
+$theme-chip:          $color-mint-deep; // chips
+$theme-chart-area:    $color-mint-area; // chart area fill
+$theme-tint:          $color-diep;      // badge, photo placeholder, contact block
+$theme-tint-2:        $color-rif;       // hover on tint
+$theme-tint-border:   $color-lijn;      // border on tinted surfaces, where needed
+$theme-footer-bg:     $color-zeenacht;  // footer background
+$theme-footer-text:   $color-steen;     // footer text
+$theme-footer-brand:  $color-steen;     // footer wordmark
+
+// Theme roles that inline SVGs need, exposed as custom properties on :root.
+@mixin theme-custom-properties {
+  --theme-surface: #{$theme-surface};
+  --theme-border: #{$theme-border};
+  --theme-border-strong: #{$theme-border-strong};
+  --theme-accent: #{$theme-accent};
+  --theme-marker: #{$theme-marker};
+  --theme-tint: #{$theme-tint};
+  --theme-tint-2: #{$theme-tint-2};
+  --theme-bg: #{$theme-bg};
+  --theme-halo: #{$theme-halo};
+  --theme-chart-area: #{$theme-chart-area};
+  --theme-action: #{$theme-action};
+}
+
+// Typography
+$font-sans: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+$fs-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);    // 40 to 68
+$fs-h2-cta:  clamp(1.875rem, 1.4rem + 1.9vw, 2.75rem);  // 30 to 44, contact
+$fs-h2:      clamp(1.875rem, 1.55rem + 1.3vw, 2.5rem);  // 30 to 40
+$fs-h3:      clamp(1.25rem, 1.2rem + 0.2vw, 1.375rem);  // 20 to 22
+$fs-lead:    clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem); // 17 to 20
+$fs-body:    clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);   // 16 to 17
+$fs-small:   0.9375rem; // 15
+$fs-label:   0.8125rem; // 13
+$fs-meta:    0.875rem;  // 14
+
+$lh-display: 1.03;
+$lh-heading: 1.12;
+$lh-h3:      1.3;
+$lh-body:    1.6;
+$lh-lead:    1.6;
+$lh-long:    1.65; // about paragraphs
+
+$ls-base:    -0.01em;
+$ls-display: -0.035em;
+$ls-h2:      -0.025em;
+$ls-h3:      -0.015em;
+$ls-label:   0.08em;
+$ls-tag:     0.05em;
+
+$fw-regular:  400;
+$fw-medium:   500;
+$fw-semibold: 600;
+$fw-bold:     700;
+
+// Spacing (unchanged from personal system, plus 112)
+$space: (
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 24px,
+  6: 32px,
+  7: 48px,
+  8: 64px,
+  9: 96px,
+  10: 112px
+);
+
+@function space($key) {
+  @return map-get($space, $key);
+}
+
+// Radii (by hierarchy)
+$radius-sm:      6px;    // small chips
+$radius-md:      12px;   // snippet insets
+$radius-lg:      20px;   // cards, photo
+$radius-xl:      28px;   // contact block (24 on mobile)
+$radius-full:    9999px; // buttons, badge, chips
+
+// Layout
+$max-width:         70rem; // 1120px
+$gutter:            24px;
+$gutter-mobile:     16px;
+$nav-height:        80px;
+$nav-height-mobile: 64px;
+$section-y:         112px;
+$section-y-mobile:  64px;
+$card-gap:          16px;
+$touch-min:         44px;
+
+// Breakpoints
+$bp-bento: 960px; // bento grid collapses to one column
+$bp-md:    860px; // hero art hidden, horizontal step line hidden
+
+@mixin below($bp) {
+  @media (max-width: $bp) { @content; }
+}
+
+// Motion
+$ease-draw:      cubic-bezier(.4, 0, .2, 1);
+$dur-draw:       1.8s;
+$dur-pop:        0.5s;
+$dur-copied:     2s; // copy button label reset
+
+@mixin motion-ok {
+  @media (prefers-reduced-motion: no-preference) { @content; }
+}
+
+@mixin focus-ring {
+  outline: 2px solid $theme-accent;
+  outline-offset: 3px;
+}

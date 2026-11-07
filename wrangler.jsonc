@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "side-quest-digital",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-06",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // Cloudflare creates the DNS record and certificate for this domain on deploy.
+  // The zone must not have its own A, AAAA or CNAME record on the apex.
+  "routes": [{ "pattern": "side-quest-digital.com", "custom_domain": true }],
+  // Serve the site on one address only.
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
