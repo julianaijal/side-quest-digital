@@ -88,6 +88,11 @@
   }
 }
 
+// The domain wraps as a whole, so its hyphens never read as line breaks.
+.nowrap {
+  white-space: nowrap;
+}
+
 .emailLink {
   max-width: 100%;
   font-size: 1.875rem;
