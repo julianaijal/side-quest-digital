@@ -47,6 +47,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         {analyticsEnabled && <script dangerouslySetInnerHTML={{ __html: consentAndGtmScript() }} />}
       </head>
       <body>
+        <a href="#main" className="skip-link">
+          {site.skipLabel}
+        </a>
         {children}
         <script
           type="application/ld+json"
