@@ -1,6 +1,7 @@
 // Side Quest Digital design tokens, "Night Reef" (dark)
 // Based on the Julian Aijal design system (Inter, spacing scale, component set).
 // Colour split 60 30 10: sea green neutrals, mint brand colour, sand for action only.
+@use 'sass:map';
 
 // Neutrals (60)
 $color-zeenacht:   #0E1A18; // page background, snippet insets
@@ -116,7 +117,7 @@ $space: (
 );
 
 @function space($key) {
-  @return map-get($space, $key);
+  @return map.get($space, $key);
 }
 
 // Radii (by hierarchy)
