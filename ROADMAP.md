@@ -5,7 +5,6 @@
 ### Next up
 
 **Julian (accounts, DNS and content)**
-- [ ] 301 from `.nl` and `.tech` (apex and `www`) to `https://side-quest-digital.com`, once Cloudflare marks the zones active
 - [ ] `side-quest-digital.online`: registry `serverHold`, resolve with TransIP (likely an unverified registrant email), then add to Cloudflare and redirect
 - [ ] Photo of Julian plus alt text. The photo block is hidden until `about.photo` in `content/site.ts` is set
 - [ ] Gmail "Send mail as" for the domain address, so replies come from the business address
@@ -18,12 +17,18 @@
 - [ ] Before a photo goes in: add the Cloudflare Images binding for `next/image`, or serve a pre optimized image
 
 **Verify on the live domain** (from a network without Zscaler)
-- [ ] Lighthouse mobile (local production build: performance 98, accessibility 100, best practices 100, SEO 100; LCP 2.3 s simulated)
-- [ ] Rich Results Test for the JSON-LD
 - [ ] Core Web Vitals from real users once there is traffic
 
 ### Done
 
+- [x] Lighthouse mobile on the live domain: 100 for performance, accessibility, best practices and SEO (median of 3 runs, LCP 1.1 s, TBT 70 ms)
+- [x] Rich Results Test: Local business and Organization valid; only the optional `priceRange` and `telephone` missing
+- [x] 301 from `.nl` and `.tech` (apex and `www`, HTTP and HTTPS) to `https://side-quest-digital.com` in one hop, keeping path and query (a redirect rule for all requests in each zone). Their A and AAAA records point at `192.0.2.1` and `100::` (proxied), with a null MX
+- [x] DNSSEC on `.com`, `.nl` and `.tech` (DS records at TransIP, validated by 1.1.1.1 and 8.8.8.8)
+- [x] Minimum TLS 1.2; `.nl` and `.tech` send no mail: SPF `-all`, DMARC `p=reject`; DMARC reports for `.com` through Cloudflare DMARC Management (policy stays `p=none` until Gmail "Send mail as" is set up)
+- [x] Search Console domain property verified by DNS, sitemap submitted, homepage indexing requested (the last crawl still saw the TransIP parking page with `noindex` and its favicon)
+- [x] Key actions tracked (`copy_email`, `cta_click`, `linkedin_click` with `cta_location`) through GTM to GA4; GA4 enhanced measurement trimmed to page loads, scrolls and outbound clicks; data retention 2 months; custom dimension CTA location
+- [x] Data Studio dashboard "Side Quest Digital analytics" on the GA4 property, with a Leads page
 - [x] 301 from `www.side-quest-digital.com` (HTTP and HTTPS) to the apex in one hop, keeping path and query (Cloudflare redirect rule on `http.host`), and Always Use HTTPS on
 - [x] Lighthouse on every CI build (`check:lighthouse`): performance at least 90, the other categories 100
 - [x] PR #1 and #2 merged into `main`
@@ -80,7 +85,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] `Permissions-Policy`
 - [x] COOP `same-origin` (CORP and COEP left out: they would block Google Analytics)
 - [x] `/.well-known/security.txt`
-- [ ] DNS CAA records for the domain
+- [x] DNS CAA records for the domain (Cloudflare adds its own CAs)
 
 **Agent readiness**
 - [x] `/llms.txt`
@@ -92,7 +97,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [ ] Core Web Vitals within the good thresholds
 - [ ] Images in AVIF or WebP with explicit dimensions, no lazy loading on the LCP element
 - [x] Cache headers: immutable for hashed assets, revalidate for HTML
-- [ ] Brotli compression, HTTP/2 or HTTP/3 (Cloudflare default, verify)
+- [x] Brotli compression, HTTP/2 and HTTP/3 (verified)
 - [x] Fonts as WOFF2, subset, `font-display: swap` (via `next/font`)
 - [x] Page eligible for the back/forward cache (checked on a local production build; verify on the live domain once GTM loads there)
 - [x] `scrollbar-gutter: stable`; no `100vh` in use, the menu panel uses `dvh`
@@ -101,13 +106,14 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] Short privacy statement at `/privacy`, linked from the footer
 - [x] Page content and navigation work without JavaScript (menu is a popover)
 - [x] Web app manifest
-- [ ] External uptime monitoring
-- [ ] Domain reachable over IPv6 (AAAA record)
+- [x] External uptime monitoring (`.github/workflows/uptime.yml`, every 15 minutes, issue with label `uptime`)
+- [x] Domain reachable over IPv6 (AAAA record)
 
 ### Open placeholders (in `content/site.ts`)
 
 - [ ] Photo of Julian plus alt text (`about.photo` and `about.photoAlt`; the block shows once `photo` is set)
 - [ ] Optional footer line with the measured page weight, once measured
+- [ ] Mark `copy_email` and `linkedin_click` as key events in GA4 once they show under Recent events
 
 ## v2: headless CMS
 

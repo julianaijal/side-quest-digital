@@ -32,6 +32,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 
 - `.github/workflows/ci.yml`: on every pull request and push to `main`, runs lint, typecheck, tests, the build, and `check:site` against the build. Then it runs Lighthouse against the build (`scripts/check-lighthouse.ts`) and keeps the HTML report as a workflow artifact. On pull requests it also checks every commit message and the branch name (`scripts/git-workflow.ts`).
 - `.github/workflows/site-watch.yml`: every Monday, checks the live site (`--live`) and fetches changes in the external website specification from the MCP endpoint in the repository variable `SPEC_MCP_URL`. Failures and changes open GitHub issues (labels `site-check` and `spec-change`). Do not name the specification in commits or code.
+- `.github/workflows/uptime.yml`: every 15 minutes, checks that the homepage returns 200; opens an issue (label `uptime`) when it is down twice in a row and closes it once the site is back.
 - When a rule changes, update `scripts/check-site.ts` with it, so CI keeps enforcing it.
 
 ## Git Workflow
