@@ -108,6 +108,16 @@ async function main() {
   const llms = await get('/llms.txt');
   check('/llms.txt', 'served', llms.response.status === 200 && llms.body.startsWith('# '));
 
+  const markdown = await get('/index.md');
+  check(
+    '/index.md',
+    'served as Markdown',
+    markdown.response.status === 200 &&
+      (markdown.response.headers.get('content-type') ?? '').startsWith('text/markdown') &&
+      markdown.body.startsWith('# '),
+  );
+  check('/index.md', 'canonical points to the page', /rel="canonical"/.test(markdown.response.headers.get('link') ?? ''));
+
   const manifest = await get('/manifest.webmanifest');
   check(
     '/manifest.webmanifest',
