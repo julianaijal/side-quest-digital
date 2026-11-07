@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <>
       <Nav site={site} />
-      <main>
+      <main id="main">
         <Hero site={site} />
         <Services site={site} />
         <About site={site} />
