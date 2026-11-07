@@ -159,3 +159,9 @@ $dur-copied:     2s; // copy button label reset
   outline: 2px solid $theme-accent;
   outline-offset: 3px;
 }
+
+// Forced colors mode drops background colours, so shapes that only show
+// through their background get an edge in a system colour there.
+@mixin forced-colors-edge($color: CanvasText) {
+  @media (forced-colors: active) { border: 1px solid $color; }
+}

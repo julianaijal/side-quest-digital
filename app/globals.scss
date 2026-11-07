@@ -6,11 +6,19 @@
   box-sizing: border-box;
 }
 
+// scroll-padding keeps anchor targets and focused elements clear of the
+// sticky nav, also when focus moves by keyboard.
 html {
   @include theme-custom-properties;
   color-scheme: dark;
+  scroll-padding-top: $nav-height;
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+
+  @include below($bp-md) {
+    scroll-padding-top: $nav-height-mobile;
+  }
 }
 
 body {
@@ -73,14 +81,6 @@ button {
   letter-spacing: inherit;
 }
 
-section[id] {
-  scroll-margin-top: $nav-height;
-
-  @include below($bp-md) {
-    scroll-margin-top: $nav-height-mobile;
-  }
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -95,6 +95,7 @@ section[id] {
 
 // Hidden until focused, then shown above the sticky nav.
 .skip-link {
+  @include forced-colors-edge;
   position: absolute;
   z-index: 100;
   top: space(3);
