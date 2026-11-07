@@ -7,7 +7,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - `npm run dev`: local dev server
 - `npm run lint`: ESLint
 - `npm run typecheck`: TypeScript without emit
-- `npm test`: content checks (copy rules)
+- `npm test`: content checks (copy rules) and git workflow checks
 - `npm run check:site -- <url> [--live]`: checks a running site (local build or live) for document basics, headings, skip link, headers, 404, robots, sitemap, manifest and security.txt
 - `npm run build`: production build
 - `npm run preview`: build for Cloudflare and run it locally in the Workers runtime
@@ -29,7 +29,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 
 ## Automation
 
-- `.github/workflows/ci.yml`: on every pull request and push to `main`, runs lint, typecheck, tests, the build, and `check:site` against the build.
+- `.github/workflows/ci.yml`: on every pull request and push to `main`, runs lint, typecheck, tests, the build, and `check:site` against the build. On pull requests it also checks every commit message and the branch name (`scripts/git-workflow.ts`).
 - `.github/workflows/site-watch.yml`: every Monday, checks the live site (`--live`) and fetches changes in the external website specification from the MCP endpoint in the repository variable `SPEC_MCP_URL`. Failures and changes open GitHub issues (labels `site-check` and `spec-change`). Do not name the specification in commits or code.
 - When a rule changes, update `scripts/check-site.ts` with it, so CI keeps enforcing it.
 
@@ -42,7 +42,17 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 
 ### Commit messages
 
-Follow [Conventional Commits 1.0](https://www.conventionalcommits.org), with the type list and rules of [commitlint config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). CI checks the format of every commit in a pull request and the branch name (`scripts/git-workflow.ts`, decision 25):
+Follow [Conventional Commits 1.0](https://www.conventionalcommits.org), with the type list and rules of [commitlint config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). CI checks the format of every commit in a pull request and the branch name (`scripts/git-workflow.ts`):
+
+- Header `<type>(<scope>): <subject>`, scope optional, `!` before the colon for a breaking change.
+- Types: `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`.
+- Scope in lower case. Subject starts lower case, in the imperative, without a full stop.
+- Header and every body and footer line at most 100 characters; wrap the body. A blank line between header and body.
+- Merge, revert, fixup and squash commits that git writes itself are skipped.
+
+### Branch names
+
+`<type>/<description>`, with a type from the list above and the description in lower case kebab case, for example `feat/homepage` or `ci/git-workflow-checks`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

@@ -14,11 +14,24 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
       - run: npm ci
+
+      - name: Check commit messages and branch name
+        if: github.event_name == 'pull_request'
+        run: |
+          node scripts/git-workflow.ts "$BASE" "$HEAD" "$BRANCH" | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+          BRANCH: ${{ github.head_ref }}
+
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
