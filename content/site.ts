@@ -12,6 +12,8 @@ export const site = {
   emailUser: 'julian',
   emailDomain: 'side-quest-digital.com',
   linkedin: 'https://www.linkedin.com/in/jaijal',
+  // Julian's personal site, linked from the Person in the JSON-LD.
+  personalSite: 'https://julianaijal.com/',
   kvk: '42206724',
   city: 'Amsterdam',
   country: 'Netherlands',
