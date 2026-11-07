@@ -1,4 +1,5 @@
 import type { Site } from '@/content/site';
+import Link from 'next/link';
 import { DiamondSolid } from '@/components/Icons/Icons';
 import { CookieConsent } from '@/components/CookieConsent/CookieConsent';
 import styles from './Footer.module.scss';
@@ -17,6 +18,9 @@ export function Footer({ site }: { site: Site }) {
           <span>
             {site.footer.kvkLabel} {site.kvk}, © {year}
           </span>
+          <Link href="/privacy" className={styles.link}>
+            {site.privacy.linkLabel}
+          </Link>
           <CookieConsent {...site.cookies} />
         </span>
       </div>
