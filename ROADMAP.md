@@ -20,7 +20,6 @@
 - [ ] Skip link as first focusable element
 - [ ] Styled 404 page in the Night Reef theme (the status is already a real 404)
 - [ ] Security headers (see checklist below)
-- [ ] Short privacy line in the footer: no cookies, no tracking
 - [ ] Before a photo goes in: add the Cloudflare Images binding for `next/image`, or serve a pre optimized image
 - [ ] Web app manifest with a maskable icon
 
@@ -99,7 +98,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] `scrollbar-gutter: stable`, `dvh` instead of `100vh` where relevant
 
 **Privacy and resilience**
-- [ ] Short privacy statement (no cookies, no tracking, what happens with mail)
+- [ ] Short privacy statement (Google Analytics only with consent, what happens with mail)
 - [ ] Page content and navigation work without JavaScript
 - [ ] Web app manifest
 - [ ] External uptime monitoring
