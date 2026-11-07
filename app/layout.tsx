@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { site } from '@/content/site';
 import { jsonLd, siteUrl } from '@/lib/seo';
+import { analyticsEnabled, consentAndGtmScript } from '@/lib/analytics';
 import './globals.scss';
 
 const inter = Inter({
@@ -42,7 +43,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        {analyticsEnabled && <script dangerouslySetInnerHTML={{ __html: consentAndGtmScript() }} />}
+      </head>
       <body>
+        <a href="#main" className="skip-link">
+          {site.skipLabel}
+        </a>
         {children}
         <script
           type="application/ld+json"

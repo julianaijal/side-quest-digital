@@ -1,0 +1,47 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+// Narrow reading column inside the usual container.
+.main {
+  @include container;
+  max-width: calc(42rem + 2 * #{$gutter});
+  padding-block: space(8) $section-y;
+
+  @include below($bp-sm) {
+    max-width: none;
+    padding-block: space(6) $section-y-mobile;
+  }
+}
+
+.title {
+  @include h2;
+}
+
+.updated {
+  margin-top: space(2);
+  font-size: $fs-meta;
+  color: $theme-text-3;
+}
+
+.section {
+  margin-top: space(7);
+}
+
+.heading {
+  @include h3;
+  margin-bottom: space(3);
+}
+
+.text {
+  line-height: $lh-long;
+  color: $theme-text-2;
+
+  & + & {
+    margin-top: space(3);
+  }
+}
+
+.back {
+  margin-top: space(7);
+  font-size: $fs-small;
+}

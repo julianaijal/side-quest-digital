@@ -12,17 +12,13 @@
 - [ ] Gmail "Send mail as" for the domain address, so replies come from the business address
 - [ ] Google account on the domain address, for client Google Docs
 - [ ] GitHub: "Keep my email addresses private" and a `noreply` commit email
+- [ ] Connect the website specification MCP as a claude.ai custom connector (Settings, Connectors), so every Claude session can look up the rules. The URL is the repository variable `SPEC_MCP_URL`
 - [ ] Optional: ask GitHub Support to purge cached commits from before the email scrub (PR #1)
 
 **Code**
 - [ ] Merge PR #1 into `main`
-- [ ] CI workflow: lint, typecheck, test and commit message checks on pull requests (`AGENTS.md` mentions `scripts/git-workflow.ts`, which does not exist yet)
-- [ ] Skip link as first focusable element
-- [ ] Styled 404 page in the Night Reef theme (the status is already a real 404)
-- [ ] Security headers (see checklist below)
-- [ ] Short privacy line in the footer: no cookies, no tracking
+- [ ] Commit message and branch name checks in CI (`AGENTS.md` mentions `scripts/git-workflow.ts`, which does not exist yet)
 - [ ] Before a photo goes in: add the Cloudflare Images binding for `next/image`, or serve a pre optimized image
-- [ ] Web app manifest with a maskable icon
 
 **Verify on the live domain** (from a network without Zscaler)
 - [ ] Lighthouse mobile (local production build: performance 98, accessibility 100, best practices 100, SEO 100; LCP 2.3 s simulated)
@@ -31,6 +27,8 @@
 
 ### Done
 
+- [x] CI: lint, typecheck, tests, build and `check:site` on every pull request; weekly live site check and specification watch that open issues
+- [x] Security, cache and discovery headers; skip link; styled 404; web app manifest with maskable icon; `security.txt`; Global Privacy Control
 - [x] Homepage in the Night Reef design: hero with side path, five services, about, contact, footer (desktop, 390 and 320 checked)
 - [x] English copy, real details (in SEO since 2011, LinkedIn, KVK), email shown as `julian [@] side-quest-digital.com` and scrubbed from git history
 - [x] SEO basics: metadata, JSON-LD, sitemap, robots, `llms.txt`, OG image, favicon
@@ -42,7 +40,7 @@
 
 ### Website specification checks
 
-Checklist from [specification.website](https://specification.website/checklist/). Only the items that apply to a static one page site without accounts, forms or feeds. Some may already be covered; tick them off after verifying on the deployed site.
+Checklist from the website specification the site follows (see `SPEC_MCP_URL` in `AGENTS.md`). Only the items that apply to a static one page site without accounts, forms or feeds. Some may already be covered; tick them off after verifying on the deployed site.
 
 **Foundations**
 - [x] Doctype, `lang="en"`, UTF-8 charset, viewport that allows zooming, one `<title>`
@@ -58,14 +56,14 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [x] Explicit meta robots policy
 - [x] Primary content and metadata server rendered
 - [x] Real 404 status for unknown URLs (no soft 404)
-- [ ] Custom styled 404 page
+- [x] Custom styled 404 page
 - [x] Heading hierarchy without skipped levels
 - [x] JSON-LD (`ProfessionalService`, `Person`)
 - [ ] Redirects: www and non www to one host with a permanent redirect, no chains
 
 **Accessibility**
-- [ ] Skip link as first focusable element
-- [x] Contrast (lowest text pair 6.5:1) and visible focus
+- [x] Contrast (all text 7:1 or more, nav links no longer use opacity) and visible focus
+- [x] Skip link as first focusable element
 - [ ] Focus not hidden behind the sticky nav (verify)
 - [ ] Forced colors mode looks correct
 - [x] Touch targets at least 44px
@@ -74,34 +72,34 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [x] No empty links or buttons, descriptive link text, landmarks
 
 **Security headers** (in `next.config.ts` `headers()`, or Cloudflare rules)
-- [ ] HTTPS only with HSTS (`max-age`, `includeSubDomains`, no preload)
-- [ ] Content Security Policy, including `frame-ancestors`
-- [ ] `X-Content-Type-Options: nosniff`
-- [ ] `Referrer-Policy: strict-origin-when-cross-origin`
-- [ ] `Permissions-Policy`
-- [ ] Cross origin isolation headers (COOP, CORP) where they do not break anything
-- [ ] `/.well-known/security.txt`
+- [x] HTTPS only with HSTS (`max-age`, `includeSubDomains`, no preload)
+- [x] Content Security Policy, including `frame-ancestors`
+- [x] `X-Content-Type-Options: nosniff`
+- [x] `Referrer-Policy: strict-origin-when-cross-origin`
+- [x] `Permissions-Policy`
+- [x] COOP `same-origin` (CORP and COEP left out: they would block Google Analytics)
+- [x] `/.well-known/security.txt`
 - [ ] DNS CAA records for the domain
 
 **Agent readiness**
 - [x] `/llms.txt`
 - [ ] Markdown version of the page (`/index.md` or content negotiation)
-- [ ] `robots.txt` rules for named AI crawlers, optionally Content Signals
-- [ ] HTTP `Link` headers for discovery (sitemap, llms.txt)
+- [x] `robots.txt` rules for named AI crawlers, optionally Content Signals
+- [x] HTTP `Link` headers for discovery (sitemap, llms.txt)
 
 **Performance**
 - [ ] Core Web Vitals within the good thresholds
 - [ ] Images in AVIF or WebP with explicit dimensions, no lazy loading on the LCP element
-- [ ] Cache headers: immutable for hashed assets, revalidate for HTML
+- [x] Cache headers: immutable for hashed assets, revalidate for HTML
 - [ ] Brotli compression, HTTP/2 or HTTP/3 (Cloudflare default, verify)
 - [x] Fonts as WOFF2, subset, `font-display: swap` (via `next/font`)
 - [ ] Page eligible for the back/forward cache
 - [ ] `scrollbar-gutter: stable`, `dvh` instead of `100vh` where relevant
 
 **Privacy and resilience**
-- [ ] Short privacy statement (no cookies, no tracking, what happens with mail)
+- [x] Short privacy statement at `/privacy`, linked from the footer
 - [ ] Page content and navigation work without JavaScript
-- [ ] Web app manifest
+- [x] Web app manifest
 - [ ] External uptime monitoring
 - [ ] Domain reachable over IPv6 (AAAA record)
 

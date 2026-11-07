@@ -73,17 +73,15 @@
   min-height: $touch-min;
   font-size: $fs-small;
   font-weight: $fw-medium;
-  color: $theme-text;
+  color: $theme-text-2;
   text-decoration: none;
-  opacity: 0.78;
 
   @include motion-ok {
-    transition: opacity 0.15s ease;
+    transition: color 0.15s ease;
   }
 
   &:hover {
     color: $theme-text;
-    opacity: 1;
   }
 }
 
