@@ -41,6 +41,7 @@
 
 // Availability style badge: a quiet pill with the sand marker.
 .badge {
+  @include forced-colors-edge;
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
