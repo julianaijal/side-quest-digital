@@ -28,7 +28,7 @@ jobs:
         id: check
         run: |
           check() {
-            curl -s -o page.html -w '%{http_code} %{time_total}' --max-time 20 "$SITE_URL" > result.txt || echo "000 0" > result.txt
+            curl -s -o page.html -w '%{http_code} %{time_total}\n' --max-time 20 "$SITE_URL" > result.txt || echo "000 0" > result.txt
             read -r code seconds < result.txt
             [ "$code" = "200" ] && grep -q 'Side Quest Digital' page.html
           }
