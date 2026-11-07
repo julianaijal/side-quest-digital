@@ -1,0 +1,86 @@
+name: Site watch
+
+# Every Monday: check the live site, and look for changes in the external
+# website specification the site follows. Anything to act on becomes an issue.
+# The specification's MCP endpoint is the repository variable SPEC_MCP_URL.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  SITE_URL: https://side-quest-digital.com
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  live-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Check the live site
+        id: check
+        run: |
+          if node scripts/check-site.ts "$SITE_URL" --live > report.md; then
+            echo "failed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "failed=true" >> "$GITHUB_OUTPUT"
+          fi
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update the site check issue
+        if: steps.check.outputs.failed == 'true'
+        run: |
+          gh label create site-check --color B60205 --description "Live site check failed" --force
+          issue=$(gh issue list --label site-check --state open --json number --jq '.[0].number')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --body-file report.md
+          else
+            gh issue create --title "Live site check failed" --label site-check --body-file report.md
+          fi
+
+  spec-changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SPEC_MCP_URL: ${{ vars.SPEC_MCP_URL }}
+    steps:
+      - name: Fetch specification changes of the past week
+        id: changes
+        run: |
+          if [ -z "$SPEC_MCP_URL" ]; then
+            echo "SPEC_MCP_URL is not set" >&2
+            exit 1
+          fi
+          since=$(date -u -d '7 days ago' +%F)
+          curl -sf -X POST "$SPEC_MCP_URL" \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/json, text/event-stream' \
+            -d "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"get_changes\",\"arguments\":{\"since\":\"$since\"}}}" \
+            > changes.json
+          count=$(jq '.result.structuredContent.count // 0' changes.json)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "since=$since" >> "$GITHUB_OUTPUT"
+          {
+            echo "The website specification changed since $since. Check each item against the site and the rules in \`AGENTS.md\`, then close this issue."
+            echo
+            jq -r '.result.content[0].text' changes.json
+          } > body.md
+          cat body.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open an issue for the changes
+        if: steps.changes.outputs.count != '0'
+        run: |
+          gh label create spec-change --color 1D76DB --description "Website specification changed" --force --repo "$GITHUB_REPOSITORY"
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "Specification changes since ${{ steps.changes.outputs.since }}" \
+            --label spec-change --body-file body.md

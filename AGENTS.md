@@ -8,6 +8,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - `npm run lint`: ESLint
 - `npm run typecheck`: TypeScript without emit
 - `npm test`: content checks (copy rules)
+- `npm run check:site -- <url> [--live]`: checks a running site (local build or live) for document basics, headings, skip link, headers, 404, robots, sitemap, manifest and security.txt
 - `npm run build`: production build
 - `npm run preview`: build for Cloudflare and run it locally in the Workers runtime
 - `npm run deploy`: build for Cloudflare and deploy the Worker (needs `wrangler login`)
@@ -19,12 +20,18 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - No dashes or em dashes in visible copy, and avoid hyphenated words ("mail", not "e-mail").
 - No invented stats, scores or testimonials. Unknown facts stay as `[bracketed]` placeholders until Julian fills them in. Search for `[` to find them.
 - Dark theme only ("Night Reef" palette): sea green neutrals, mint as brand colour, sand only for actions and the quest marker. Keep text at 7:1 or more against its background; never lower contrast with opacity.
-- Server components by default. Only `MobileMenu`, `CopyButton` and `LocalTime` are client components.
+- Server components by default. Only `MobileMenu`, `CopyButton`, `LocalTime` and `CookieConsent` are client components.
 - Motion is CSS only, wrapped in `prefers-reduced-motion: no-preference`. No UI or animation libraries.
-- No tracking cookies.
+- Analytics: Google Analytics 4 through Google Tag Manager (`lib/analytics.ts`), production builds only. Consent Mode v2 starts as "denied"; cookies are set only after the visitor clicks "Allow" in the cookie bar (`CookieConsent`). No other tracking.
 - The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
 - `app/opengraph-image.png` and `app/apple-icon.png` are static files (Workers cannot read local fonts at runtime). Recreate the OG image when the hero title changes.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
+
+## Automation
+
+- `.github/workflows/ci.yml`: on every pull request and push to `main`, runs lint, typecheck, tests, the build, and `check:site` against the build.
+- `.github/workflows/site-watch.yml`: every Monday, checks the live site (`--live`) and fetches changes in the external website specification from the MCP endpoint in the repository variable `SPEC_MCP_URL`. Failures and changes open GitHub issues (labels `site-check` and `spec-change`). Do not name the specification in commits or code.
+- When a rule changes, update `scripts/check-site.ts` with it, so CI keeps enforcing it.
 
 ## Git Workflow
 

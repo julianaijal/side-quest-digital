@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+      - name: Check the production build
+        run: |
+          npx next start -p 3000 &
+          for i in $(seq 1 30); do curl -sf -o /dev/null http://localhost:3000/ && break; sleep 1; done
+          node scripts/check-site.ts http://localhost:3000 | tee report.md
+          exit ${PIPESTATUS[0]}
+
+      - name: Add the report to the job summary
+        if: always()
+        run: test -f report.md && cat report.md >> "$GITHUB_STEP_SUMMARY" || true
