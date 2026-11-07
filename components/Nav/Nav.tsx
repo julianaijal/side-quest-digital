@@ -18,7 +18,7 @@ export function Nav({ site }: { site: Site }) {
               {link.label}
             </a>
           ))}
-          <ButtonLink href={site.navCta.href} size="small">
+          <ButtonLink href={site.navCta.href} size="small" track="cta_click" trackLocation="nav">
             {site.navCta.label}
           </ButtonLink>
         </nav>
