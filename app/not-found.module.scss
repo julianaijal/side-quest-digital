@@ -1,0 +1,26 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.main {
+  @include container;
+  min-height: 60vh;
+  min-height: 60dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: space(5);
+  padding-block: space(8);
+}
+
+.title {
+  @include h2;
+  max-width: 20ch;
+}
+
+.text {
+  max-width: 34rem;
+  font-size: $fs-lead;
+  line-height: $lh-lead;
+  color: $theme-text-2;
+}

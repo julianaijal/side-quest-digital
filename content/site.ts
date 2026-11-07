@@ -170,6 +170,13 @@ export const site = {
     kvkLabel: 'KVK',
   },
 
+  notFound: {
+    metaTitle: 'Page not found · Side Quest Digital',
+    title: 'This page does not exist.',
+    text: 'The link may be old, or the address has a typo. Everything I offer is on the homepage.',
+    homeLabel: 'Go to the homepage',
+  },
+
   privacy: {
     linkLabel: 'Privacy',
     metaTitle: 'Privacy · Side Quest Digital',
