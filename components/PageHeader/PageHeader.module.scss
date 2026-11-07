@@ -1,0 +1,32 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.header {
+  @include container;
+  height: $nav-height;
+  display: flex;
+  align-items: center;
+
+  @include below($bp-md) {
+    height: $nav-height-mobile;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: space(3);
+  min-height: $touch-min;
+  font-weight: $fw-semibold;
+  color: $theme-text;
+  text-decoration: none;
+
+  &:hover {
+    color: $theme-text;
+  }
+}
+
+.mark {
+  width: 22px;
+  height: 22px;
+}

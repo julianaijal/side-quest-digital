@@ -31,6 +31,7 @@ export const site = {
   menuOpenLabel: 'Open menu',
   menuCloseLabel: 'Close menu',
   homeLabel: 'Side Quest Digital, back to top',
+  skipLabel: 'Skip to content',
 
   hero: {
     eyebrow: 'Freelance SEO and web development · Amsterdam',
@@ -167,6 +168,67 @@ export const site = {
 
   footer: {
     kvkLabel: 'KVK',
+  },
+
+  notFound: {
+    metaTitle: 'Page not found · Side Quest Digital',
+    title: 'This page does not exist.',
+    text: 'The link may be old, or the address has a typo. Everything I offer is on the homepage.',
+    homeLabel: 'Go to the homepage',
+  },
+
+  privacy: {
+    linkLabel: 'Privacy',
+    metaTitle: 'Privacy · Side Quest Digital',
+    metaDescription:
+      'How Side Quest Digital handles visitor data: Google Analytics only with your consent, and email used only to reply.',
+    backLabel: 'Back to the homepage',
+    title: 'Privacy',
+    updated: 'Last updated November 2026',
+    sections: [
+      {
+        title: 'Who is responsible',
+        paragraphs: [
+          'This site belongs to Side Quest Digital, the freelance practice of Julian Aijal in Amsterdam (KVK 42206724). For questions about your data, use the email address under Contact on the homepage.',
+        ],
+      },
+      {
+        title: 'Analytics',
+        paragraphs: [
+          'I use Google Analytics, loaded through Google Tag Manager, to see how people find and use this site. It only sets cookies after you click Allow in the cookie bar.',
+          'Without your consent, Google receives a basic signal without cookies, so visits can still be counted in total.',
+          'With your consent, Google Analytics stores a random visitor ID in a cookie (_ga) for up to two years. It collects the pages you view, how you arrived, your device type and an approximate location. Google does not store your IP address. Data is kept for two months.',
+          'Google processes this data on my behalf under its data processing terms. Sharing data with Google for its own purposes is turned off.',
+        ],
+      },
+      {
+        title: 'Hosting',
+        paragraphs: [
+          'The site runs on Cloudflare, which processes technical data such as IP addresses to deliver the site and protect it against abuse.',
+        ],
+      },
+      {
+        title: 'Email',
+        paragraphs: [
+          'If you send me an email, I use your address and message only to reply and to follow up on your question. Mail is forwarded by Cloudflare and stored in Gmail. I do not add you to a mailing list.',
+        ],
+      },
+      {
+        title: 'Your choices and rights',
+        paragraphs: [
+          'You can change your choice at any time with Cookie settings at the bottom of every page. Choosing Decline removes the analytics cookies. If your browser sends a Global Privacy Control signal, analytics stays off and the cookie bar does not appear.',
+          'You have the right to access, correct or delete your data. Send me an email and I will take care of it. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).',
+        ],
+      },
+    ],
+  },
+
+  cookies: {
+    label: 'Cookie choice',
+    text: 'I use Google Analytics to see how people find this site. It only sets cookies if you allow it.',
+    acceptLabel: 'Allow',
+    declineLabel: 'Decline',
+    settingsLabel: 'Cookie settings',
   },
 
   // Plain text summary served at /llms.txt.
