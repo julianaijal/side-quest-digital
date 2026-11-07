@@ -60,7 +60,8 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Link',
-            value: '</llms.txt>; rel="alternate"; type="text/plain", </sitemap.xml>; rel="sitemap"',
+            value:
+              '</index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="alternate"; type="text/plain", </sitemap.xml>; rel="sitemap"',
           },
         ],
       },
