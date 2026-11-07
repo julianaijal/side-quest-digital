@@ -39,7 +39,7 @@
 
 ### Website specification checks
 
-Checklist from [specification.website](https://specification.website/checklist/). Only the items that apply to a static one page site without accounts, forms or feeds. Some may already be covered; tick them off after verifying on the deployed site.
+Checklist from the website specification the site follows (see `SPEC_MCP_URL` in `AGENTS.md`). Only the items that apply to a static one page site without accounts, forms or feeds. Some may already be covered; tick them off after verifying on the deployed site.
 
 **Foundations**
 - [x] Doctype, `lang="en"`, UTF-8 charset, viewport that allows zooming, one `<title>`
