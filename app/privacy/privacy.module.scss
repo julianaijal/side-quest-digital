@@ -1,0 +1,77 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.header {
+  @include container;
+  height: $nav-height;
+  display: flex;
+  align-items: center;
+
+  @include below($bp-md) {
+    height: $nav-height-mobile;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: space(3);
+  min-height: $touch-min;
+  font-weight: $fw-semibold;
+  color: $theme-text;
+  text-decoration: none;
+
+  &:hover {
+    color: $theme-text;
+  }
+}
+
+.mark {
+  width: 22px;
+  height: 22px;
+}
+
+// Narrow reading column inside the usual container.
+.main {
+  @include container;
+  max-width: calc(42rem + 2 * #{$gutter});
+  padding-block: space(8) $section-y;
+
+  @include below($bp-sm) {
+    max-width: none;
+    padding-block: space(6) $section-y-mobile;
+  }
+}
+
+.title {
+  @include h2;
+}
+
+.updated {
+  margin-top: space(2);
+  font-size: $fs-meta;
+  color: $theme-text-3;
+}
+
+.section {
+  margin-top: space(7);
+}
+
+.heading {
+  @include h3;
+  margin-bottom: space(3);
+}
+
+.text {
+  line-height: $lh-long;
+  color: $theme-text-2;
+
+  & + & {
+    margin-top: space(3);
+  }
+}
+
+.back {
+  margin-top: space(7);
+  font-size: $fs-small;
+}

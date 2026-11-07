@@ -98,7 +98,7 @@ Checklist from [specification.website](https://specification.website/checklist/)
 - [ ] `scrollbar-gutter: stable`, `dvh` instead of `100vh` where relevant
 
 **Privacy and resilience**
-- [ ] Short privacy statement (Google Analytics only with consent, what happens with mail)
+- [x] Short privacy statement at `/privacy`, linked from the footer
 - [ ] Page content and navigation work without JavaScript
 - [ ] Web app manifest
 - [ ] External uptime monitoring
