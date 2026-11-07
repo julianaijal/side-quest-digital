@@ -122,10 +122,12 @@
   }
 }
 
+// Sized to its content, so a taller neighbour in the row does not stretch
+// the window into an empty dark block.
 .wide > .snippet {
   flex: 1 1 300px;
   margin: 0;
-  align-self: stretch;
+  align-self: flex-start;
 
   @include below($bp-sm) {
     flex: none;
