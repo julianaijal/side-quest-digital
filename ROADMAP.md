@@ -25,6 +25,7 @@
 
 ### Done
 
+- [x] Lighthouse on every CI build (`check:lighthouse`): performance at least 90, the other categories 100
 - [x] PR #1 and #2 merged into `main`
 - [x] Commit message and branch name checks on every pull request (`scripts/git-workflow.ts`)
 - [x] CI: lint, typecheck, tests, build and `check:site` on every pull request; weekly live site check and specification watch that open issues
