@@ -46,10 +46,10 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] Doctype, `lang="en"`, UTF-8 charset, viewport that allows zooming, one `<title>`
 - [x] Meta description and canonical URL
 - [x] Favicons: SVG, `/favicon.ico`, `apple-touch-icon`
-- [ ] Maskable icon (with the web app manifest)
+- [x] Maskable icon (with the web app manifest)
 - [x] `theme-color` and `color-scheme` meta (dark only)
 - [x] Open Graph: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
-- [ ] Consider the Popover API for the mobile menu (current version uses React state)
+- [x] Popover API for the mobile menu
 
 **SEO**
 - [x] `robots.txt` and XML sitemap
@@ -64,8 +64,8 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 **Accessibility**
 - [x] Contrast (all text 7:1 or more, nav links no longer use opacity) and visible focus
 - [x] Skip link as first focusable element
-- [ ] Focus not hidden behind the sticky nav (verify)
-- [ ] Forced colors mode looks correct
+- [x] Focus not hidden behind the sticky nav (`scroll-padding-top` on the root)
+- [x] Forced colors mode: buttons, cards and panels keep an edge (`forced-colors-edge` mixin)
 - [x] Touch targets at least 44px
 - [x] Reduced motion respected (all motion behind `prefers-reduced-motion`)
 - [x] Status messages announced (copy button uses `aria-live`)
@@ -83,7 +83,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 
 **Agent readiness**
 - [x] `/llms.txt`
-- [ ] Markdown version of the page (`/index.md` or content negotiation)
+- [x] Markdown version of the page at `/index.md`, linked from the homepage `Link` header
 - [x] `robots.txt` rules for named AI crawlers, optionally Content Signals
 - [x] HTTP `Link` headers for discovery (sitemap, llms.txt)
 
@@ -93,12 +93,12 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] Cache headers: immutable for hashed assets, revalidate for HTML
 - [ ] Brotli compression, HTTP/2 or HTTP/3 (Cloudflare default, verify)
 - [x] Fonts as WOFF2, subset, `font-display: swap` (via `next/font`)
-- [ ] Page eligible for the back/forward cache
-- [ ] `scrollbar-gutter: stable`, `dvh` instead of `100vh` where relevant
+- [x] Page eligible for the back/forward cache (checked on a local production build; verify on the live domain once GTM loads there)
+- [x] `scrollbar-gutter: stable`; no `100vh` in use, the menu panel uses `dvh`
 
 **Privacy and resilience**
 - [x] Short privacy statement at `/privacy`, linked from the footer
-- [ ] Page content and navigation work without JavaScript
+- [x] Page content and navigation work without JavaScript (menu is a popover)
 - [x] Web app manifest
 - [ ] External uptime monitoring
 - [ ] Domain reachable over IPv6 (AAAA record)

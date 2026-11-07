@@ -11,6 +11,7 @@
 }
 
 .block {
+  @include forced-colors-edge;
   background: $theme-band;
   border-radius: $radius-xl;
   padding: 72px space(8);
@@ -102,6 +103,7 @@
 }
 
 .copy {
+  @include forced-colors-edge(ButtonText);
   height: $touch-min;
   padding: 0 space(4);
   border: 0;
