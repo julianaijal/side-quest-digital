@@ -18,6 +18,9 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
   }
+  interface Navigator {
+    globalPrivacyControl?: boolean;
+  }
 }
 
 function readChoice(): Choice | null {
@@ -50,8 +53,11 @@ export function CookieConsent({ label, text, acceptLabel, declineLabel, settings
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is only readable after mount
-    if (readChoice() === null) setOpen(true);
+    // Global Privacy Control counts as a standing "Decline": no bar, no cookies.
+    if (readChoice() === null && !navigator.globalPrivacyControl) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is only readable after mount
+      setOpen(true);
+    }
   }, []);
 
   function choose(choice: Choice) {
