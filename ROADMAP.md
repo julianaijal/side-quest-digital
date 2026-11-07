@@ -24,6 +24,8 @@
 ### Done
 
 - [x] 301 from `www.side-quest-digital.com` (HTTP and HTTPS) to the apex in one hop, keeping path and query (Cloudflare redirect rule on `http.host`), and Always Use HTTPS on
+- [x] Search Console domain property verified by DNS, sitemap submitted
+- [x] Minimum TLS 1.2; `.nl` and `.tech` send no mail: SPF `-all`, DMARC `p=reject`
 - [x] 301 from `.nl` and `.tech` (apex and `www`, HTTP and HTTPS) to `https://side-quest-digital.com` in one hop, keeping path and query (a redirect rule for all requests in each zone; the proxied A records still point at the TransIP parking page, which the rule now intercepts)
 - [x] Lighthouse on every CI build (`check:lighthouse`): performance at least 90, the other categories 100
 - [x] PR #1 and #2 merged into `main`
@@ -80,7 +82,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] `Permissions-Policy`
 - [x] COOP `same-origin` (CORP and COEP left out: they would block Google Analytics)
 - [x] `/.well-known/security.txt`
-- [ ] DNS CAA records for the domain
+- [x] DNS CAA records for the domain (Cloudflare adds its own CAs)
 
 **Agent readiness**
 - [x] `/llms.txt`
@@ -92,7 +94,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [ ] Core Web Vitals within the good thresholds
 - [ ] Images in AVIF or WebP with explicit dimensions, no lazy loading on the LCP element
 - [x] Cache headers: immutable for hashed assets, revalidate for HTML
-- [ ] Brotli compression, HTTP/2 or HTTP/3 (Cloudflare default, verify)
+- [x] Brotli compression, HTTP/2 and HTTP/3 (verified)
 - [x] Fonts as WOFF2, subset, `font-display: swap` (via `next/font`)
 - [x] Page eligible for the back/forward cache (checked on a local production build; verify on the live domain once GTM loads there)
 - [x] `scrollbar-gutter: stable`; no `100vh` in use, the menu panel uses `dvh`
@@ -102,7 +104,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] Page content and navigation work without JavaScript (menu is a popover)
 - [x] Web app manifest
 - [ ] External uptime monitoring
-- [ ] Domain reachable over IPv6 (AAAA record)
+- [x] Domain reachable over IPv6 (AAAA record)
 
 ### Open placeholders (in `content/site.ts`)
 
