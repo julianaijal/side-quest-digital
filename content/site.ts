@@ -149,11 +149,9 @@ export const site = {
       { label: 'In SEO since', value: '2011', mobile: true },
       { label: 'Works in', value: 'English and Dutch', mobile: false },
     ],
-    // Set photo to e.g. '/julian.jpg' (in public/) once it exists.
+    // The photo block only shows once this is set, e.g. '/julian.jpg' (in public/).
     photo: null as string | null,
     photoAlt: '[Photo of Julian Aijal]',
-    photoPlaceholderLabel: 'Space for a photo of Julian',
-    photoPlaceholderText: '[Photo Julian]',
   },
 
   contact: {
