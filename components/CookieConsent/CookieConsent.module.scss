@@ -66,6 +66,7 @@
 }
 
 .decline {
+  @include forced-colors-edge(ButtonText);
   background: $theme-surface;
   color: $theme-text;
 
@@ -75,6 +76,7 @@
 }
 
 .accept {
+  @include forced-colors-edge(ButtonText);
   background: $theme-action;
   color: $theme-on-action;
 
