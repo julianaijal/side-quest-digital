@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getSite } from '@/content/getSite';
 import { site as content } from '@/content/site';
-import { LogoMark } from '@/components/Icons/Icons';
+import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { Footer } from '@/components/Footer/Footer';
 import styles from './privacy.module.scss';
 
@@ -18,13 +18,8 @@ export default async function Privacy() {
   const { privacy } = site;
   return (
     <>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand} aria-label={privacy.backLabel}>
-          <LogoMark className={styles.mark} />
-          <span>{site.name}</span>
-        </Link>
-      </header>
-      <main className={styles.main}>
+      <PageHeader site={site} label={privacy.backLabel} />
+      <main id="main" className={styles.main}>
         <h1 className={styles.title}>{privacy.title}</h1>
         <p className={styles.updated}>{privacy.updated}</p>
         {privacy.sections.map((section) => (
