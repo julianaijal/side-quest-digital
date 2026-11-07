@@ -25,37 +25,99 @@ export function absoluteUrl(path = '/'): string {
   return new URL(path, siteUrl()).toString();
 }
 
-/** schema.org graph for the business and Julian. Placeholders are left out. */
+// Wikidata entities for the services that have one, so search engines and
+// AI systems can match the topics without guessing.
+const wikidata: Partial<Record<(typeof site.services.items)[number]['id'], string>> = {
+  'technical-seo': 'https://www.wikidata.org/wiki/Q180711',
+  analytics: 'https://www.wikidata.org/wiki/Q10719477',
+  webdev: 'https://www.wikidata.org/wiki/Q386275',
+};
+
+// Service titles that are too short to stand alone as a topic.
+const topicNames: Partial<Record<(typeof site.services.items)[number]['id'], string>> = {
+  performance: 'Web performance',
+};
+
+/**
+ * schema.org graph for the site, the business and Julian. Placeholders are
+ * left out. Image URLs point at the static files Next serves, with their
+ * real dimensions.
+ */
 export function jsonLd() {
   const url = absoluteUrl('/');
+  const websiteId = `${url}#website`;
   const businessId = `${url}#business`;
   const personId = `${url}#julian`;
-  const sameAs = isPlaceholder(site.linkedin) ? undefined : [site.linkedin];
+  const linkedin = isPlaceholder(site.linkedin) ? [] : [site.linkedin];
+  const address = { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'NL' };
+  const languages = ['en', 'nl'];
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        url,
+        name: site.name,
+        description: site.meta.description,
+        inLanguage: 'en',
+        publisher: { '@id': businessId },
+      },
       {
         '@type': 'ProfessionalService',
         '@id': businessId,
         name: site.name,
         url,
         description: site.meta.description,
-        image: absoluteUrl('/opengraph-image'),
+        logo: {
+          '@type': 'ImageObject',
+          url: absoluteUrl('/icon-512.png'),
+          width: 512,
+          height: 512,
+        },
+        image: {
+          '@type': 'ImageObject',
+          url: absoluteUrl('/opengraph-image.png'),
+          width: 1200,
+          height: 630,
+        },
+        identifier: { '@type': 'PropertyValue', propertyID: 'KVK', value: site.kvk },
         areaServed: { '@type': 'Country', name: site.country },
-        address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'NL' },
-        knowsAbout: site.services.items.map((service) => service.title),
+        address,
+        knowsLanguage: languages,
+        knowsAbout: site.services.items.map((service) => ({
+          '@type': 'Thing',
+          name: topicNames[service.id] ?? service.title,
+          sameAs: wikidata[service.id],
+        })),
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: site.llms.servicesTitle,
+          itemListElement: site.services.items.map((service) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              '@id': `${url}#${service.id}`,
+              name: service.title,
+              description: service.text,
+              provider: { '@id': businessId },
+            },
+          })),
+        },
         founder: { '@id': personId },
-        sameAs,
+        sameAs: linkedin.length ? linkedin : undefined,
       },
       {
         '@type': 'Person',
         '@id': personId,
         name: site.person,
         jobTitle: site.jobTitle,
+        url: site.personalSite,
         worksFor: { '@id': businessId },
-        address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'NL' },
-        sameAs,
+        address,
+        knowsLanguage: languages,
+        sameAs: [...linkedin, site.personalSite],
       },
     ],
   };
