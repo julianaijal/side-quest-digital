@@ -1,0 +1,67 @@
+name: Uptime
+
+# Every 15 minutes: is the live site up? Opens an issue (label uptime) when it
+# is down twice in a row, and closes it with a comment once it is back. The
+# weekly site watch covers everything else; this only answers "is it up".
+# GitHub runs schedules on a best effort basis, so gaps of a few minutes more
+# are normal, and it pauses them after 60 days without repository activity.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+env:
+  SITE_URL: https://side-quest-digital.com/
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check the homepage
+        id: check
+        run: |
+          check() {
+            curl -s -o page.html -w '%{http_code} %{time_total}' --max-time 20 "$SITE_URL" > result.txt || echo "000 0" > result.txt
+            read -r code seconds < result.txt
+            [ "$code" = "200" ] && grep -q 'Side Quest Digital' page.html
+          }
+          if check || { sleep 60; check; }; then
+            echo "up=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "up=false" >> "$GITHUB_OUTPUT"
+          fi
+          read -r code seconds < result.txt
+          echo "status=$code" >> "$GITHUB_OUTPUT"
+          echo "seconds=$seconds" >> "$GITHUB_OUTPUT"
+          echo "HTTP $code in ${seconds}s" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update the uptime issue
+        if: steps.check.outputs.up == 'false'
+        env:
+          STATUS: ${{ steps.check.outputs.status }}
+        run: |
+          gh label create uptime --color B60205 --description "Live site is down" --force
+          body="$SITE_URL returned HTTP $STATUS twice in a row ($(date -u '+%Y-%m-%d %H:%M UTC'))."
+          issue=$(gh issue list --label uptime --state open --json number --jq '.[0].number')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --body "$body"
+          else
+            gh issue create --title "Site is down" --label uptime --body "$body"
+          fi
+
+      - name: Close the uptime issue when the site is back
+        if: steps.check.outputs.up == 'true'
+        env:
+          SECONDS_TAKEN: ${{ steps.check.outputs.seconds }}
+        run: |
+          issue=$(gh issue list --label uptime --state open --json number --jq '.[0].number')
+          if [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "Back up: HTTP 200 in ${SECONDS_TAKEN}s ($(date -u '+%Y-%m-%d %H:%M UTC'))."
+          fi
