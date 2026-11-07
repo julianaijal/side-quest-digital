@@ -1,0 +1,341 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.band {
+  background: $theme-band;
+}
+
+.section {
+  @include container;
+  padding-block: $section-y;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include below($bp-sm) {
+    padding-block: $section-y-mobile;
+    gap: 20px;
+  }
+}
+
+.heading {
+  @include h2;
+  max-width: 640px;
+}
+
+// Bento grid
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $card-gap;
+
+  @include below($bp-bento) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @include below($bp-sm) {
+    gap: space(3);
+  }
+}
+
+.card {
+  background: $theme-surface;
+  border-radius: $radius-lg;
+  padding: space(6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  @include below($bp-sm) {
+    padding: space(5);
+    gap: space(3);
+  }
+}
+
+.wide {
+  grid-column: span 2;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: space(6);
+
+  @include below($bp-bento) {
+    grid-column: auto;
+  }
+
+  @include below($bp-sm) {
+    flex-direction: column;
+    gap: space(3);
+  }
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.cardBody {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  @include below($bp-sm) {
+    flex: none;
+    gap: space(3);
+  }
+}
+
+.icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  color: $theme-accent;
+
+  @include below($bp-sm) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.title {
+  @include h3;
+}
+
+.text {
+  font-size: $fs-body;
+  line-height: $lh-body;
+  color: $theme-text-card;
+}
+
+// Snippets
+.snippet {
+  margin: auto 0 0;
+  min-width: 0;
+  background: $theme-inset;
+  border-radius: $radius-md;
+  font-size: 0.8125rem;
+
+  @include below($bp-sm) {
+    margin-top: space(1);
+  }
+}
+
+.wide > .snippet {
+  flex: 1 1 300px;
+  margin: 0;
+  align-self: stretch;
+
+  @include below($bp-sm) {
+    flex: none;
+    margin-top: space(1);
+  }
+}
+
+.stack {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include below($bp-sm) {
+    padding: space(3);
+  }
+}
+
+.strong {
+  font-weight: $fw-semibold;
+}
+
+.onlyMobile {
+  display: none;
+}
+
+@include below($bp-sm) {
+  .onlyDesktop {
+    display: none;
+  }
+
+  .onlyMobile {
+    display: inline;
+  }
+}
+
+// robots.txt
+.robots {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fileBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid $theme-border;
+  font-size: 0.75rem;
+  color: $theme-text-3;
+
+  @include below($bp-sm) {
+    padding: space(2) space(3);
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $theme-accent;
+}
+
+.code {
+  margin: 0;
+  padding: space(4) 14px;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  letter-spacing: 0;
+  color: $theme-text-2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  @include below($bp-sm) {
+    padding: space(3);
+    font-size: 0.75rem;
+    line-height: 1.75;
+  }
+}
+
+.codeLine {
+  display: block;
+}
+
+.directive {
+  color: $theme-accent;
+}
+
+// AI answer
+.bubble {
+  align-self: flex-end;
+  max-width: 90%;
+  background: $theme-surface;
+  border-radius: 12px 12px 4px 12px;
+  padding: space(2) space(3);
+  line-height: 1.5;
+}
+
+.answer {
+  line-height: 1.55;
+  color: $theme-text-card;
+
+  strong {
+    color: $theme-text;
+  }
+}
+
+.source {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: $fw-semibold;
+  color: $theme-accent;
+  background: $theme-chip;
+  border-radius: $radius-full;
+  padding: 4px 10px;
+}
+
+// Web vitals
+.caption {
+  font-size: 0.75rem;
+  font-weight: $fw-semibold;
+  color: $theme-text-3;
+}
+
+.vital {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 64px;
+  gap: 10px;
+  align-items: center;
+
+  @include below($bp-sm) {
+    grid-template-columns: 40px minmax(0, 1fr) 64px;
+  }
+}
+
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: $theme-accent;
+}
+
+.threshold {
+  font-variant-numeric: tabular-nums;
+  color: $theme-text-card;
+  text-align: right;
+  white-space: nowrap;
+}
+
+// Dashboard
+.dashboard {
+  padding: space(4);
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+
+  @include below($bp-sm) {
+    padding: space(3);
+    gap: 10px;
+  }
+}
+
+.dashboardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: space(3);
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: $theme-text-3;
+}
+
+.legend {
+  display: flex;
+  gap: space(3);
+
+  @include below($bp-sm) {
+    gap: 10px;
+  }
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch {
+  width: 10px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.swatchOrganic {
+  background: $theme-accent;
+}
+
+.swatchConversions {
+  background: $theme-action;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+}

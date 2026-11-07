@@ -1,0 +1,154 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: $theme-bg;
+}
+
+.inner {
+  @include container;
+  height: $nav-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(5);
+
+  @include below($bp-md) {
+    height: $nav-height-mobile;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: space(3);
+  min-height: $touch-min;
+  color: $theme-text;
+  text-decoration: none;
+
+  &:hover {
+    color: $theme-text;
+  }
+
+  @include below($bp-md) {
+    gap: space(2);
+  }
+}
+
+.mark {
+  width: 22px;
+  height: 22px;
+
+  @include below($bp-md) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.wordmark {
+  font-size: 1.0625rem;
+  font-weight: $fw-semibold;
+
+  @include below($bp-md) {
+    font-size: 1rem;
+  }
+}
+
+.desktop {
+  display: flex;
+  align-items: center;
+  gap: space(6);
+
+  @include below($bp-md) {
+    display: none;
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: $touch-min;
+  font-size: $fs-small;
+  font-weight: $fw-medium;
+  color: $theme-text;
+  text-decoration: none;
+  opacity: 0.78;
+
+  @include motion-ok {
+    transition: opacity 0.15s ease;
+  }
+
+  &:hover {
+    color: $theme-text;
+    opacity: 1;
+  }
+}
+
+.mobile {
+  display: none;
+
+  @include below($bp-md) {
+    display: block;
+  }
+}
+
+.toggle {
+  width: $touch-min;
+  height: $touch-min;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: $radius-full;
+  background: $theme-band;
+  color: $theme-text;
+  cursor: pointer;
+
+  &:hover {
+    background: $theme-surface;
+  }
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: $theme-band;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.panelList {
+  list-style: none;
+  margin: 0;
+  padding: space(2) $gutter-mobile space(5);
+  display: flex;
+  flex-direction: column;
+}
+
+.panelLink {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  font-size: 1.125rem;
+  font-weight: $fw-semibold;
+  color: $theme-text;
+  text-decoration: none;
+  border-bottom: 1px solid $theme-surface;
+
+  &:hover {
+    color: $theme-accent;
+  }
+}
+
+.panelCta {
+  margin-top: space(5);
+  width: 100%;
+}

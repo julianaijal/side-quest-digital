@@ -1,0 +1,178 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.section {
+  @include container;
+  padding-bottom: $section-y;
+
+  @include below($bp-sm) {
+    padding-bottom: $section-y-mobile;
+  }
+}
+
+.block {
+  background: $theme-band;
+  border-radius: $radius-xl;
+  padding: 72px space(8);
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+
+  @include below($bp-sm) {
+    border-radius: 24px;
+    padding: space(6) 22px;
+    flex-direction: column;
+    gap: space(6);
+  }
+}
+
+.main {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include below($bp-sm) {
+    flex: none;
+    gap: space(4);
+  }
+}
+
+.aside {
+  flex: 0 1 300px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+
+  @include below($bp-sm) {
+    flex: none;
+    min-width: 0;
+    gap: space(3);
+  }
+}
+
+.heading {
+  font-size: $fs-h2-cta;
+  line-height: 1.1;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.03em;
+}
+
+.text {
+  font-size: 1.125rem;
+  line-height: $lh-body;
+  color: $theme-text-card;
+
+  @include below($bp-sm) {
+    font-size: 1rem;
+  }
+}
+
+.email {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: space(2);
+
+  @include below($bp-sm) {
+    padding-top: 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: space(3);
+  }
+}
+
+.emailLink {
+  max-width: 100%;
+  font-size: 1.875rem;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.02em;
+  color: $theme-accent;
+  overflow-wrap: anywhere;
+
+  @include below($bp-sm) {
+    font-size: 1.25rem;
+    letter-spacing: $ls-base;
+  }
+}
+
+.copy {
+  height: $touch-min;
+  padding: 0 space(4);
+  border: 0;
+  border-radius: $radius-full;
+  background: $theme-surface;
+  display: inline-flex;
+  align-items: center;
+  gap: space(2);
+  font-size: $fs-small;
+  font-weight: $fw-semibold;
+  color: $theme-text;
+  cursor: pointer;
+
+  &:hover {
+    background: $theme-border-strong;
+  }
+}
+
+.copyIcon {
+  flex: none;
+  color: $theme-accent;
+}
+
+.meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: $fs-small;
+  line-height: 1.55;
+  color: $theme-text-card;
+
+  @include below($bp-sm) {
+    font-size: $fs-meta;
+  }
+}
+
+.clock {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.strong {
+  color: $theme-text;
+}
+
+// Fixed width so the line does not shift when the time fills in.
+.time {
+  display: inline-block;
+  min-width: 4.4ch; // four digits and a colon
+  font-variant-numeric: tabular-nums;
+}
+
+.linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: $touch-min;
+  font-size: 1rem;
+  font-weight: $fw-semibold;
+  color: $theme-text;
+  text-decoration: none;
+
+  &:hover {
+    color: $theme-accent;
+  }
+}
+
+.linkedinIcon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}

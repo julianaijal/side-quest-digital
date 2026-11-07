@@ -1,0 +1,94 @@
+@use '@/styles/tokens' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  @include theme-custom-properties;
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: $theme-bg;
+  color: $theme-text;
+  font-family: $font-sans;
+  font-size: $fs-body;
+  line-height: $lh-body;
+  letter-spacing: $ls-base;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+dl,
+dd,
+ol,
+ul,
+pre {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: $theme-accent;
+
+  &:hover {
+    color: $theme-accent-hover;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  @include focus-ring;
+}
+
+button {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+section[id] {
+  scroll-margin-top: $nav-height;
+
+  @include below($bp-md) {
+    scroll-margin-top: $nav-height-mobile;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
