@@ -1,0 +1,36 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.footer {
+  background: $theme-footer-bg;
+  color: $theme-footer-text;
+}
+
+.inner {
+  @include container;
+  padding-block: space(6) 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: space(4);
+  flex-wrap: wrap;
+  font-size: $fs-meta;
+
+  @include below($bp-sm) {
+    padding-block: space(5) space(6);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $theme-footer-brand;
+}
+
+.diamond {
+  flex: none;
+}

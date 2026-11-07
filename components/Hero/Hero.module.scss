@@ -1,0 +1,186 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: space(6);
+
+  // Between the two path variants the hero ends with plain spacing.
+  @include below($bp-md) {
+    padding-bottom: $section-y-mobile;
+  }
+
+  @include below($bp-sm) {
+    padding-bottom: space(6);
+  }
+}
+
+.inner {
+  @include container;
+  position: relative;
+  padding-top: space(9);
+
+  @include below($bp-sm) {
+    padding-top: 40px;
+  }
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  @include below($bp-sm) {
+    gap: 20px;
+  }
+}
+
+// Availability style badge: a quiet pill with the sand marker.
+.badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: space(2) 14px;
+  background: $theme-band;
+  border-radius: $radius-full;
+  font-size: $fs-meta;
+  font-weight: $fw-medium;
+  line-height: 1.4;
+  color: $theme-text-2;
+
+  @include below($bp-sm) {
+    gap: space(2);
+    padding: 7px space(3);
+    font-size: $fs-label;
+  }
+}
+
+.diamond {
+  flex: none;
+
+  @include below($bp-sm) {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+.badgeMobile {
+  display: none;
+}
+
+@include below($bp-sm) {
+  .badgeDesktop {
+    display: none;
+  }
+
+  .badgeMobile {
+    display: inline;
+  }
+}
+
+.title {
+  font-size: $fs-display;
+  line-height: $lh-display;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-display;
+
+  @include below($bp-sm) {
+    line-height: 1.06;
+  }
+}
+
+.lead {
+  max-width: 560px;
+  font-size: $fs-lead;
+  line-height: $lh-lead;
+  color: $theme-text-2;
+}
+
+.actions {
+  display: flex;
+  gap: space(3);
+  flex-wrap: wrap;
+  padding-top: space(2);
+
+  @include below($bp-sm) {
+    padding-top: 0;
+  }
+}
+
+@include below($bp-sm) {
+  .primary {
+    width: 100%;
+  }
+
+  .secondary {
+    display: none;
+  }
+}
+
+// Side path: full width under the text on desktop, its own version on mobile.
+.pathDesktop {
+  max-width: 1440px;
+  margin: -40px auto 0;
+
+  @include below($bp-md) {
+    display: none;
+  }
+}
+
+.pathMobile {
+  display: none;
+
+  @include below($bp-sm) {
+    display: block;
+    margin-top: space(4);
+  }
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// Motion: the cover path sits fully revealed by default (dashoffset -1),
+// so without animation the dotted path is complete.
+.cover {
+  stroke-dashoffset: -1;
+}
+
+@keyframes uncover {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@include motion-ok {
+  .cover {
+    animation: uncover $dur-draw $ease-draw 0.3s both;
+  }
+
+  .pop {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pop $dur-pop ease-out $dur-draw both;
+  }
+}

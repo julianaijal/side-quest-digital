@@ -1,0 +1,46 @@
+@use '@/styles/tokens' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: $radius-full;
+  font-size: 1.0625rem;
+  font-weight: $fw-semibold;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+
+  @include motion-ok {
+    transition: background-color 0.15s ease;
+  }
+}
+
+.small {
+  height: $touch-min;
+  padding: 0 20px;
+  font-size: $fs-small;
+}
+
+.primary {
+  background: $theme-action;
+  color: $theme-on-action;
+
+  &:hover {
+    background: $theme-action-hover;
+    color: $theme-on-action;
+  }
+}
+
+// Ghost button: a quiet pill on the band colour, no border.
+.secondary {
+  background: $theme-band;
+  color: $theme-text;
+
+  &:hover {
+    background: $theme-surface;
+    color: $theme-text;
+  }
+}
