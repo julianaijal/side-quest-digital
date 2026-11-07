@@ -85,6 +85,34 @@ function checkHeaders(page: string, headers: Headers) {
   check(page, 'HTML revalidates', /max-age=0|no-cache/.test(cache), cache || 'missing');
 }
 
+// The JSON-LD parses, describes the site, business and person, and every
+// image it names is actually served.
+async function checkJsonLd() {
+  const { body } = await get('/');
+  const blocks = all(body, /<script type="application\/ld\+json">([^<]*)<\/script>/g);
+  check('/', 'one JSON-LD block', blocks.length === 1, `${blocks.length} found`);
+  if (blocks.length !== 1) return;
+
+  let graph: Array<Record<string, unknown>> = [];
+  try {
+    graph = JSON.parse(blocks[0][1])['@graph'] ?? [];
+  } catch (error) {
+    check('/', 'JSON-LD parses', false, String(error));
+    return;
+  }
+  const types = graph.map((node) => node['@type']);
+  for (const type of ['WebSite', 'ProfessionalService', 'Person']) {
+    check('/', `JSON-LD has a ${type}`, types.includes(type), types.join(', '));
+  }
+
+  const images = blocks[0][1].match(/"@type":"ImageObject","url":"[^"]+"/g) ?? [];
+  for (const image of images) {
+    const path = new URL(image.split('"url":"')[1].slice(0, -1)).pathname;
+    const response = await fetch(base + path, { method: 'HEAD' });
+    check('/', `JSON-LD image ${path} is served`, response.ok, String(response.status));
+  }
+}
+
 async function main() {
   for (const page of ['/', '/privacy']) {
     const { response, body } = await get(page);
@@ -92,6 +120,8 @@ async function main() {
     checkHtml(page, body);
     checkHeaders(page, response.headers);
   }
+
+  await checkJsonLd();
 
   const missing = await get('/this-page-does-not-exist');
   check('404', 'unknown URL returns 404', missing.response.status === 404, String(missing.response.status));
