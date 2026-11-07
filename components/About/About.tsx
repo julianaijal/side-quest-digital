@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import type { Site } from '@/content/site';
-import { PersonIcon } from '@/components/Icons/Icons';
 import styles from './About.module.scss';
 
 export function About({ site }: { site: Site }) {
   const { about } = site;
   return (
     <section id="about" className={styles.section} aria-labelledby="about-title">
-      <div className={styles.photo}>
-        {about.photo ? (
+      {about.photo && (
+        <div className={styles.photo}>
           <Image
             src={about.photo}
             alt={about.photoAlt}
@@ -16,13 +15,8 @@ export function About({ site }: { site: Site }) {
             sizes="(max-width: 640px) 100vw, 380px"
             className={styles.image}
           />
-        ) : (
-          <div role="img" aria-label={about.photoPlaceholderLabel} className={styles.placeholder}>
-            <PersonIcon className={styles.person} />
-            <span className={styles.placeholderText}>{about.photoPlaceholderText}</span>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
       <div className={styles.text}>
         <h2 id="about-title" className={styles.heading}>
           {about.title}

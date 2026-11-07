@@ -8,7 +8,7 @@
 - [ ] 301 from `www.side-quest-digital.com` to the apex (Cloudflare redirect rule; the proxied `www` CNAME is already there)
 - [ ] 301 from `.nl` and `.tech` (apex and `www`) to `https://side-quest-digital.com`, once Cloudflare marks the zones active
 - [ ] `side-quest-digital.online`: registry `serverHold`, resolve with TransIP (likely an unverified registrant email), then add to Cloudflare and redirect
-- [ ] Photo of Julian plus alt text (or hide the placeholder until there is one)
+- [ ] Photo of Julian plus alt text. The photo block is hidden until `about.photo` in `content/site.ts` is set
 - [ ] Gmail "Send mail as" for the domain address, so replies come from the business address
 - [ ] Google account on the domain address, for client Google Docs
 - [ ] GitHub: "Keep my email addresses private" and a `noreply` commit email
@@ -105,7 +105,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 
 ### Open placeholders (in `content/site.ts`)
 
-- [ ] Photo of Julian plus alt text
+- [ ] Photo of Julian plus alt text (`about.photo` and `about.photoAlt`; the block shows once `photo` is set)
 - [ ] Optional footer line with the measured page weight, once measured
 
 ## v2: headless CMS

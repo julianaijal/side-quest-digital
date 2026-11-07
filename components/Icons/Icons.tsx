@@ -131,15 +131,6 @@ export function LinkedInIcon({ size = 20, className }: IconProps) {
   );
 }
 
-export function PersonIcon({ size = 40, className }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth="1.5" aria-hidden="true" className={className} {...stroke}>
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
-    </svg>
-  );
-}
-
 export function MenuIcon({ size = 20, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true" className={className} {...stroke}>

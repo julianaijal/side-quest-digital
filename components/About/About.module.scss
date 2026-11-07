@@ -36,38 +36,12 @@
   object-fit: cover;
 }
 
-.placeholder {
-  @include forced-colors-edge;
-  height: 100%;
-  border-radius: inherit;
-  background: $theme-tint;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: space(3);
-  color: $theme-text-3;
-
-  @include below($bp-sm) {
-    gap: 10px;
-  }
-}
-
-.person {
-  @include below($bp-sm) {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-.placeholderText {
-  font-size: 0.875rem;
-  font-weight: $fw-semibold;
-}
-
+// Without a photo the text has the full row; the max width keeps lines
+// readable. Next to a photo the column stays narrower than this anyway.
 .text {
   flex: 1 1 440px;
   min-width: 0;
+  max-width: 760px;
   display: flex;
   flex-direction: column;
   gap: 20px;
