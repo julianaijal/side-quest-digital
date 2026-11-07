@@ -169,6 +169,14 @@ export const site = {
     kvkLabel: 'KVK',
   },
 
+  cookies: {
+    label: 'Cookie choice',
+    text: 'I use Google Analytics to see how people find this site. It only sets cookies if you allow it.',
+    acceptLabel: 'Allow',
+    declineLabel: 'Decline',
+    settingsLabel: 'Cookie settings',
+  },
+
   // Plain text summary served at /llms.txt.
   llms: {
     intro:
