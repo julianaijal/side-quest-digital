@@ -64,6 +64,12 @@ function checkHtml(page: string, html: string) {
   check(page, 'styles for forced colors mode', /forced-colors:\s*active/.test(html));
   check(page, 'stable scrollbar gutter', /scrollbar-gutter:stable/.test(html.replace(/\s/g, '')));
 
+  if (page === '/') {
+    for (const event of ['copy_email', 'cta_click', 'linkedin_click']) {
+      check(page, `tracks ${event}`, html.includes(`data-track="${event}"`));
+    }
+  }
+
   const imgsWithoutAlt = all(html, /<img\b[^>]*>/gi).filter((match) => !/\salt=/.test(match[0]));
   check(page, 'every img has alt', imgsWithoutAlt.length === 0, `${imgsWithoutAlt.length} without alt`);
 

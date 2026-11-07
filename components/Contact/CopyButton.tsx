@@ -46,7 +46,7 @@ export function CopyButton({ user, domain, targetId, label, copiedLabel }: Props
   }
 
   return (
-    <button type="button" className={styles.copy} onClick={copy}>
+    <button type="button" className={styles.copy} onClick={copy} data-track="copy_email" data-track-location="contact">
       {copied ? <CheckIcon className={styles.copyIcon} /> : <CopyIcon className={styles.copyIcon} />}
       <span aria-live="polite">{copied ? copiedLabel : label}</span>
     </button>
