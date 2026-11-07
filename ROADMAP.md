@@ -5,7 +5,6 @@
 ### Next up
 
 **Julian (accounts, DNS and content)**
-- [ ] 301 from `www.side-quest-digital.com` to the apex (Cloudflare redirect rule; the proxied `www` CNAME is already there)
 - [ ] 301 from `.nl` and `.tech` (apex and `www`) to `https://side-quest-digital.com`, once Cloudflare marks the zones active
 - [ ] `side-quest-digital.online`: registry `serverHold`, resolve with TransIP (likely an unverified registrant email), then add to Cloudflare and redirect
 - [ ] Photo of Julian plus alt text. The photo block is hidden until `about.photo` in `content/site.ts` is set
@@ -25,6 +24,7 @@
 
 ### Done
 
+- [x] 301 from `www.side-quest-digital.com` (HTTP and HTTPS) to the apex in one hop, keeping path and query (Cloudflare redirect rule on `http.host`), and Always Use HTTPS on
 - [x] Lighthouse on every CI build (`check:lighthouse`): performance at least 90, the other categories 100
 - [x] PR #1 and #2 merged into `main`
 - [x] Commit message and branch name checks on every pull request (`scripts/git-workflow.ts`)
@@ -60,7 +60,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] Custom styled 404 page
 - [x] Heading hierarchy without skipped levels
 - [x] JSON-LD (`ProfessionalService`, `Person`)
-- [ ] Redirects: www and non www to one host with a permanent redirect, no chains
+- [x] Redirects: www and non www to one host with a permanent redirect, no chains
 
 **Accessibility**
 - [x] Contrast (all text 7:1 or more, nav links no longer use opacity) and visible focus
