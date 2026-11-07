@@ -1,5 +1,5 @@
 import { site } from '@/content/site';
-import { absoluteUrl, isPlaceholder, obfuscatedEmail } from '@/lib/seo';
+import { absoluteUrl, contentSignal, isPlaceholder, obfuscatedEmail } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
@@ -35,6 +35,8 @@ export function GET() {
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
       Link: `<${absoluteUrl('/')}>; rel="canonical"`,
+      'Content-Signal': contentSignal,
+      Vary: 'Accept',
     },
   });
 }

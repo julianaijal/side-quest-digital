@@ -131,6 +131,17 @@ async function main() {
   check('/robots.txt', 'served', robots.response.status === 200);
   check('/robots.txt', 'links the sitemap', /^Sitemap: https:\/\//m.test(robots.body));
   check('/robots.txt', 'names AI crawlers', /User-Agent: GPTBot/i.test(robots.body));
+  check('/robots.txt', 'Content-Signal for every group', (robots.body.match(/^Content-Signal: /gim) ?? []).length === 2);
+
+  const negotiated = await get('/', { headers: { Accept: 'text/markdown' } });
+  check(
+    '/',
+    'Accept: text/markdown returns Markdown',
+    (negotiated.response.headers.get('content-type') ?? '').startsWith('text/markdown') && negotiated.body.startsWith('# '),
+    negotiated.response.headers.get('content-type') ?? '',
+  );
+  const vary = negotiated.response.headers.get('vary') ?? '';
+  check('/', 'Markdown response varies on Accept', /(^|,)\s*accept\s*(,|$)/i.test(vary), vary || 'missing');
 
   const sitemap = await get('/sitemap.xml');
   check('/sitemap.xml', 'served', sitemap.response.status === 200 && sitemap.body.includes('<urlset'));

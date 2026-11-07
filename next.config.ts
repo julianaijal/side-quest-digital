@@ -45,6 +45,23 @@ const nextConfig: NextConfig = {
     // the render blocking stylesheet request.
     inlineCss: true,
   },
+  // Agents that ask for Markdown get the Markdown version of the homepage at
+  // the same URL. Browsers never send text/markdown in Accept. The Markdown
+  // response carries Vary: Accept; Next sets its own Vary on the HTML page,
+  // which Cloudflare does not cache by default.
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/',
+          has: [{ type: 'header', key: 'accept', value: '(.*text/markdown.*)' }],
+          destination: '/index.md',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
