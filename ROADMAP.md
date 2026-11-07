@@ -5,7 +5,6 @@
 ### Next up
 
 **Julian (accounts, DNS and content)**
-- [ ] 301 from `.nl` and `.tech` (apex and `www`) to `https://side-quest-digital.com`, once Cloudflare marks the zones active
 - [ ] `side-quest-digital.online`: registry `serverHold`, resolve with TransIP (likely an unverified registrant email), then add to Cloudflare and redirect
 - [ ] Photo of Julian plus alt text. The photo block is hidden until `about.photo` in `content/site.ts` is set
 - [ ] Gmail "Send mail as" for the domain address, so replies come from the business address
@@ -25,6 +24,7 @@
 ### Done
 
 - [x] 301 from `www.side-quest-digital.com` (HTTP and HTTPS) to the apex in one hop, keeping path and query (Cloudflare redirect rule on `http.host`), and Always Use HTTPS on
+- [x] 301 from `.nl` and `.tech` (apex and `www`, HTTP and HTTPS) to `https://side-quest-digital.com` in one hop, keeping path and query (a redirect rule for all requests in each zone; the proxied A records still point at the TransIP parking page, which the rule now intercepts)
 - [x] Lighthouse on every CI build (`check:lighthouse`): performance at least 90, the other categories 100
 - [x] PR #1 and #2 merged into `main`
 - [x] Commit message and branch name checks on every pull request (`scripts/git-workflow.ts`)
