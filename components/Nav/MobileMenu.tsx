@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { ButtonLink } from '@/components/Button/ButtonLink';
 import { CloseIcon, MenuIcon } from '@/components/Icons/Icons';
 import styles from './Nav.module.scss';
@@ -15,49 +15,46 @@ type Props = {
   navLabel: string;
 };
 
+// The panel is a popover, so the menu opens, closes on Escape and on a tap
+// outside, and returns focus to the button without JavaScript. Script only
+// swaps the button label and closes the panel after a link is followed.
 export function MobileMenu({ links, cta, openLabel, closeLabel, navLabel }: Props) {
   const [open, setOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
   const panelId = useId();
 
-  const close = useCallback((returnFocus: boolean) => {
-    setOpen(false);
-    if (returnFocus) buttonRef.current?.focus();
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) return;
+    const onToggle = (event: Event) => setOpen((event as ToggleEvent).newState === 'open');
+    panel.addEventListener('toggle', onToggle);
+    return () => panel.removeEventListener('toggle', onToggle);
   }, []);
 
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') close(true);
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open, close]);
+  const close = () => panelRef.current?.hidePopover();
 
   return (
     <div className={styles.mobile}>
       <button
-        ref={buttonRef}
         type="button"
         className={styles.toggle}
         aria-label={open ? closeLabel : openLabel}
-        aria-expanded={open}
-        aria-controls={panelId}
-        onClick={() => setOpen((value) => !value)}
+        popoverTarget={panelId}
       >
-        {open ? <CloseIcon /> : <MenuIcon />}
+        <MenuIcon className={styles.iconOpen} />
+        <CloseIcon className={styles.iconClose} />
       </button>
-      <nav id={panelId} aria-label={navLabel} className={styles.panel} hidden={!open}>
+      <nav ref={panelRef} id={panelId} aria-label={navLabel} className={styles.panel} popover="auto">
         <ul className={styles.panelList}>
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className={styles.panelLink} onClick={() => close(false)}>
+              <a href={link.href} className={styles.panelLink} onClick={close}>
                 {link.label}
               </a>
             </li>
           ))}
           <li>
-            <ButtonLink href={cta.href} className={styles.panelCta} onClick={() => close(false)}>
+            <ButtonLink href={cta.href} className={styles.panelCta} onClick={close}>
               {cta.label}
             </ButtonLink>
           </li>
