@@ -16,8 +16,6 @@
 - [ ] Optional: ask GitHub Support to purge cached commits from before the email scrub (PR #1)
 
 **Code**
-- [ ] Merge PR #1 into `main`
-- [ ] Commit message and branch name checks in CI (`AGENTS.md` mentions `scripts/git-workflow.ts`, which does not exist yet)
 - [ ] Before a photo goes in: add the Cloudflare Images binding for `next/image`, or serve a pre optimized image
 
 **Verify on the live domain** (from a network without Zscaler)
@@ -27,6 +25,8 @@
 
 ### Done
 
+- [x] PR #1 and #2 merged into `main`
+- [x] Commit message and branch name checks on every pull request (`scripts/git-workflow.ts`)
 - [x] CI: lint, typecheck, tests, build and `check:site` on every pull request; weekly live site check and specification watch that open issues
 - [x] Security, cache and discovery headers; skip link; styled 404; web app manifest with maskable icon; `security.txt`; Global Privacy Control
 - [x] Homepage in the Night Reef design: hero with side path, five services, about, contact, footer (desktop, 390 and 320 checked)
