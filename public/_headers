@@ -1,0 +1,10 @@
+# Cloudflare Workers static assets. The Worker sets headers for HTML in
+# next.config.ts; these cover files served straight from the assets binding.
+
+/*
+  X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Hashed build output never changes, so it can be cached for a year.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
