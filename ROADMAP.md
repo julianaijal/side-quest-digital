@@ -12,6 +12,7 @@
 - [ ] Gmail "Send mail as" for the domain address, so replies come from the business address
 - [ ] Google account on the domain address, for client Google Docs
 - [ ] GitHub: "Keep my email addresses private" and a `noreply` commit email
+- [ ] Connect the website specification MCP as a claude.ai custom connector (Settings, Connectors), so every Claude session can look up the rules. The URL is the repository variable `SPEC_MCP_URL`
 - [ ] Optional: ask GitHub Support to purge cached commits from before the email scrub (PR #1)
 
 **Code**
