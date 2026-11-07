@@ -9,7 +9,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - `npm run typecheck`: TypeScript without emit
 - `npm test`: content checks (copy rules) and git workflow checks
 - `npm run check:site -- <url> [--live]`: checks a running site (local build or live) for document basics, headings, skip link, headers, 404, robots, sitemap, manifest and security.txt
-- `npm run check:lighthouse -- <url>`: runs Lighthouse (mobile) against a running site and fails below 90 for performance or below 100 for accessibility, best practices and SEO
+- `npm run check:lighthouse -- <url>`: runs Lighthouse (mobile) three times against a running site, takes the median run and fails below 90 for performance or below 100 for accessibility, best practices and SEO
 - `npm run build`: production build
 - `npm run preview`: build for Cloudflare and run it locally in the Workers runtime
 - `npm run deploy`: build for Cloudflare and deploy the Worker (needs `wrangler login`)
