@@ -216,7 +216,7 @@ export const site = {
       {
         title: 'Your choices and rights',
         paragraphs: [
-          'You can change your choice at any time with Cookie settings at the bottom of every page. Choosing Decline removes the analytics cookies.',
+          'You can change your choice at any time with Cookie settings at the bottom of every page. Choosing Decline removes the analytics cookies. If your browser sends a Global Privacy Control signal, analytics stays off and the cookie bar does not appear.',
           'You have the right to access, correct or delete your data. Send me an email and I will take care of it. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).',
         ],
       },
