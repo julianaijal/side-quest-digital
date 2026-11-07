@@ -9,6 +9,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - `npm run typecheck`: TypeScript without emit
 - `npm test`: content checks (copy rules) and git workflow checks
 - `npm run check:site -- <url> [--live]`: checks a running site (local build or live) for document basics, headings, skip link, headers, 404, robots, sitemap, manifest and security.txt
+- `npm run check:lighthouse -- <url>`: runs Lighthouse (mobile) against a running site and fails below 90 for performance or below 100 for accessibility, best practices and SEO
 - `npm run build`: production build
 - `npm run preview`: build for Cloudflare and run it locally in the Workers runtime
 - `npm run deploy`: build for Cloudflare and deploy the Worker (needs `wrangler login`)
@@ -29,7 +30,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 
 ## Automation
 
-- `.github/workflows/ci.yml`: on every pull request and push to `main`, runs lint, typecheck, tests, the build, and `check:site` against the build. On pull requests it also checks every commit message and the branch name (`scripts/git-workflow.ts`).
+- `.github/workflows/ci.yml`: on every pull request and push to `main`, runs lint, typecheck, tests, the build, and `check:site` against the build. Then it runs Lighthouse against the build (`scripts/check-lighthouse.ts`) and keeps the HTML report as a workflow artifact. On pull requests it also checks every commit message and the branch name (`scripts/git-workflow.ts`).
 - `.github/workflows/site-watch.yml`: every Monday, checks the live site (`--live`) and fetches changes in the external website specification from the MCP endpoint in the repository variable `SPEC_MCP_URL`. Failures and changes open GitHub issues (labels `site-check` and `spec-change`). Do not name the specification in commits or code.
 - When a rule changes, update `scripts/check-site.ts` with it, so CI keeps enforcing it.
 
