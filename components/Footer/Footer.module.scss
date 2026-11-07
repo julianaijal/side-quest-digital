@@ -37,6 +37,15 @@
   gap: 6px space(4);
 }
 
+.link {
+  color: $theme-footer-text;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $theme-accent-hover;
+  }
+}
+
 .diamond {
   flex: none;
 }
