@@ -134,5 +134,6 @@ From the Night Reef design, left out of the first version on purpose:
 
 - [ ] Subpages (for example case descriptions without client names, or articles), with View Transitions between pages
 - [ ] Cookieless analytics, if wanted
+- [ ] Cloudflare Zaraz instead of Google Tag Manager, for a Lighthouse performance score of 100. GTM (about 180 KB, one long task) is the only thing between the site and 100: without it the page scores 100 even at 10x CPU slowdown. Rebuild the GTM container in Zaraz and pass the cookie bar choice to Zaraz consent. Then raise the performance minimum in `scripts/check-lighthouse.ts` to 100
 - [ ] Dutch version
 - [ ] Remove GEO if it stays a hype topic (layout for three cards: analytics full width)
