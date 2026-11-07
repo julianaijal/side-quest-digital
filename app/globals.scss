@@ -95,6 +95,7 @@ button {
 
 // Hidden until focused, then shown above the sticky nav.
 .skip-link {
+  @include forced-colors-edge;
   position: absolute;
   z-index: 100;
   top: space(3);

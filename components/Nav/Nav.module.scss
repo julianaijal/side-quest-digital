@@ -94,6 +94,7 @@
 }
 
 .toggle {
+  @include forced-colors-edge(ButtonText);
   width: $touch-min;
   height: $touch-min;
   padding: 0;
@@ -124,6 +125,7 @@
 // A popover sits in the top layer, so it is placed against the viewport,
 // right under the sticky nav, with the browser's popover styles reset.
 .panel {
+  @include forced-colors-edge;
   position: fixed;
   inset: $nav-height-mobile 0 auto;
   width: auto;

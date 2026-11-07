@@ -39,6 +39,7 @@
 }
 
 .card {
+  @include forced-colors-edge;
   background: $theme-surface;
   border-radius: $radius-lg;
   padding: space(6);
@@ -109,6 +110,7 @@
 
 // Snippets
 .snippet {
+  @include forced-colors-edge;
   margin: auto 0 0;
   min-width: 0;
   background: $theme-inset;
@@ -222,6 +224,7 @@
 
 // AI answer
 .bubble {
+  @include forced-colors-edge;
   align-self: flex-end;
   max-width: 90%;
   background: $theme-surface;

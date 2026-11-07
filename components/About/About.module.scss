@@ -37,6 +37,7 @@
 }
 
 .placeholder {
+  @include forced-colors-edge;
   height: 100%;
   border-radius: inherit;
   background: $theme-tint;
