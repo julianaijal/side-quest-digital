@@ -1,16 +1,18 @@
-// Runs Lighthouse (mobile, the default) against a running copy of the site and
-// checks the category scores against the minimums below.
+// Runs Lighthouse (mobile, the default) three times against a running copy of
+// the site and checks the run with the median performance score against the
+// minimums below. One slow run on a busy CI runner then does not fail a build.
 //
 //   node scripts/check-lighthouse.ts http://localhost:3000
 //
-// Writes lighthouse.report.html and lighthouse.report.json next to where it
-// runs. Exits 1 when a score is below its minimum and prints a Markdown report
-// with the failing audits, so CI can add it to the job summary.
+// Keeps the median run as lighthouse.report.html and lighthouse.report.json.
+// Exits 1 when a score is below its minimum and prints a Markdown report with
+// the failing audits, so CI can add it to the job summary.
 
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { copyFileSync, readFileSync, rmSync } from 'node:fs';
 
 const url = process.argv[2] ?? 'http://localhost:3000';
+const runs = 3;
 
 // Performance on shared CI runners varies from run to run, so it gets some
 // room. The other categories are deterministic and must stay at 100.
@@ -29,23 +31,43 @@ type Report = {
   audits: Record<string, Audit>;
 };
 
-execFileSync(
-  'npx',
-  [
-    'lighthouse',
-    url,
-    '--quiet',
-    '--chrome-flags=--headless=new --no-sandbox',
-    '--output=json',
-    '--output=html',
-    '--output-path=./lighthouse',
-  ],
-  { stdio: 'inherit' },
+function run(index: number): Report {
+  execFileSync(
+    'npx',
+    [
+      'lighthouse',
+      url,
+      '--quiet',
+      '--chrome-flags=--headless=new --no-sandbox',
+      '--output=json',
+      '--output=html',
+      `--output-path=./lighthouse-${index}`,
+    ],
+    { stdio: 'inherit' },
+  );
+  return JSON.parse(readFileSync(`lighthouse-${index}.report.json`, 'utf8'));
+}
+
+const reports = Array.from({ length: runs }, (_, index) => ({ index, report: run(index) }));
+const byPerformance = [...reports].sort(
+  (a, b) => a.report.categories.performance.score - b.report.categories.performance.score,
 );
+const median = byPerformance[Math.floor(runs / 2)];
+for (const extension of ['html', 'json']) {
+  copyFileSync(`lighthouse-${median.index}.report.${extension}`, `lighthouse.report.${extension}`);
+}
+for (const { index } of reports) {
+  for (const extension of ['html', 'json']) rmSync(`lighthouse-${index}.report.${extension}`);
+}
+const report = median.report;
+const performanceScores = reports.map(({ report }) => Math.round(report.categories.performance.score * 100));
 
-const report: Report = JSON.parse(readFileSync('lighthouse.report.json', 'utf8'));
-
-const lines: string[] = [`## Lighthouse for ${url}\n`, '| Category | Score | Minimum |', '| --- | --- | --- |'];
+const lines: string[] = [
+  `## Lighthouse for ${url}\n`,
+  `Median of ${runs} runs (performance ${performanceScores.join(', ')}).\n`,
+  '| Category | Score | Minimum |',
+  '| --- | --- | --- |',
+];
 const failures: string[] = [];
 let belowMinimum = false;
 
