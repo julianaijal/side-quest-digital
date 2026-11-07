@@ -92,3 +92,24 @@ section[id] {
   white-space: nowrap;
   border: 0;
 }
+
+// Hidden until focused, then shown above the sticky nav.
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  top: space(3);
+  left: space(3);
+  padding: space(3) space(4);
+  border-radius: $radius-full;
+  background: $theme-action;
+  color: $theme-on-action;
+  font-weight: $fw-semibold;
+  text-decoration: none;
+  transform: translateY(-200%);
+
+  &:focus-visible,
+  &:focus {
+    transform: none;
+    color: $theme-on-action;
+  }
+}

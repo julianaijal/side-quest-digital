@@ -31,6 +31,7 @@ export const site = {
   menuOpenLabel: 'Open menu',
   menuCloseLabel: 'Close menu',
   homeLabel: 'Side Quest Digital, back to top',
+  skipLabel: 'Skip to content',
 
   hero: {
     eyebrow: 'Freelance SEO and web development · Amsterdam',
