@@ -84,8 +84,8 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 
 **Agent readiness**
 - [x] `/llms.txt`
-- [x] Markdown version of the page at `/index.md`, linked from the homepage `Link` header
-- [x] `robots.txt` rules for named AI crawlers, optionally Content Signals
+- [x] Markdown version of the page at `/index.md`, linked from the homepage `Link` header, and at `/` for requests with `Accept: text/markdown`
+- [x] `robots.txt` rules for named AI crawlers, with Content Signals (`search=yes, ai-input=yes, ai-train=no`)
 - [x] HTTP `Link` headers for discovery (sitemap, llms.txt)
 
 **Performance**

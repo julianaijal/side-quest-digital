@@ -20,6 +20,13 @@ export function obfuscatedEmail(): string {
   return `${site.emailUser} [@] ${site.emailDomain}`;
 }
 
+/**
+ * Content Signals (contentsignals.org): search and AI answers may use the
+ * site, training AI models on it may not. Used in robots.txt and on the
+ * Markdown responses.
+ */
+export const contentSignal = 'search=yes, ai-input=yes, ai-train=no';
+
 /** Absolute URL for a path on this site. */
 export function absoluteUrl(path = '/'): string {
   return new URL(path, siteUrl()).toString();
