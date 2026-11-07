@@ -18,10 +18,16 @@ export function Hero({ site }: { site: Site }) {
           <h1 className={styles.title}>{hero.title}</h1>
           <p className={styles.lead}>{hero.lead}</p>
           <div className={styles.actions}>
-            <ButtonLink href={site.navCta.href} className={styles.primary}>
+            <ButtonLink href={site.navCta.href} className={styles.primary} track="cta_click" trackLocation="hero">
               {hero.primaryCta}
             </ButtonLink>
-            <ButtonLink href="#services" variant="secondary" className={styles.secondary}>
+            <ButtonLink
+              href="#services"
+              variant="secondary"
+              className={styles.secondary}
+              track="cta_click"
+              trackLocation="hero_services"
+            >
               {hero.secondaryCta}
             </ButtonLink>
           </div>
