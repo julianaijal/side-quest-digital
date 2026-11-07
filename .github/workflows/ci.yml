@@ -47,3 +47,17 @@ jobs:
       - name: Add the report to the job summary
         if: always()
         run: test -f report.md && cat report.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      # The server from the step above keeps running for this step.
+      - name: Run Lighthouse on the production build
+        run: |
+          node scripts/check-lighthouse.ts http://localhost:3000 | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+
+      - name: Keep the Lighthouse report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lighthouse.report.html
+          if-no-files-found: ignore
