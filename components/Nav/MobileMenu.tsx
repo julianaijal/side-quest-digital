@@ -54,7 +54,7 @@ export function MobileMenu({ links, cta, openLabel, closeLabel, navLabel }: Prop
             </li>
           ))}
           <li>
-            <ButtonLink href={cta.href} className={styles.panelCta} onClick={close}>
+            <ButtonLink href={cta.href} className={styles.panelCta} onClick={close} track="cta_click" trackLocation="menu">
               {cta.label}
             </ButtonLink>
           </li>
