@@ -36,19 +36,50 @@
   object-fit: cover;
 }
 
-// Without a photo the text has the full row; the max width keeps lines
-// readable. Next to a photo the column stays narrower than this anyway.
-.text {
-  flex: 1 1 440px;
+.text,
+.intro {
   min-width: 0;
-  max-width: 760px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
   @include below($bp-sm) {
-    flex: none;
     gap: 18px;
+  }
+}
+
+.text {
+  flex: 1 1 440px;
+
+  @include below($bp-sm) {
+    flex: none;
+  }
+}
+
+// Without a photo the text has the full row. The intro keeps a readable line
+// length and, on wide screens, the facts move into a column beside it.
+.noPhoto .intro {
+  max-width: 680px;
+}
+
+@media (min-width: $bp-md + 1px) {
+  .noPhoto .text {
+    flex-direction: row;
+    align-items: center;
+    gap: space(8);
+  }
+
+  .noPhoto .intro {
+    flex: 1 1 auto;
+  }
+
+  .noPhoto .facts {
+    flex: 0 0 240px;
+    margin: 0;
+    padding: 0 0 0 space(6);
+    border-top: 0;
+    border-left: 1px solid $theme-border;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

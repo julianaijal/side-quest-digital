@@ -5,7 +5,11 @@ import styles from './About.module.scss';
 export function About({ site }: { site: Site }) {
   const { about } = site;
   return (
-    <section id="about" className={styles.section} aria-labelledby="about-title">
+    <section
+      id="about"
+      className={`${styles.section} ${about.photo ? '' : styles.noPhoto}`}
+      aria-labelledby="about-title"
+    >
       {about.photo && (
         <div className={styles.photo}>
           <Image
@@ -18,14 +22,16 @@ export function About({ site }: { site: Site }) {
         </div>
       )}
       <div className={styles.text}>
-        <h2 id="about-title" className={styles.heading}>
-          {about.title}
-        </h2>
-        {about.paragraphs.map((paragraph) => (
-          <p key={paragraph} className={styles.paragraph}>
-            {paragraph}
-          </p>
-        ))}
+        <div className={styles.intro}>
+          <h2 id="about-title" className={styles.heading}>
+            {about.title}
+          </h2>
+          {about.paragraphs.map((paragraph) => (
+            <p key={paragraph} className={styles.paragraph}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
         <dl className={styles.facts}>
           {about.facts.map((fact) => (
             <div key={fact.label} className={fact.mobile ? undefined : styles.desktopOnly}>
