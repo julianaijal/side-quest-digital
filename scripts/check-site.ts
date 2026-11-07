@@ -159,6 +159,19 @@ async function main() {
   );
   check('/index.md', 'canonical points to the page', /rel="canonical"/.test(markdown.response.headers.get('link') ?? ''));
 
+  // Google Search wants a favicon of at least 48 px, in a multiple of 48.
+  const favicon = new Uint8Array(await (await fetch(base + '/favicon.ico')).arrayBuffer());
+  const faviconSizes = Array.from({ length: favicon[4] }, (_, i) => favicon[6 + 16 * i] || 256);
+  check('/favicon.ico', 'has a 48 px image', faviconSizes.includes(48), faviconSizes.join(', '));
+
+  const { body: home } = await get('/');
+  const iconLinks = all(home, /<link rel="(?:icon|apple-touch-icon)" href="([^"]+)"/g).map((match) => match[1]);
+  check('/', 'icon, svg icon and apple touch icon linked', iconLinks.length >= 3, `${iconLinks.length} found`);
+  for (const href of iconLinks) {
+    const response = await fetch(base + href, { method: 'HEAD' });
+    check('/', `icon ${href.split('?')[0]} is served`, response.ok, String(response.status));
+  }
+
   const manifest = await get('/manifest.webmanifest');
   check(
     '/manifest.webmanifest',
