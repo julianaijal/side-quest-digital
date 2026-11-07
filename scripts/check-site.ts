@@ -61,6 +61,7 @@ function checkHtml(page: string, html: string) {
   check(page, 'main landmark with id main', /<main[^>]*\sid="main"/.test(html));
 
   check(page, 'scroll padding clears the sticky nav', /scroll-padding-top:/.test(html));
+  check(page, 'styles for forced colors mode', /forced-colors:\s*active/.test(html));
   check(page, 'stable scrollbar gutter', /scrollbar-gutter:stable/.test(html.replace(/\s/g, '')));
 
   const imgsWithoutAlt = all(html, /<img\b[^>]*>/gi).filter((match) => !/\salt=/.test(match[0]));
