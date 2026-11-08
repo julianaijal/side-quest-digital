@@ -41,7 +41,7 @@
   color: $theme-footer-text;
   text-underline-offset: 3px;
 
-  &:hover {
+  @include hover {
     color: $theme-accent-hover;
   }
 }
