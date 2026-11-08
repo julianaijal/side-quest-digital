@@ -140,6 +140,7 @@ $touch-min:         44px;
 
 // Breakpoints
 $bp-bento: 960px; // bento grid collapses to one column
+$short-screen: 500px; // below this height the header stops being sticky
 $bp-md:    860px; // hero art hidden, horizontal step line hidden
 
 @mixin below($bp) {

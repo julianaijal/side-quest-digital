@@ -6,6 +6,12 @@
   top: 0;
   z-index: 10;
   background: $theme-bg;
+
+  // On short screens (a phone held sideways) a sticky header takes too much
+  // of the view, so it scrolls away with the page there.
+  @media (max-height: $short-screen) {
+    position: relative;
+  }
 }
 
 .inner {
