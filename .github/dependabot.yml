@@ -1,0 +1,22 @@
+# Weekly update pull requests for npm packages and GitHub Actions. Actions
+# are pinned to commit SHAs with the version in a comment; Dependabot updates
+# both. Grouped to keep the number of pull requests small. Without a commit
+# message prefix, subjects read like "Bump next from 16.4.5 to 16.5.0".
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      npm-minor-and-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ['*']

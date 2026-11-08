@@ -13,17 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
       - run: npm ci
 
       - name: Check commit messages and branch name
-        if: github.event_name == 'pull_request'
+        # Dependabot writes its own commit messages with long release notes.
+        if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
         run: |
           node scripts/git-workflow.ts "$BASE" "$HEAD" "$BRANCH" | tee -a "$GITHUB_STEP_SUMMARY"
           exit ${PIPESTATUS[0]}
@@ -56,7 +57,7 @@ jobs:
 
       - name: Keep the Lighthouse report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: lighthouse-report
           path: lighthouse.report.html
