@@ -44,17 +44,16 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 
 ### Commit messages
 
-Follow [Conventional Commits 1.0](https://www.conventionalcommits.org), with the type list and rules of [commitlint config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). CI checks the format of every commit in a pull request and the branch name (`scripts/git-workflow.ts`):
+A plain subject line in the imperative, like the Git project itself: "Add IndexNow ping after each deploy". CI checks every commit in a pull request and the branch name (`scripts/git-workflow.ts`):
 
-- Header `<type>(<scope>): <subject>`, scope optional, `!` before the colon for a breaking change.
-- Types: `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`.
-- Scope in lower case. Subject starts lower case, in the imperative, without a full stop.
-- Header and every body and footer line at most 100 characters; wrap the body. A blank line between header and body.
+- No type prefix such as `feat:`, `fix:` or `ci:`.
+- Start with a capital, no full stop at the end.
+- Subject and every body and footer line at most 100 characters; wrap the body. A blank line between subject and body.
 - Merge, revert, fixup and squash commits that git writes itself are skipped.
 
 ### Branch names
 
-`<type>/<description>`, with a type from the list above and the description in lower case kebab case, for example `feat/homepage` or `ci/git-workflow-checks`.
+A short description in lower case kebab case, for example `indexnow-ping` or `design-polish`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
