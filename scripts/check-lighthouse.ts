@@ -31,20 +31,29 @@ type Report = {
   audits: Record<string, Audit>;
 };
 
-function run(index: number): Report {
-  execFileSync(
-    'npx',
-    [
-      'lighthouse',
-      url,
-      '--quiet',
-      '--chrome-flags=--headless=new --no-sandbox',
-      '--output=json',
-      '--output=html',
-      `--output-path=./lighthouse-${index}`,
-    ],
-    { stdio: 'inherit' },
-  );
+// Lighthouse sometimes fails to record a trace on a busy CI runner (for
+// example NO_NAVSTART). That says nothing about the page, so a crashed run is
+// tried once more before the check fails.
+function run(index: number, attempt = 1): Report {
+  try {
+    execFileSync(
+      'npx',
+      [
+        'lighthouse',
+        url,
+        '--quiet',
+        '--chrome-flags=--headless=new --no-sandbox',
+        '--output=json',
+        '--output=html',
+        `--output-path=./lighthouse-${index}`,
+      ],
+      { stdio: 'inherit' },
+    );
+  } catch (error) {
+    if (attempt > 1) throw error;
+    console.error(`Lighthouse run ${index + 1} crashed, trying it once more.`);
+    return run(index, attempt + 1);
+  }
   return JSON.parse(readFileSync(`lighthouse-${index}.report.json`, 'utf8'));
 }
 
