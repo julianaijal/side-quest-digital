@@ -197,7 +197,7 @@ export const site = {
         paragraphs: [
           'I use Google Analytics, loaded through Google Tag Manager, to see how people find and use this site. It only sets cookies after you click Allow in the cookie bar.',
           'Without your consent, Google receives a basic signal without cookies, so visits can still be counted in total.',
-          'With your consent, Google Analytics stores a random visitor ID in a cookie (_ga) for up to two years. It collects the pages you view, how you arrived, which contact and call to action buttons you click, your device type and an approximate location. Google does not store your IP address. Data is kept for two months.',
+          'With your consent, Google Analytics stores a random visitor ID in a cookie (_ga) for up to two years. It collects the pages you view, how you arrived, which contact and call to action buttons you click, your choice in the cookie bar, your device type and an approximate location. Google does not store your IP address. Data is kept for two months.',
           'Google processes this data on my behalf under its data processing terms. Sharing data with Google for its own purposes is turned off.',
         ],
       },
