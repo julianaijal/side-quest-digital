@@ -19,6 +19,10 @@ html {
   @include below($bp-md) {
     scroll-padding-top: $nav-height-mobile;
   }
+
+  @media (max-height: $short-screen) {
+    scroll-padding-top: 0;
+  }
 }
 
 body {

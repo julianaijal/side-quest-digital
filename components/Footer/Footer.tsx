@@ -16,7 +16,7 @@ export function Footer({ site }: { site: Site }) {
         </span>
         <span className={styles.meta}>
           <span>
-            {site.footer.kvkLabel} {site.kvk}, © {year}
+            <span lang="nl">{site.footer.kvkLabel}</span> {site.kvk}, © {year}
           </span>
           <Link href="/privacy" className={styles.link}>
             {site.privacy.linkLabel}
