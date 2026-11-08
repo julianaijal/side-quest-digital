@@ -17,6 +17,7 @@ type Props = {
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
   interface Navigator {
     globalPrivacyControl?: boolean;
@@ -67,6 +68,9 @@ export function CookieConsent({ label, text, acceptLabel, declineLabel, settings
       // Storage blocked: the choice holds for this page view only.
     }
     window.gtag?.('consent', 'update', { analytics_storage: choice });
+    // GTM cannot trigger on a consent update itself, so the choice also goes
+    // to the dataLayer as an event (and to GA4 as consent_update).
+    window.dataLayer?.push({ event: 'consent_update', consent_choice: choice });
     if (choice === 'denied') clearAnalyticsCookies();
     setOpen(false);
   }
