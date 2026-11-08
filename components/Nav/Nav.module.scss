@@ -35,7 +35,7 @@
   color: $theme-text;
   text-decoration: none;
 
-  &:hover {
+  @include hover {
     color: $theme-text;
   }
 
@@ -86,7 +86,7 @@
     transition: color 0.15s ease;
   }
 
-  &:hover {
+  @include hover {
     color: $theme-text;
   }
 }
@@ -113,7 +113,7 @@
   color: $theme-text;
   cursor: pointer;
 
-  &:hover {
+  @include hover {
     background: $theme-surface;
   }
 }
@@ -166,7 +166,7 @@
   text-decoration: none;
   border-bottom: 1px solid $theme-surface;
 
-  &:hover {
+  @include hover {
     color: $theme-accent;
   }
 }
