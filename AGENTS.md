@@ -12,7 +12,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - `npm run check:lighthouse -- <url>`: runs Lighthouse (mobile) three times against a running site, takes the median run and fails below 90 for performance or below 100 for accessibility, best practices and SEO
 - `npm run build`: production build
 - `npm run preview`: build for Cloudflare and run it locally in the Workers runtime
-- `npm run deploy`: build for Cloudflare and deploy the Worker (needs `wrangler login`)
+- `npm run deploy`: build for Cloudflare, deploy the Worker (needs `wrangler login`), then ping IndexNow with the sitemap URLs (`npm run indexnow`; key in `lib/indexnow.ts`, file in `public/`)
 
 ## Project rules
 
