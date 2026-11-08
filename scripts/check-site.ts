@@ -9,6 +9,8 @@
 // redirect, hashed asset caching on Cloudflare). Exits 1 on any failure and
 // prints a Markdown report, so CI can paste it into an issue.
 
+import { INDEXNOW_KEY } from '../lib/indexnow.ts';
+
 const args = process.argv.slice(2);
 const base = (args.find((arg) => !arg.startsWith('--')) ?? 'http://localhost:3000').replace(/\/$/, '');
 const live = args.includes('--live');
@@ -177,6 +179,9 @@ async function main() {
     const response = await fetch(base + href, { method: 'HEAD' });
     check('/', `icon ${href.split('?')[0]} is served`, response.ok, String(response.status));
   }
+
+  const indexNow = await get(`/${INDEXNOW_KEY}.txt`);
+  check('/indexnow key', 'IndexNow key file served', indexNow.response.status === 200 && indexNow.body.trim() === INDEXNOW_KEY);
 
   const manifest = await get('/manifest.webmanifest');
   check(
