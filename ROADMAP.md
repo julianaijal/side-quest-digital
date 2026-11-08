@@ -28,6 +28,8 @@
 - [x] Minimum TLS 1.2; `.nl` and `.tech` send no mail: SPF `-all`, DMARC `p=reject`; DMARC reports for `.com` through Cloudflare DMARC Management (policy stays `p=none` until Gmail "Send mail as" is set up)
 - [x] Search Console domain property verified by DNS, sitemap submitted, homepage indexing requested (the last crawl still saw the TransIP parking page with `noindex` and its favicon)
 - [x] Key actions tracked (`copy_email`, `cta_click`, `linkedin_click` with `cta_location`) through GTM to GA4; GA4 enhanced measurement trimmed to page loads, scrolls and outbound clicks; data retention 2 months; custom dimension CTA location
+- [x] `copy_email` and `linkedin_click` marked as key events in GA4; `cta_click` stays a plain event
+- [x] Cookie bar choice tracked as `consent_update` with `consent_choice`
 - [x] Data Studio dashboard "Side Quest Digital analytics" on the GA4 property, with a Leads page
 - [x] 301 from `www.side-quest-digital.com` (HTTP and HTTPS) to the apex in one hop, keeping path and query (Cloudflare redirect rule on `http.host`), and Always Use HTTPS on
 - [x] Lighthouse on every CI build (`check:lighthouse`): performance at least 90, the other categories 100
@@ -113,7 +115,6 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 
 - [ ] Photo of Julian plus alt text (`about.photo` and `about.photoAlt`; the block shows once `photo` is set)
 - [ ] Optional footer line with the measured page weight, once measured
-- [ ] Mark `copy_email` and `linkedin_click` as key events in GA4 once they show under Recent events
 
 ## v2: headless CMS
 
