@@ -70,7 +70,7 @@
   background: $theme-surface;
   color: $theme-text;
 
-  &:hover {
+  @include hover {
     background: $theme-border-strong;
   }
 }
@@ -80,7 +80,7 @@
   background: $theme-action;
   color: $theme-on-action;
 
-  &:hover {
+  @include hover {
     background: $theme-action-hover;
   }
 }
@@ -96,7 +96,7 @@
   text-underline-offset: 3px;
   cursor: pointer;
 
-  &:hover {
+  @include hover {
     color: $theme-accent-hover;
   }
 
