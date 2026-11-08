@@ -1,56 +1,35 @@
 // Checks the commits and branch name of a pull request against the git
-// workflow in AGENTS.md: Conventional Commits with the type list and rules of
-// commitlint config-conventional, and branches named <type>/<description>.
+// workflow in AGENTS.md: a short subject in the imperative, starting with a
+// capital and without a type prefix such as "feat:", and short kebab case
+// branch names.
 //
 //   node scripts/git-workflow.ts <base sha> <head sha> <branch>
 //
-// Merge, revert, fixup and squash commits that git writes itself are skipped,
-// as commitlint does. Exits 1 on any failure and prints a Markdown report.
+// Merge, revert, fixup and squash commits that git writes itself are skipped.
+// Exits 1 on any failure and prints a Markdown report.
 
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
-export const types = [
-  'build',
-  'chore',
-  'ci',
-  'docs',
-  'feat',
-  'fix',
-  'perf',
-  'refactor',
-  'revert',
-  'style',
-  'test',
-] as const;
-
 const maxLineLength = 100;
-const header = /^([^(:!\s]+)(?:\(([^)]*)\))?!?: (.*)$/;
 const generated = /^(Merge (branch|pull request|remote-tracking branch) |Revert "|fixup! |squash! |amend! )/;
+// A Conventional Commits style prefix like "feat:" or "fix(nav):".
+const typePrefix = /^[a-z]+(\([^)]*\))?!?: /;
 
 export function checkCommitMessage(message: string): string[] {
   const lines = message.replace(/\s+$/, '').split('\n');
-  const first = lines[0] ?? '';
-  if (generated.test(first)) return [];
+  const subject = lines[0] ?? '';
+  if (generated.test(subject)) return [];
 
   const errors: string[] = [];
-  const match = first.match(header);
-  if (!match) {
-    return [`header "${first}" is not "<type>(<scope>): <subject>"`];
-  }
-  const [, type, scope, subject] = match;
-
-  if (!(types as readonly string[]).includes(type)) errors.push(`type "${type}" is not one of ${types.join(', ')}`);
-  if (scope !== undefined && (scope === '' || scope !== scope.toLowerCase())) {
-    errors.push(`scope "${scope}" must be lower case and not empty`);
-  }
   if (subject.trim() === '') errors.push('subject is empty');
   if (subject !== subject.trim()) errors.push('subject has leading or trailing spaces');
-  if (/^\p{Lu}/u.test(subject)) errors.push(`subject "${subject}" starts with a capital`);
+  if (typePrefix.test(subject)) errors.push(`subject "${subject}" has a type prefix; write a plain sentence`);
+  if (/^\p{Ll}/u.test(subject)) errors.push(`subject "${subject}" starts with a lower case letter`);
   if (subject.endsWith('.')) errors.push('subject ends with a full stop');
-  if (first.length > maxLineLength) errors.push(`header is ${first.length} characters, max ${maxLineLength}`);
+  if (subject.length > maxLineLength) errors.push(`subject is ${subject.length} characters, max ${maxLineLength}`);
 
-  if (lines.length > 1 && lines[1] !== '') errors.push('no blank line between header and body');
+  if (lines.length > 1 && lines[1] !== '') errors.push('no blank line between subject and body');
   lines.slice(1).forEach((line, index) => {
     if (line.length > maxLineLength && !/^\S+$|https?:\/\//.test(line)) {
       errors.push(`line ${index + 2} is ${line.length} characters, max ${maxLineLength}`);
@@ -61,10 +40,8 @@ export function checkCommitMessage(message: string): string[] {
 
 export function checkBranchName(branch: string): string[] {
   if (branch === 'main' || branch.startsWith('dependabot/')) return [];
-  const match = branch.match(/^([a-z]+)\/([a-z0-9]+(?:-[a-z0-9]+)*)$/);
-  if (!match) return [`branch "${branch}" is not "<type>/<lower-case-description>"`];
-  if (!(types as readonly string[]).includes(match[1])) {
-    return [`branch type "${match[1]}" is not one of ${types.join(', ')}`];
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(branch)) {
+    return [`branch "${branch}" is not a short kebab case description, like "indexnow-ping"`];
   }
   return [];
 }
