@@ -29,7 +29,7 @@
   background: $theme-action;
   color: $theme-on-action;
 
-  &:hover {
+  @include hover {
     background: $theme-action-hover;
     color: $theme-on-action;
   }
@@ -40,7 +40,7 @@
   background: $theme-band;
   color: $theme-text;
 
-  &:hover {
+  @include hover {
     background: $theme-surface;
     color: $theme-text;
   }

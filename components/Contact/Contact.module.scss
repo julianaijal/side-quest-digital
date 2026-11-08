@@ -113,7 +113,7 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 0.18em;
 
-  &:hover {
+  @include hover {
     color: $theme-accent-hover;
   }
 }
@@ -133,7 +133,7 @@
   color: $theme-text;
   cursor: pointer;
 
-  &:hover {
+  @include hover {
     background: $theme-border-strong;
   }
 }
@@ -184,7 +184,7 @@
   color: $theme-text;
   text-decoration: none;
 
-  &:hover {
+  @include hover {
     color: $theme-accent;
   }
 }
