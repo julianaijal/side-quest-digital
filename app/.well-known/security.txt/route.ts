@@ -14,7 +14,6 @@ export function GET() {
     `Expires: ${expires.toISOString()}`,
     'Preferred-Languages: en, nl',
     `Canonical: ${absoluteUrl('/.well-known/security.txt')}`,
-    `Policy: ${absoluteUrl('/privacy')}`,
     '',
   ].join('\n');
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
