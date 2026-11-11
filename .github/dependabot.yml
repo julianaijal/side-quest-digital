@@ -12,6 +12,11 @@ updates:
     groups:
       npm-minor-and-patch:
         update-types: [minor, patch]
+    # typescript-eslint (through eslint-config-next) refuses TypeScript 7 and
+    # breaks lint. Remove this once it supports 7.
+    ignore:
+      - dependency-name: typescript
+        versions: ['>=7']
   - package-ecosystem: github-actions
     directory: /
     schedule:
