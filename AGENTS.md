@@ -27,6 +27,13 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
 - `app/opengraph-image.png` and `app/apple-icon.png` are static files (Workers cannot read local fonts at runtime). Recreate the OG image when the hero title changes.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
+- **Browser Support:** Baseline Widely available features need no fallback. Newly available features are allowed when feature detected with graceful degradation, using a small custom fallback (at most 20 lines) and never a polyfill package or other external dependency.
+
+## Agent skills
+
+- Modern Web Guidance (`.agents/skills/modern-web-guidance`, symlinked into `.claude/skills`) holds web platform best practices. Use it for HTML, CSS and client side JS work; the project rules above win when they conflict.
+- Update it with `npx modern-web-guidance@latest update` and commit the changed files together with `skills-lock.json`.
+- It sends anonymous usage data to Google; set `DISABLE_TELEMETRY=1` in your shell to opt out.
 
 ## Automation
 
