@@ -28,7 +28,7 @@
     "eslint": "^10",
     "eslint-config-next": "16.4.5",
     "lighthouse": "13.6.0",
-    "sass": "^1.108.0",
+    "sass": "^1.108.1",
     "typescript": "^5",
     "wrangler": "^4.158.0"
   },
