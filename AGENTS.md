@@ -27,6 +27,13 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
 - `app/opengraph-image.png` and `app/apple-icon.png` are static files (Workers cannot read local fonts at runtime). Recreate the OG image when the hero title changes.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
+- **Browser Support:** Baseline Widely available features need no fallback. Newly available features are allowed as progressive enhancement: the page must still work and read well without them. Never add a polyfill package or other external dependency for them.
+
+## Agent skills
+
+- Modern Web Guidance (`.agents/skills/modern-web-guidance`, symlinked into `.claude/skills`) holds web platform best practices. Use it for HTML, CSS and client side JS work; the project rules above win when they conflict.
+- Update it with `npx modern-web-guidance@latest update` and commit the changed files together with `skills-lock.json`.
+- It sends anonymous usage data to Google; set `DISABLE_TELEMETRY=1` in your shell to opt out.
 
 ## Automation
 
@@ -50,6 +57,11 @@ A plain subject line in the imperative, like the Git project itself: "Add IndexN
 - Start with a capital, no full stop at the end.
 - Subject and every body and footer line at most 100 characters; wrap the body. A blank line between subject and body.
 - Merge, revert, fixup and squash commits that git writes itself are skipped.
+
+### Pull requests
+
+- Pull request descriptions cover the change and what a reviewer needs, nothing else: no lines saying which tool generated them.
+- No `Co-Authored-By` trailers for tools in commit messages.
 
 ### Branch names
 
