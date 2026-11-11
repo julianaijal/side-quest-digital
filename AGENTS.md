@@ -58,6 +58,11 @@ A plain subject line in the imperative, like the Git project itself: "Add IndexN
 - Subject and every body and footer line at most 100 characters; wrap the body. A blank line between subject and body.
 - Merge, revert, fixup and squash commits that git writes itself are skipped.
 
+### Pull requests
+
+- Pull request descriptions cover the change and what a reviewer needs, nothing else: no lines saying which tool generated them.
+- No `Co-Authored-By` trailers for tools in commit messages.
+
 ### Branch names
 
 A short description in lower case kebab case, for example `indexnow-ping` or `design-polish`.
