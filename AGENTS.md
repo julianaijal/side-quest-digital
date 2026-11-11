@@ -27,7 +27,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
 - `app/opengraph-image.png` and `app/apple-icon.png` are static files (Workers cannot read local fonts at runtime). Recreate the OG image when the hero title changes.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
-- **Browser Support:** Baseline Widely available features need no fallback. Newly available features are allowed when feature detected with graceful degradation, using a small custom fallback (at most 20 lines) and never a polyfill package or other external dependency.
+- **Browser Support:** Baseline Widely available features need no fallback. Newly available features are allowed as progressive enhancement: the page must still work and read well without them. Never add a polyfill package or other external dependency for them.
 
 ## Agent skills
 
