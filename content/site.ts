@@ -19,7 +19,7 @@ export const site = {
   country: 'Netherlands',
 
   meta: {
-    title: 'Side Quest Digital · SEO and web development in Amsterdam',
+    title: 'Side Quest Digital · SEO by Julian Aijal in Amsterdam',
     description:
       'Freelance SEO and web development for agencies and online stores. Get found in Google and AI search, with clear priorities and no noise.',
   },
@@ -141,7 +141,7 @@ export const site = {
   },
 
   about: {
-    title: 'Hi, I’m Julian.',
+    title: 'Hi, I’m Julian Aijal.',
     paragraphs: [
       'I’ve worked in SEO since 2011, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
       'Through Side Quest Digital I take on a limited number of projects, so each one gets proper time and attention.',
