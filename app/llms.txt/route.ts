@@ -20,9 +20,9 @@ export function GET() {
     '',
     `## ${llms.contactTitle}`,
     '',
-    `- ${llms.websiteLabel}: ${absoluteUrl('/')}`,
+    `- [${llms.websiteLabel}](${absoluteUrl('/')})`,
     `- ${llms.mailLabel}: ${obfuscatedEmail()}`,
-    ...(isPlaceholder(site.linkedin) ? [] : [`- ${llms.linkedinLabel}: ${site.linkedin}`]),
+    ...(isPlaceholder(site.linkedin) ? [] : [`- [${llms.linkedinLabel}](${site.linkedin})`]),
     `- ${llms.locationLabel}: ${site.city}, ${site.country}`,
     '',
   ];
