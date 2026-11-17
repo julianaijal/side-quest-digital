@@ -54,7 +54,7 @@ Dark "Night Reef" theme: sea green neutrals, mint as the brand colour, and sand 
 ## SEO and AI visibility
 
 - Metadata, Open Graph and Twitter cards
-- JSON-LD for `ProfessionalService` and `Person`
+- JSON-LD for `Organization` and `Person`
 - `sitemap.xml`, `robots.txt` (all crawlers welcome) and `llms.txt`, generated from the same content file
 
 ## Contributing

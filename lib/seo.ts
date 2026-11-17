@@ -72,7 +72,7 @@ export function jsonLd() {
         publisher: { '@id': businessId },
       },
       {
-        '@type': 'ProfessionalService',
+        '@type': 'Organization',
         '@id': businessId,
         name: site.name,
         url,
