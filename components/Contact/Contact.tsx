@@ -42,7 +42,7 @@ export function Contact({ site }: { site: Site }) {
               {contact.timePrefix} <strong className={styles.strong}><LocalTime /></strong> {contact.timeSuffix}
             </span>
           </p>
-          <a href={site.linkedin} className={styles.linkedin} data-track="linkedin_click" data-track-location="contact">
+          <a href={site.linkedin} rel="me" className={styles.linkedin} data-track="linkedin_click" data-track-location="contact">
             <LinkedInIcon className={styles.linkedinIcon} />
             {contact.linkedinLabel}
           </a>
