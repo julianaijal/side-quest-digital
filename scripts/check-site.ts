@@ -109,7 +109,7 @@ async function checkJsonLd() {
     return;
   }
   const types = graph.map((node) => node['@type']);
-  for (const type of ['WebSite', 'ProfessionalService', 'Person']) {
+  for (const type of ['WebSite', 'Organization', 'Person']) {
     check('/', `JSON-LD has a ${type}`, types.includes(type), types.join(', '));
   }
 

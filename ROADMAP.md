@@ -66,7 +66,7 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] Real 404 status for unknown URLs (no soft 404)
 - [x] Custom styled 404 page
 - [x] Heading hierarchy without skipped levels
-- [x] JSON-LD (`ProfessionalService`, `Person`)
+- [x] JSON-LD (`Organization`, `Person`)
 - [x] Redirects: www and non www to one host with a permanent redirect, no chains
 
 **Accessibility**
