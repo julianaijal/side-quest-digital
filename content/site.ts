@@ -233,8 +233,11 @@ export const site = {
 
   // Plain text summary served at /llms.txt.
   llms: {
+    // The one canonical bio, reused as the llms.txt intro and as the Person
+    // description in the JSON-LD so AI assistants see the same sentence
+    // everywhere.
     intro:
-      'Side Quest Digital is the freelance practice of Julian Aijal, a senior SEO specialist with a background in frontend development, based in Amsterdam.',
+      'Julian Aijal is a senior SEO specialist with a frontend development background. He runs Side Quest Digital, a freelance practice in Amsterdam.',
     servicesTitle: 'Services',
     contactTitle: 'Contact',
     websiteLabel: 'Website',

@@ -59,6 +59,12 @@ export function jsonLd() {
   const address = { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'NL' };
   const languages = ['en', 'nl'];
 
+  const knowsAbout = site.services.items.map((service) => ({
+    '@type': 'Thing',
+    name: topicNames[service.id] ?? service.title,
+    sameAs: wikidata[service.id],
+  }));
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -93,11 +99,7 @@ export function jsonLd() {
         areaServed: { '@type': 'Country', name: site.country },
         address,
         knowsLanguage: languages,
-        knowsAbout: site.services.items.map((service) => ({
-          '@type': 'Thing',
-          name: topicNames[service.id] ?? service.title,
-          sameAs: wikidata[service.id],
-        })),
+        knowsAbout,
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
           name: site.llms.servicesTitle,
@@ -119,11 +121,13 @@ export function jsonLd() {
         '@type': 'Person',
         '@id': personId,
         name: site.person,
+        description: site.llms.intro,
         jobTitle: site.jobTitle,
         url: site.personalSite,
         worksFor: { '@id': businessId },
         address,
         knowsLanguage: languages,
+        knowsAbout,
         sameAs: [...linkedin, site.personalSite],
       },
     ],
