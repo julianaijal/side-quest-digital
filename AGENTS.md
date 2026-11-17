@@ -60,6 +60,7 @@ A plain subject line in the imperative, like the Git project itself: "Add IndexN
 
 ### Pull requests
 
+- A pull request is appropriate when a reviewer would get value from seeing the change in isolation, or when CI needs to gate it. Trivial one-line hygiene changes (gitignore, typo, dotfile tweak) can go straight to `main`.
 - Pull request descriptions cover the change and what a reviewer needs, nothing else: no lines saying which tool generated them.
 - No `Co-Authored-By` trailers for tools in commit messages.
 
