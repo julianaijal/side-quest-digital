@@ -4,6 +4,8 @@
 export const site = {
   name: 'Side Quest Digital',
   person: 'Julian Aijal',
+  givenName: 'Julian',
+  familyName: 'Aijal',
   jobTitle: 'Senior SEO specialist',
   domain: 'side-quest-digital.com',
   // The address is stored in two parts and shown as "julian [@] domain", so the
@@ -16,7 +18,32 @@ export const site = {
   personalSite: 'https://julianaijal.com/',
   kvk: '42206724',
   city: 'Amsterdam',
+  // Google Knowledge Graph entity id for Amsterdam, so the Person's
+  // homeLocation resolves to the same entity search engines already know.
+  cityKg: 'https://g.co/kgs/mJw8Moy',
   country: 'Netherlands',
+
+  // Other places Julian is listed as the same person. Mirrored from
+  // julianaijal.com so the Person node on both sites points at the same
+  // sameAs set, which strengthens entity disambiguation. The Google
+  // Knowledge Graph entity id is the strongest single signal.
+  profiles: [
+    'https://g.co/kgs/GRJheuw',
+    'https://github.com/julianaijal',
+    'https://thenextweb.com/author/julianaijal',
+    'https://www.crunchbase.com/person/julian-aijal',
+    'https://www.credential.net/profile/julianaijal489646/wallet',
+  ],
+
+  // Topics Julian knows about beyond the services Side Quest Digital
+  // sells. Added to the Person node's knowsAbout so the person is tied to
+  // the broader skill set, not only the business's offerings. All
+  // Wikidata-linked so entities match across the graph.
+  personSkills: [
+    { name: 'Frontend web development', wikidata: 'https://www.wikidata.org/wiki/Q4130556' },
+    { name: 'Digital marketing', wikidata: 'https://www.wikidata.org/wiki/Q1323528' },
+    { name: 'Computer programming', wikidata: 'https://www.wikidata.org/wiki/Q80006' },
+  ],
 
   meta: {
     title: 'Side Quest Digital · SEO by Julian Aijal in Amsterdam',
