@@ -169,12 +169,22 @@ export function resolvePolicy(input: ResolverInput): ResolverResult {
     directives.push({ source: 'X-Robots-Tag', directive: key, value: val });
   }
 
-  if (hasNoindexMeta !== hasNoindexX && (hasNoindexMeta || hasNoindexX)) {
-    if (metaDirs.has('index') && hasNoindexX) {
-      conflicts.push(
-        'Meta robots says "index" but X-Robots-Tag says "noindex". The most restrictive directive wins: the page will not be indexed.',
-      );
-    }
+  if (metaDirs.has('index') && hasNoindexX) {
+    conflicts.push(
+      'Meta robots says "index" but X-Robots-Tag says "noindex". The most restrictive directive wins: the page will not be indexed.',
+    );
+  }
+
+  if (metaDirs.has('follow') && hasNofollowX) {
+    conflicts.push(
+      'Meta robots says "follow" but X-Robots-Tag says "nofollow". The most restrictive directive wins: links will not be followed.',
+    );
+  }
+
+  if (metaDirs.has('nofollow') && xDirs.has('follow')) {
+    conflicts.push(
+      'Meta robots says "nofollow" but X-Robots-Tag says "follow". The most restrictive directive wins: links will not be followed.',
+    );
   }
 
   return { canCrawl, canIndex, canFollow, conflicts, directives };

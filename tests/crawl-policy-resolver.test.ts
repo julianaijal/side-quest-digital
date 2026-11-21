@@ -116,6 +116,18 @@ test('X-Robots-Tag with non-matching user-agent prefix is ignored', () => {
   assert.equal(result.canIndex, true);
 });
 
+test('follow/nofollow disagreement between meta and X-Robots-Tag produces conflict', () => {
+  const result = resolvePolicy({
+    robotsTxt: '',
+    url: '/page',
+    metaRobots: 'index, follow',
+    xRobotsTag: 'nofollow',
+    userAgent: 'Googlebot',
+  });
+  assert.equal(result.canFollow, false);
+  assert.ok(result.conflicts.length > 0);
+});
+
 test('meta none blocks both index and follow', () => {
   const result = resolvePolicy({
     robotsTxt: '',
