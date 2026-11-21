@@ -12,6 +12,10 @@ interface Props {
 
 const RESET_MS = 2000;
 
+function selectAll(e: React.FocusEvent<HTMLInputElement>) {
+  e.currentTarget.select();
+}
+
 export function CopyUrl({ url, label, copiedLabel }: Props) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -31,7 +35,14 @@ export function CopyUrl({ url, label, copiedLabel }: Props) {
 
   return (
     <div className={styles.copyUrl}>
-      <code className={styles.url}>{url}</code>
+      <input
+        className={styles.input}
+        type="text"
+        value={url}
+        readOnly
+        onFocus={selectAll}
+        aria-label="Timer URL with auto start"
+      />
       <button type="button" className={styles.button} onClick={copy}>
         {copied ? <CheckIcon className={styles.icon} /> : <CopyIcon className={styles.icon} />}
         <span aria-live="polite">{copied ? copiedLabel : label}</span>

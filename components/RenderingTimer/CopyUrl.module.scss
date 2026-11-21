@@ -2,34 +2,42 @@
 
 .copyUrl {
   display: flex;
-  align-items: center;
-  gap: space(2);
   margin-top: space(3);
-  flex-wrap: wrap;
+  background: $theme-inset;
+  border: 1px solid $theme-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
 }
 
-.url {
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: space(2) space(3);
   font-family: $font-mono;
   font-size: $fs-small;
   color: $theme-text;
-  background: $theme-surface;
-  padding: space(2) space(3);
-  border-radius: $radius-sm;
+  background: transparent;
+  border: none;
+  outline: none;
   user-select: all;
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px $theme-accent;
+  }
 }
 
 .button {
-  height: $touch-min;
-  padding: 0 space(4);
-  border: 0;
-  border-radius: $radius-full;
-  background: $theme-surface;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  gap: space(2);
+  gap: space(1);
+  padding: space(2) space(3);
   font-size: $fs-small;
   font-weight: $fw-semibold;
   color: $theme-text;
+  background: $theme-surface;
+  border: none;
+  border-left: 1px solid $theme-border;
   cursor: pointer;
 
   @include hover {
