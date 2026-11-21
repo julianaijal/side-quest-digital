@@ -37,6 +37,7 @@
   border: 1px solid $theme-border;
   border-radius: $radius-sm;
   padding: space(2) space(3);
+  min-height: $touch-min;
 
   &::placeholder {
     color: $theme-text-3;

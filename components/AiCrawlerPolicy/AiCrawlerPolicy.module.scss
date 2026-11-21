@@ -76,6 +76,7 @@
 
 .tab {
   padding: space(2) space(3);
+  min-height: $touch-min;
   font-size: $fs-small;
   font-weight: $fw-medium;
   color: $theme-text-3;
