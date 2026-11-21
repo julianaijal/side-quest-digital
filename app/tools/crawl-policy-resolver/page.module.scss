@@ -1,0 +1,13 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.title {
+  @include h2;
+}
+
+.intro {
+  margin-top: space(3);
+  font-size: $fs-lead;
+  line-height: $lh-lead;
+  color: $theme-text-2;
+}
