@@ -148,6 +148,7 @@ export function CrawlPolicyResolver({ resolveLabel, userAgentLabel }: Props) {
           )}
 
           {result.directives.length > 0 && (
+            <div className={styles.tableWrap}>
             <table className={styles.table}>
               <thead>
                 <tr>
@@ -166,6 +167,7 @@ export function CrawlPolicyResolver({ resolveLabel, userAgentLabel }: Props) {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       )}

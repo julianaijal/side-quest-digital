@@ -143,8 +143,12 @@
   border-radius: 0 $radius-sm $radius-sm 0;
 }
 
-.table {
+.tableWrap {
   margin-top: space(5);
+  overflow-x: auto;
+}
+
+.table {
   width: 100%;
   border-collapse: collapse;
   font-size: $fs-small;
