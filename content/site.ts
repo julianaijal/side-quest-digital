@@ -274,12 +274,12 @@ export const site = {
         description: 'See how much rendering time a browser or search engine spends on a page.',
         tag: 'Technical SEO',
         intro:
-          ‘Each milestone on this page appears after a set number of milliseconds. Paste the ?auto URL into Google Search Console (URL Inspection), hit "Test Live URL", and check the rendered HTML. The last milestone that shows up is how long Googlebot spent rendering.’,
-        startLabel: ‘Start’,
-        resetLabel: ‘Reset’,
-        completeLabel: ‘Complete’,
+          'Each milestone on this page appears after a set number of milliseconds. Paste the ?auto URL into Google Search Console (URL Inspection), hit "Test Live URL", and check the rendered HTML. The last milestone that shows up is how long Googlebot spent rendering.',
+        startLabel: 'Start',
+        resetLabel: 'Reset',
+        completeLabel: 'Complete',
         autoDescription:
-          ‘Copy the URL below and paste it into URL Inspection in any Google Search Console account. The ?auto parameter starts the timer on page load so it runs without a click.’,
+          'Copy the URL below and paste it into URL Inspection in any Google Search Console account. The ?auto parameter starts the timer on page load so it runs without a click.',
       },
       {
         slug: 'ai-crawler-policy',
