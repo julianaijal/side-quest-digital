@@ -1,0 +1,170 @@
+@use '@/styles/tokens' as *;
+
+.resolver {
+  margin-top: space(6);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+}
+
+.label {
+  font-size: $fs-small;
+  font-weight: $fw-medium;
+  color: $theme-text;
+}
+
+.help {
+  font-size: $fs-label;
+  color: $theme-text-3;
+}
+
+.input,
+.textarea,
+.select {
+  font-family: $font-mono;
+  font-size: $fs-small;
+  color: $theme-text;
+  background: $theme-inset;
+  border: 1px solid $theme-border;
+  border-radius: $radius-sm;
+  padding: space(2) space(3);
+
+  &::placeholder {
+    color: $theme-text-3;
+  }
+
+  &:focus {
+    @include focus-ring;
+    border-color: $theme-accent;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: $lh-body;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.agentRow {
+  display: flex;
+  gap: space(2);
+
+  .select {
+    flex-shrink: 0;
+  }
+
+  .input {
+    flex: 1;
+  }
+}
+
+.results {
+  margin-top: space(6);
+  min-height: 200px;
+}
+
+.verdict {
+  font-size: $fs-h3;
+  font-weight: $fw-semibold;
+  line-height: $lh-h3;
+  letter-spacing: $ls-h3;
+  color: $theme-text;
+}
+
+.verdictList {
+  display: flex;
+  gap: space(4);
+  margin-top: space(4);
+  flex-wrap: wrap;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: space(1);
+    padding: space(3) space(4);
+    border-radius: $radius-md;
+    background: $theme-surface;
+    min-width: 120px;
+  }
+
+  dt {
+    font-size: $fs-label;
+    font-weight: $fw-medium;
+    color: $theme-text-3;
+    text-transform: uppercase;
+    letter-spacing: $ls-label;
+  }
+
+  dd {
+    font-size: $fs-h3;
+    font-weight: $fw-semibold;
+    margin: 0;
+  }
+}
+
+.verdictYes dd {
+  color: $theme-accent;
+}
+
+.verdictNo dd {
+  color: $theme-action;
+}
+
+.conflicts {
+  margin-top: space(5);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: space(2);
+}
+
+.conflict {
+  padding: space(3) space(4);
+  font-size: $fs-small;
+  line-height: $lh-body;
+  color: $theme-text;
+  background: $theme-surface;
+  border-left: 3px solid $theme-action;
+  border-radius: 0 $radius-sm $radius-sm 0;
+}
+
+.table {
+  margin-top: space(5);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $fs-small;
+
+  th,
+  td {
+    padding: space(2) space(3);
+    text-align: left;
+    border-bottom: 1px solid $theme-border;
+  }
+
+  th {
+    font-weight: $fw-medium;
+    color: $theme-text-3;
+    font-size: $fs-label;
+    text-transform: uppercase;
+    letter-spacing: $ls-label;
+  }
+
+  td {
+    color: $theme-text-card;
+    font-family: $font-mono;
+  }
+}
