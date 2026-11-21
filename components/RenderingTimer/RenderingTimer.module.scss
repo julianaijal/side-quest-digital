@@ -1,0 +1,104 @@
+@use '@/styles/tokens' as *;
+
+.timer {
+  margin-top: space(6);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: $touch-min;
+  padding-inline: space(5);
+  font-size: $fs-body;
+  font-weight: $fw-semibold;
+  line-height: 1;
+  color: $theme-on-action;
+  background: $theme-action;
+  border: none;
+  border-radius: $radius-full;
+  cursor: pointer;
+
+  @include hover {
+    background: $theme-action-hover;
+  }
+
+  @include focus-ring;
+}
+
+.counter {
+  margin-top: space(5);
+  font-family: $font-mono;
+  font-size: $fs-h2;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-h2;
+  line-height: $lh-heading;
+  color: $theme-text;
+  font-variant-numeric: tabular-nums;
+}
+
+.milestones {
+  display: flex;
+  flex-direction: column;
+  gap: space(2);
+  margin-top: space(5);
+  padding: 0;
+  list-style: none;
+  min-height: 440px;
+}
+
+.milestone {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: space(3);
+}
+
+.bar {
+  display: block;
+  height: 6px;
+  background: $theme-border;
+  border-radius: $radius-full;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: $theme-accent;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}
+
+.barActive::after {
+  transform: scaleX(1);
+
+  @include motion-ok {
+    transition: transform 0.3s $ease-draw;
+  }
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: $fs-small;
+  font-weight: $fw-medium;
+  color: $theme-text;
+  min-width: 5ch;
+  text-align: right;
+}
+
+.marker {
+  font-family: $font-mono;
+  font-size: $fs-label;
+  color: $theme-text-3;
+  min-width: 14ch;
+}
+
+.status {
+  margin-top: space(5);
+  font-size: $fs-lead;
+  font-weight: $fw-semibold;
+  color: $theme-accent;
+}
