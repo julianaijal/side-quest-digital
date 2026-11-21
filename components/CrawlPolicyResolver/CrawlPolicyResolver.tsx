@@ -95,9 +95,10 @@ export function CrawlPolicyResolver({ resolveLabel, userAgentLabel }: Props) {
         </label>
 
         <div className={styles.field}>
-          <span className={styles.label}>{userAgentLabel}</span>
+          <label htmlFor="resolver-ua" className={styles.label}>{userAgentLabel}</label>
           <div className={styles.agentRow}>
             <select
+              id="resolver-ua"
               className={styles.select}
               value={AGENTS.includes(userAgent as typeof AGENTS[number]) ? userAgent : 'custom'}
               onChange={(e) => setUserAgent(e.target.value)}
