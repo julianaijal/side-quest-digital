@@ -94,6 +94,28 @@ test('wildcard in robots.txt path matches any sequence', () => {
   assert.equal(result.canCrawl, false);
 });
 
+test('X-Robots-Tag with user-agent prefix matches selected agent', () => {
+  const result = resolvePolicy({
+    robotsTxt: '',
+    url: '/page',
+    metaRobots: '',
+    xRobotsTag: 'googlebot: noindex',
+    userAgent: 'Googlebot',
+  });
+  assert.equal(result.canIndex, false);
+});
+
+test('X-Robots-Tag with non-matching user-agent prefix is ignored', () => {
+  const result = resolvePolicy({
+    robotsTxt: '',
+    url: '/page',
+    metaRobots: '',
+    xRobotsTag: 'bingbot: noindex',
+    userAgent: 'Googlebot',
+  });
+  assert.equal(result.canIndex, true);
+});
+
 test('meta none blocks both index and follow', () => {
   const result = resolvePolicy({
     robotsTxt: '',

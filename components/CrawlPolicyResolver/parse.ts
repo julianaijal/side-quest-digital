@@ -116,12 +116,27 @@ function parseDirectives(input: string): Map<string, string> {
   return map;
 }
 
+function parseXRobotsTag(value: string, userAgent: string): Map<string, string> {
+  if (!value.trim()) return new Map();
+  const ua = userAgent.toLowerCase();
+  const colonIdx = value.indexOf(':');
+  if (colonIdx !== -1) {
+    const beforeColon = value.slice(0, colonIdx).trim().toLowerCase();
+    const afterColon = value.slice(colonIdx + 1).trim();
+    if (!beforeColon.includes(',') && !['noindex', 'nofollow', 'none', 'all', 'noarchive', 'nosnippet', 'index', 'follow'].includes(beforeColon)) {
+      if (beforeColon === ua) return parseDirectives(afterColon);
+      return new Map();
+    }
+  }
+  return parseDirectives(value);
+}
+
 export function resolvePolicy(input: ResolverInput): ResolverResult {
   const groups = parseRobotsTxtGroups(input.robotsTxt);
   const canCrawl = checkRobotsTxt(groups, input.url, input.userAgent);
 
   const metaDirs = parseDirectives(input.metaRobots);
-  const xDirs = parseDirectives(input.xRobotsTag);
+  const xDirs = parseXRobotsTag(input.xRobotsTag, input.userAgent);
 
   const hasNoindexMeta = metaDirs.has('noindex');
   const hasNoindexX = xDirs.has('noindex');
