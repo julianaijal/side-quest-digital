@@ -47,6 +47,8 @@ export function AiCrawlerPolicy({
     setSettings((prev) => ({ ...prev, [key]: !prev[key] }));
   }, []);
 
+  const activeIdx = TABS.indexOf(activeTab);
+
   const output = (() => {
     switch (activeTab) {
       case 'robots.txt':
@@ -117,9 +119,11 @@ export function AiCrawlerPolicy({
             <button
               key={tab}
               ref={(el) => { tabRefs.current[i] = el; }}
+              id={`policy-tab-${i}`}
               role="tab"
               type="button"
               aria-selected={activeTab === tab}
+              aria-controls="policy-tabpanel"
               tabIndex={activeTab === tab ? 0 : -1}
               className={`${styles.tab} ${activeTab === tab ? styles.tabActive : ''}`}
               onClick={() => setActiveTab(tab)}
@@ -130,7 +134,9 @@ export function AiCrawlerPolicy({
         </div>
 
         <div
+          id="policy-tabpanel"
           role="tabpanel"
+          aria-labelledby={`policy-tab-${activeIdx}`}
           aria-live="polite"
           className={styles.panel}
         >
