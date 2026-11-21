@@ -1,0 +1,67 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.title {
+  @include h2;
+}
+
+.intro {
+  margin-top: space(3);
+  font-size: $fs-lead;
+  line-height: $lh-lead;
+  color: $theme-text-2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: $card-gap;
+  margin-top: space(7);
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: space(2);
+  padding: space(5);
+  background: $theme-surface;
+  border-radius: $radius-lg;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease;
+
+  @include hover {
+    border-color: $theme-border-strong;
+  }
+
+  @include forced-colors-edge;
+}
+
+.chip {
+  align-self: flex-start;
+  padding: space(1) space(2);
+  font-size: $fs-label;
+  font-weight: $fw-medium;
+  letter-spacing: $ls-tag;
+  line-height: 1;
+  color: $theme-accent;
+  background: $theme-chip;
+  border-radius: $radius-sm;
+}
+
+.cardTitle {
+  font-size: $fs-h3;
+  font-weight: $fw-semibold;
+  line-height: $lh-h3;
+  letter-spacing: $ls-h3;
+  color: $theme-text;
+}
+
+.cardText {
+  font-size: $fs-body;
+  line-height: $lh-body;
+  color: $theme-text-card;
+}
