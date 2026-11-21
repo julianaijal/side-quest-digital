@@ -54,10 +54,24 @@ function parseRobotsTxtGroups(txt: string): RobotsGroup[] {
 }
 
 function matchesPath(rulePath: string, url: string): boolean {
-  if (rulePath.endsWith('$')) {
-    return url === rulePath.slice(0, -1);
+  let pattern = rulePath;
+  let anchored = false;
+  if (pattern.endsWith('$')) {
+    anchored = true;
+    pattern = pattern.slice(0, -1);
   }
-  return url.startsWith(rulePath);
+  if (pattern.includes('*')) {
+    const re = new RegExp(
+      '^' + pattern.split('*').map(escapeRegExp).join('.*') + (anchored ? '$' : ''),
+    );
+    return re.test(url);
+  }
+  if (anchored) return url === pattern;
+  return url.startsWith(pattern);
+}
+
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function checkRobotsTxt(

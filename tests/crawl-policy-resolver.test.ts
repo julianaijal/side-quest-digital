@@ -83,6 +83,17 @@ test('longest path match wins in robots.txt', () => {
   assert.equal(result.canCrawl, true);
 });
 
+test('wildcard in robots.txt path matches any sequence', () => {
+  const result = resolvePolicy({
+    robotsTxt: 'User-agent: *\nDisallow: /admin/*',
+    url: '/admin/page',
+    metaRobots: '',
+    xRobotsTag: '',
+    userAgent: 'Googlebot',
+  });
+  assert.equal(result.canCrawl, false);
+});
+
 test('meta none blocks both index and follow', () => {
   const result = resolvePolicy({
     robotsTxt: '',
