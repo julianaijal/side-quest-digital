@@ -140,7 +140,7 @@ export function CrawlPolicyResolver({ resolveLabel, userAgentLabel }: Props) {
           </dl>
 
           {result.conflicts.length > 0 && (
-            <ul className={styles.conflicts} role="alert">
+            <ul className={styles.conflicts} aria-live="polite">
               {result.conflicts.map((c, i) => (
                 <li key={i} className={styles.conflict}>{c}</li>
               ))}
