@@ -54,6 +54,7 @@ export const site = {
   nav: [
     { label: 'Services', href: '#services' },
     { label: 'About', href: '#about' },
+    { label: 'Tools', href: '/tools/' },
   ],
   navCta: { label: 'Contact', href: '#contact' },
   navLabel: 'Main menu',
@@ -258,6 +259,56 @@ export const site = {
     settingsLabel: 'Cookie settings',
   },
 
+  tools: {
+    meta: {
+      title: 'Tools · Side Quest Digital',
+      description: 'SEO and web tools built and used by Side Quest Digital.',
+    },
+    title: 'Tools',
+    intro: 'Tools I build and use in my own work.',
+    backLabel: 'Back to tools',
+    items: [
+      {
+        slug: 'rendering-timer',
+        title: 'Rendering timer',
+        description: 'See how much rendering time a browser or search engine spends on a page.',
+        tag: 'Technical SEO',
+        intro:
+          'Each milestone on this page appears after a set number of milliseconds. Paste the ?auto URL into Google Search Console (URL Inspection), hit "Test Live URL", and check the rendered HTML. The last milestone that shows up is how long Googlebot spent rendering.',
+        startLabel: 'Start',
+        resetLabel: 'Reset',
+        completeLabel: 'Complete',
+        autoDescription:
+          'Paste this URL into URL Inspection in any Google Search Console account. The ?auto parameter starts the timer on page load so it runs without a click.',
+        copyLabel: 'Copy URL',
+        copiedLabel: 'Copied',
+      },
+      {
+        slug: 'ai-crawler-policy',
+        title: 'AI crawler policy generator',
+        description: 'Generate robots.txt rules, meta tags and Content Signals for AI crawlers.',
+        tag: 'Technical SEO',
+        intro:
+          'AI crawlers, search engines and training bots each need different rules. This tool generates the robots.txt entries, meta tags, HTTP headers and Content Signals you need, based on what you want to allow.',
+        searchLabel: 'Search indexing',
+        aiSearchLabel: 'AI search answers',
+        aiTrainingLabel: 'AI model training',
+        copyLabel: 'Copy',
+        copiedLabel: 'Copied',
+      },
+      {
+        slug: 'crawl-policy-resolver',
+        title: 'Crawl policy conflict resolver',
+        description: 'Check whether your crawl and index directives from different sources conflict.',
+        tag: 'Technical SEO',
+        intro:
+          'Your robots.txt, meta robots tag and HTTP robot headers can contradict each other in ways that catch even experienced SEOs off guard. Paste your directives and see the effective policy, with any conflicts explained.',
+        resolveLabel: 'Resolve',
+        userAgentLabel: 'User agent',
+      },
+    ],
+  },
+
   // Plain text summary served at /llms.txt.
   llms: {
     // The one canonical bio, reused as the llms.txt intro and as the Person
@@ -266,6 +317,7 @@ export const site = {
     intro:
       'Julian Aijal is a senior SEO specialist with a frontend development background. He runs Side Quest Digital, a freelance practice in Amsterdam.',
     servicesTitle: 'Services',
+    toolsTitle: 'Tools',
     contactTitle: 'Contact',
     websiteLabel: 'Website',
     mailLabel: 'Email',

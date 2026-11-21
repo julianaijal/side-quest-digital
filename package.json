@@ -13,7 +13,8 @@
     "check:lighthouse": "node scripts/check-lighthouse.ts",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy && npm run indexnow",
-    "indexnow": "node scripts/indexnow.ts"
+    "indexnow": "node scripts/indexnow.ts",
+    "update:crawlers": "node scripts/update-crawlers.ts"
   },
   "dependencies": {
     "next": "16.4.5",

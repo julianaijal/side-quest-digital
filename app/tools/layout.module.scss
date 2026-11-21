@@ -1,0 +1,11 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/layout' as *;
+
+.container {
+  @include container;
+  padding-block: space(8) $section-y;
+
+  @include below($bp-sm) {
+    padding-block: space(6) $section-y-mobile;
+  }
+}
