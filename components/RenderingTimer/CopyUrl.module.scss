@@ -1,0 +1,45 @@
+@use '@/styles/tokens' as *;
+
+.copyUrl {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+  margin-top: space(3);
+  flex-wrap: wrap;
+}
+
+.url {
+  font-family: $font-mono;
+  font-size: $fs-small;
+  color: $theme-text;
+  background: $theme-surface;
+  padding: space(2) space(3);
+  border-radius: $radius-sm;
+  user-select: all;
+}
+
+.button {
+  height: $touch-min;
+  padding: 0 space(4);
+  border: 0;
+  border-radius: $radius-full;
+  background: $theme-surface;
+  display: inline-flex;
+  align-items: center;
+  gap: space(2);
+  font-size: $fs-small;
+  font-weight: $fw-semibold;
+  color: $theme-text;
+  cursor: pointer;
+
+  @include hover {
+    background: $theme-border-strong;
+  }
+
+  @include focus-ring;
+}
+
+.icon {
+  flex: none;
+  color: $theme-accent;
+}

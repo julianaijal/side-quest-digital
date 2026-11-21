@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import { site } from '@/content/site';
 import { absoluteUrl } from '@/lib/seo';
 import { RenderingTimer } from '@/components/RenderingTimer/RenderingTimer';
+import { CopyUrl } from '@/components/RenderingTimer/CopyUrl';
 import styles from './page.module.scss';
 
 const tool = site.tools.items[0];
+const autoUrl = absoluteUrl('/tools/rendering-timer/?auto');
 
 export const metadata: Metadata = {
   title: `${tool.title} · ${site.name}`,
@@ -18,6 +20,11 @@ export default function RenderingTimerPage() {
       <h1 className={styles.title}>{tool.title}</h1>
       <p className={styles.intro}>{tool.intro}</p>
       <p className={styles.auto}>{tool.autoDescription}</p>
+      <CopyUrl
+        url={autoUrl}
+        label={tool.copyLabel}
+        copiedLabel={tool.copiedLabel}
+      />
       <RenderingTimer
         startLabel={tool.startLabel}
         resetLabel={tool.resetLabel}

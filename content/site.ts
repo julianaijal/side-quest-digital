@@ -279,7 +279,9 @@ export const site = {
         resetLabel: 'Reset',
         completeLabel: 'Complete',
         autoDescription:
-          'Copy the URL below and paste it into URL Inspection in any Google Search Console account. The ?auto parameter starts the timer on page load so it runs without a click.',
+          'Paste this URL into URL Inspection in any Google Search Console account. The ?auto parameter starts the timer on page load so it runs without a click.',
+        copyLabel: 'Copy URL',
+        copiedLabel: 'Copied',
       },
       {
         slug: 'ai-crawler-policy',
