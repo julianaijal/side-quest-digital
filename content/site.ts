@@ -262,7 +262,8 @@ export const site = {
   tools: {
     meta: {
       title: 'Tools · Side Quest Digital',
-      description: 'SEO and web tools built and used by Side Quest Digital.',
+      description:
+        'Free technical SEO tools: measure rendering time, generate AI crawler policies and resolve crawl directive conflicts.',
     },
     title: 'Tools',
     intro: 'Tools I build and use in my own work.',

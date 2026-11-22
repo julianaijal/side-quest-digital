@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { site } from '@/content/site';
 import { absoluteUrl } from '@/lib/seo';
+import { JsonLd } from '@/components/JsonLd';
 import { CrawlPolicyResolver } from '@/components/CrawlPolicyResolver/CrawlPolicyResolver';
 import styles from './page.module.scss';
 
@@ -10,6 +11,11 @@ export const metadata: Metadata = {
   title: `${tool.title} · ${site.name}`,
   description: tool.description,
   alternates: { canonical: '/tools/crawl-policy-resolver/' },
+  openGraph: {
+    title: `${tool.title} · ${site.name}`,
+    description: tool.description,
+    url: '/tools/crawl-policy-resolver/',
+  },
 };
 
 export default function CrawlPolicyResolverPage() {
@@ -21,18 +27,33 @@ export default function CrawlPolicyResolverPage() {
         resolveLabel={tool.resolveLabel}
         userAgentLabel={tool.userAgentLabel}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'SoftwareApplication',
-            name: tool.title,
-            description: tool.description,
-            url: absoluteUrl('/tools/crawl-policy-resolver/'),
-            applicationCategory: 'WebApplication',
-            offers: { '@type': 'Offer', price: '0' },
-          }),
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: tool.title,
+          description: tool.description,
+          url: absoluteUrl('/tools/crawl-policy-resolver/'),
+          applicationCategory: 'WebApplication',
+          applicationSubCategory: 'Technical SEO',
+          operatingSystem: 'Any',
+          provider: {
+            '@type': 'Organization',
+            name: site.name,
+            url: absoluteUrl('/'),
+          },
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: site.name, item: absoluteUrl('/') },
+            { '@type': 'ListItem', position: 2, name: 'Tools', item: absoluteUrl('/tools/') },
+            { '@type': 'ListItem', position: 3, name: tool.title },
+          ],
         }}
       />
     </>

@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { site as content } from '@/content/site';
+import { absoluteUrl } from '@/lib/seo';
+import { JsonLd } from '@/components/JsonLd';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
   title: content.tools.meta.title,
   description: content.tools.meta.description,
   alternates: { canonical: '/tools/' },
+  openGraph: {
+    title: content.tools.meta.title,
+    description: content.tools.meta.description,
+    url: '/tools/',
+  },
 };
 
 export default function Tools() {
@@ -26,6 +33,24 @@ export default function Tools() {
           </li>
         ))}
       </ul>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: tools.title,
+          description: content.tools.meta.description,
+          url: absoluteUrl('/tools/'),
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: tools.items.map((item, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              url: absoluteUrl(`/tools/${item.slug}/`),
+              name: item.title,
+            })),
+          },
+        }}
+      />
     </>
   );
 }
