@@ -83,11 +83,11 @@ export const site = {
         snippet: 'robots',
       },
       {
-        id: 'performance',
-        title: 'Performance',
-        text: 'Faster pages for visitors and search engines. I measure Core Web Vitals with real user data, find what slows your site down and fix it with your developers.',
+        id: 'webdev',
+        title: 'Web development',
+        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
         wide: false,
-        snippet: 'web-vitals',
+        snippet: 'component',
       },
       {
         id: 'geo',
@@ -104,13 +104,13 @@ export const site = {
         snippet: 'dashboard',
       },
       {
-        id: 'webdev',
-        title: 'Web development',
-        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
+        id: 'performance',
+        title: 'Performance',
+        text: 'Faster pages for visitors and search engines. I measure Core Web Vitals with real user data, find what slows your site down and fix it with your developers.',
         wide: true,
         // Spans the full last row so five cards fill the bento without a gap.
         full: true,
-        snippet: 'component',
+        snippet: 'web-vitals',
       },
     ],
   },
