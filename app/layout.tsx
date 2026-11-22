@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { site } from '@/content/site';
 import { jsonLd, siteUrl } from '@/lib/seo';
+import { JsonLd } from '@/components/JsonLd';
 import { analyticsEnabled, consentAndGtmScript } from '@/lib/analytics';
 import './globals.scss';
 
@@ -51,10 +52,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           {site.skipLabel}
         </a>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()).replace(/</g, '\\u003c') }}
-        />
+        <JsonLd data={jsonLd()} />
       </body>
     </html>
   );
