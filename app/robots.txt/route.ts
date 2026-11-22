@@ -29,6 +29,11 @@ export function GET() {
     `Content-Signal: ${contentSignal}`,
     'Allow: /',
     '',
+    // IETF shared token (draft-kelley-aipref-training-preference-signal-00).
+    // OpenAI, Google, Microsoft and Anthropic have committed to honoring it.
+    'User-Agent: __usage_ai-training',
+    'Disallow: /',
+    '',
     `Sitemap: ${absoluteUrl('/sitemap.xml')}`,
     '',
   ];
