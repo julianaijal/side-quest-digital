@@ -8,7 +8,6 @@ import './globals.scss';
 
 const inter = Inter({
   subsets: ['latin'],
-  axes: ['opsz'],
   display: 'swap',
   variable: '--font-inter',
 });
