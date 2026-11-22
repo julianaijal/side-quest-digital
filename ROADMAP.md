@@ -95,6 +95,10 @@ Checklist from the website specification the site follows (see `SPEC_MCP_URL` in
 - [x] `robots.txt` rules for named AI crawlers, with Content Signals (`search=yes, ai-input=yes, ai-train=no`)
 - [x] HTTP `Link` headers for discovery (sitemap, llms.txt)
 
+**Agent readiness (pending standards)**
+- [ ] `/.well-known/mcp.json`: served using the SEP-2127 draft format. No ratified standard yet (SEP-2127, IETF draft-serra-mcp-discovery-uri, and community specs all differ on path and schema). Check https://spec.modelcontextprotocol.io and the MCP GitHub repo for a finalized spec, then update the route and format
+- [ ] Cloudflare AI Search billing starts November 1, 2026. Free tier: 1,000 semantic queries and 1,000 full-text queries per month. Set a spending notification in the Cloudflare dashboard before that date
+
 **Performance**
 - [ ] Core Web Vitals within the good thresholds
 - [ ] Images in AVIF or WebP with explicit dimensions, no lazy loading on the LCP element
