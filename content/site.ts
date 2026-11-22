@@ -318,6 +318,7 @@ export const site = {
       'Julian Aijal is a senior SEO specialist with a frontend development background. He runs Side Quest Digital, a freelance practice in Amsterdam.',
     servicesTitle: 'Services',
     toolsTitle: 'Tools',
+    aiSearchTitle: 'AI search',
     contactTitle: 'Contact',
     websiteLabel: 'Website',
     mailLabel: 'Email',
