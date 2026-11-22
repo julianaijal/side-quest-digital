@@ -91,7 +91,7 @@ export function jsonLd() {
         },
         image: {
           '@type': 'ImageObject',
-          url: absoluteUrl('/opengraph-image.png'),
+          url: absoluteUrl('/opengraph-image'),
           width: 1200,
           height: 630,
         },
