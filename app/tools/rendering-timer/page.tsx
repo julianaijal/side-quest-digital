@@ -39,29 +39,30 @@ export default function RenderingTimerPage() {
       <JsonLd
         data={{
           '@context': 'https://schema.org',
-          '@type': 'SoftwareApplication',
-          name: tool.title,
-          description: tool.description,
-          url: absoluteUrl('/tools/rendering-timer/'),
-          applicationCategory: 'WebApplication',
-          applicationSubCategory: 'Technical SEO',
-          operatingSystem: 'Any',
-          provider: {
-            '@type': 'Organization',
-            name: site.name,
-            url: absoluteUrl('/'),
-          },
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        }}
-      />
-      <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: site.name, item: absoluteUrl('/') },
-            { '@type': 'ListItem', position: 2, name: 'Tools', item: absoluteUrl('/tools/') },
-            { '@type': 'ListItem', position: 3, name: tool.title },
+          '@graph': [
+            {
+              '@type': 'SoftwareApplication',
+              name: tool.title,
+              description: tool.description,
+              url: absoluteUrl('/tools/rendering-timer/'),
+              applicationCategory: 'WebApplication',
+              applicationSubCategory: 'Technical SEO',
+              operatingSystem: 'Any',
+              provider: {
+                '@type': 'Organization',
+                name: site.name,
+                url: absoluteUrl('/'),
+              },
+              offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: site.name, item: absoluteUrl('/') },
+                { '@type': 'ListItem', position: 2, name: 'Tools', item: absoluteUrl('/tools/') },
+                { '@type': 'ListItem', position: 3, name: tool.title },
+              ],
+            },
           ],
         }}
       />
