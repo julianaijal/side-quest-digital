@@ -67,7 +67,7 @@ export const site = {
     eyebrow: 'Freelance SEO and web development · Amsterdam',
     eyebrowMobile: 'Freelance SEO · Amsterdam',
     title: 'Get found, without the noise.',
-    lead: 'I help agencies and online stores get found in Google and in AI search. With clear priorities and an eye for what your own team can take on.',
+    lead: 'I build fast sites that get found. With clear priorities and an eye for what your own team can take on.',
     primaryCta: 'Get in touch',
     secondaryCta: 'View services',
   },
