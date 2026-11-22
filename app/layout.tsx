@@ -8,7 +8,6 @@ import './globals.scss';
 
 const inter = Inter({
   subsets: ['latin'],
-  axes: ['opsz'],
   display: 'swap',
   variable: '--font-inter',
 });
@@ -45,7 +44,13 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {analyticsEnabled && <script dangerouslySetInnerHTML={{ __html: consentAndGtmScript() }} />}
+        {analyticsEnabled && (
+          <>
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+            <script dangerouslySetInnerHTML={{ __html: consentAndGtmScript() }} />
+          </>
+        )}
       </head>
       <body>
         <a href="#main" className="skip-link">
