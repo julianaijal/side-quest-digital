@@ -54,6 +54,7 @@ export const site = {
   volunteer: {
     name: 'TEDxAmsterdam',
     url: 'https://www.tedxamsterdam.nl/',
+    wikidata: 'https://www.wikidata.org/wiki/Q2047885',
     role: 'Website Developer',
   },
 
@@ -65,6 +66,7 @@ export const site = {
     { name: 'Frontend web development', wikidata: 'https://www.wikidata.org/wiki/Q4130556' },
     { name: 'Digital marketing', wikidata: 'https://www.wikidata.org/wiki/Q1323528' },
     { name: 'Computer programming', wikidata: 'https://www.wikidata.org/wiki/Q80006' },
+    { name: 'Core Web Vitals', wikidata: 'https://www.wikidata.org/wiki/Q104618838' },
   ],
 
   meta: {

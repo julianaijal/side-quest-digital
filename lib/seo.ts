@@ -38,6 +38,8 @@ const wikidata: Partial<Record<(typeof site.services.items)[number]['id'], strin
   'technical-seo': 'https://www.wikidata.org/wiki/Q180711',
   analytics: 'https://www.wikidata.org/wiki/Q10719477',
   webdev: 'https://www.wikidata.org/wiki/Q386275',
+  geo: 'https://www.wikidata.org/wiki/Q134083964',
+  performance: 'https://www.wikidata.org/wiki/Q7978612',
 };
 
 // Service titles that are too short to stand alone as a topic.
@@ -145,6 +147,7 @@ export function jsonLd() {
           '@type': 'Organization',
           name: site.volunteer.name,
           url: site.volunteer.url,
+          sameAs: site.volunteer.wikidata,
         },
         address,
         homeLocation: { '@type': 'City', name: site.city, sameAs: site.cityKg },
