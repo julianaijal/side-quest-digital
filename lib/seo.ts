@@ -80,7 +80,7 @@ export function jsonLd() {
         publisher: { '@id': businessId },
       },
       {
-        '@type': 'Organization',
+        '@type': ['Organization', 'ProfessionalService'],
         '@id': businessId,
         name: site.name,
         url,
@@ -96,6 +96,13 @@ export function jsonLd() {
           url: absoluteUrl('/opengraph-image'),
           width: 1200,
           height: 630,
+        },
+        ...(!isPlaceholder(site.foundingDate) && { foundingDate: site.foundingDate }),
+        contactPoint: {
+          '@type': 'ContactPoint',
+          url,
+          contactType: 'customer service',
+          availableLanguage: languages,
         },
         identifier: { '@type': 'PropertyValue', propertyID: 'KVK', value: site.kvk },
         areaServed: { '@type': 'Country', name: site.country },
