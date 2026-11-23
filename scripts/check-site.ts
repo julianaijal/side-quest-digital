@@ -108,9 +108,11 @@ async function checkJsonLd() {
     check('/', 'JSON-LD parses', false, String(error));
     return;
   }
-  const types = graph.map((node) => node['@type']);
+  const hasType = (t: string) =>
+    graph.some((node) => (Array.isArray(node['@type']) ? node['@type'].includes(t) : node['@type'] === t));
+  const typeList = graph.map((node) => [node['@type']].flat().join(',')).join(', ');
   for (const type of ['WebSite', 'Organization', 'Person']) {
-    check('/', `JSON-LD has a ${type}`, types.includes(type), types.join(', '));
+    check('/', `JSON-LD has a ${type}`, hasType(type), typeList);
   }
 
   const images = blocks[0][1].match(/"@type":"ImageObject","url":"[^"]+"/g) ?? [];

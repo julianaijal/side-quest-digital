@@ -143,6 +143,7 @@ From the Night Reef design, left out of the first version on purpose:
 
 - [ ] Bring back the Process section (`components/Steps`, copy in `site.steps`) once there is a real way of working to show
 
+- [ ] Employer and project logos in the about section. Pros: instant recognition (DPG Media, TNW, TEDxAmsterdam), stronger E-E-A-T, common on freelancer sites. Cons: DPG Media is a current employer (not "previously at"), logo use needs their OK, logos on a dark theme need monochrome treatment, and the line between employer logos and client logos blurs if SQD grows. Decision: text mentions are live now; revisit logos once the photo is in and the about section layout is final
 - [ ] Subpages (for example case descriptions without client names, or articles), with View Transitions between pages
 - [ ] Cookieless analytics, if wanted
 - [ ] Cloudflare Zaraz instead of Google Tag Manager, for a Lighthouse performance score of 100. GTM (about 180 KB, one long task) is the only thing between the site and 100: without it the page scores 100 even at 10x CPU slowdown. Rebuild the GTM container in Zaraz and pass the cookie bar choice to Zaraz consent. Then raise the performance minimum in `scripts/check-lighthouse.ts` to 100

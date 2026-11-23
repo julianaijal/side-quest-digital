@@ -25,7 +25,7 @@ One page website for Side Quest Digital, the freelance consultancy of Julian Aij
 - Motion is CSS only, wrapped in `prefers-reduced-motion: no-preference`. No UI or animation libraries.
 - Analytics: Google Analytics 4 through Google Tag Manager (`lib/analytics.ts`), production builds only. Consent Mode v2 starts as "denied"; cookies are set only after the visitor clicks "Allow" in the cookie bar (`CookieConsent`). Key actions are tracked with a `data-track` attribute (`copy_email`, `email_click`, `cta_click`, `linkedin_click`) plus `data-track-location`; a click listener in the inline script pushes them to the dataLayer. The cookie bar pushes `consent_update` with `consent_choice` (`granted` or `denied`). Mention any new tracked action in the privacy statement. No other tracking.
 - The base URL comes from `siteUrl()` in `lib/seo.ts`: `site.domain` once filled in, otherwise `NEXT_PUBLIC_SITE_URL`.
-- `app/opengraph-image.png` and `app/apple-icon.png` are static files (Workers cannot read local fonts at runtime). Recreate the OG image when the hero title changes.
+- OG images are generated per route by `opengraph-image.tsx` files using `next/og` with Inter fonts from `assets/fonts/`. They are prerendered at build time, so font reads happen during the build, not on Workers at runtime. The shared generator lives in `lib/og.tsx`. `app/apple-icon.png` is still a static file.
 - Design tokens come from `styles/_tokens.scss` (`@use '@/styles/tokens' as *;`).
 - **Browser Support:** Baseline Widely available features need no fallback. Newly available features are allowed as progressive enhancement: the page must still work and read well without them. Never add a polyfill package or other external dependency for them.
 

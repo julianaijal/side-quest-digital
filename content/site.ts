@@ -17,6 +17,7 @@ export const site = {
   // Julian's personal site, linked from the Person in the JSON-LD.
   personalSite: 'https://julianaijal.com/',
   kvk: '42206724',
+  foundingDate: '2026',
   city: 'Amsterdam',
   // Google Knowledge Graph entity id for Amsterdam, so the Person's
   // homeLocation resolves to the same entity search engines already know.
@@ -33,7 +34,30 @@ export const site = {
     'https://thenextweb.com/author/julianaijal',
     'https://www.crunchbase.com/person/julian-aijal',
     'https://www.credential.net/profile/julianaijal489646/wallet',
+    'https://lumar.io/blog/author/julian-aijal/',
   ],
+
+  // Employer, former employers and volunteer roles, used in the Person
+  // JSON-LD to strengthen entity signals. Wikidata links let search engines
+  // match the organisations to their knowledge graph entries.
+  employer: {
+    name: 'DPG Media',
+    url: 'https://www.dpgmediagroup.com/',
+    wikidata: 'https://www.wikidata.org/wiki/Q63020424',
+  },
+  formerEmployers: [
+    {
+      name: 'The Next Web',
+      url: 'https://thenextweb.com/',
+      wikidata: 'https://www.wikidata.org/wiki/Q2913725',
+    },
+  ],
+  volunteer: {
+    name: 'TEDxAmsterdam',
+    url: 'https://www.tedxamsterdam.nl/',
+    wikidata: 'https://www.wikidata.org/wiki/Q2047885',
+    role: 'Website Developer',
+  },
 
   // Topics Julian knows about beyond the services Side Quest Digital
   // sells. Added to the Person node's knowsAbout so the person is tied to
@@ -43,6 +67,7 @@ export const site = {
     { name: 'Frontend web development', wikidata: 'https://www.wikidata.org/wiki/Q4130556' },
     { name: 'Digital marketing', wikidata: 'https://www.wikidata.org/wiki/Q1323528' },
     { name: 'Computer programming', wikidata: 'https://www.wikidata.org/wiki/Q80006' },
+    { name: 'Core Web Vitals', wikidata: 'https://www.wikidata.org/wiki/Q104618838' },
   ],
 
   meta: {
@@ -67,7 +92,7 @@ export const site = {
     eyebrow: 'Freelance SEO and web development · Amsterdam',
     eyebrowMobile: 'Freelance SEO · Amsterdam',
     title: 'Get found, without the noise.',
-    lead: 'I help agencies and online stores get found in Google and in AI search. With clear priorities and an eye for what your own team can take on.',
+    lead: 'I build fast sites that get found. With clear priorities and an eye for what your own team can take on.',
     primaryCta: 'Get in touch',
     secondaryCta: 'View services',
   },
@@ -83,11 +108,11 @@ export const site = {
         snippet: 'robots',
       },
       {
-        id: 'performance',
-        title: 'Performance',
-        text: 'Faster pages for visitors and search engines. I measure Core Web Vitals with real user data, find what slows your site down and fix it with your developers.',
+        id: 'webdev',
+        title: 'Web development',
+        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
         wide: false,
-        snippet: 'web-vitals',
+        snippet: 'component',
       },
       {
         id: 'geo',
@@ -104,13 +129,13 @@ export const site = {
         snippet: 'dashboard',
       },
       {
-        id: 'webdev',
-        title: 'Web development',
-        text: 'Frontend development, from new builds to step by step improvements. Fast, accessible components and design systems that your team can keep building on.',
+        id: 'performance',
+        title: 'Performance',
+        text: 'Faster pages for visitors and search engines. I measure Core Web Vitals with real user data, find what slows your site down and fix it with your developers.',
         wide: true,
         // Spans the full last row so five cards fill the bento without a gap.
         full: true,
-        snippet: 'component',
+        snippet: 'web-vitals',
       },
     ],
   },
@@ -171,7 +196,7 @@ export const site = {
   about: {
     title: 'Hi, I’m Julian Aijal.',
     paragraphs: [
-      'I’ve worked in SEO since 2011, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
+      'I’ve worked in SEO since 2011, at DPG Media, The Next Web and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
       'Through Side Quest Digital I take on a limited number of projects, so each one gets proper time and attention.',
     ],
     facts: [

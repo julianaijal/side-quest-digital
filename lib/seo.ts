@@ -38,6 +38,8 @@ const wikidata: Partial<Record<(typeof site.services.items)[number]['id'], strin
   'technical-seo': 'https://www.wikidata.org/wiki/Q180711',
   analytics: 'https://www.wikidata.org/wiki/Q10719477',
   webdev: 'https://www.wikidata.org/wiki/Q386275',
+  geo: 'https://www.wikidata.org/wiki/Q134083964',
+  performance: 'https://www.wikidata.org/wiki/Q7978612',
 };
 
 // Service titles that are too short to stand alone as a topic.
@@ -78,7 +80,7 @@ export function jsonLd() {
         publisher: { '@id': businessId },
       },
       {
-        '@type': 'Organization',
+        '@type': ['Organization', 'ProfessionalService'],
         '@id': businessId,
         name: site.name,
         url,
@@ -91,9 +93,16 @@ export function jsonLd() {
         },
         image: {
           '@type': 'ImageObject',
-          url: absoluteUrl('/opengraph-image.png'),
+          url: absoluteUrl('/opengraph-image'),
           width: 1200,
           height: 630,
+        },
+        ...(!isPlaceholder(site.foundingDate) && { foundingDate: site.foundingDate }),
+        contactPoint: {
+          '@type': 'ContactPoint',
+          url,
+          contactType: 'customer service',
+          availableLanguage: languages,
         },
         identifier: { '@type': 'PropertyValue', propertyID: 'KVK', value: site.kvk },
         areaServed: { '@type': 'Country', name: site.country },
@@ -126,7 +135,27 @@ export function jsonLd() {
         description: site.llms.intro,
         jobTitle: site.jobTitle,
         url: site.personalSite,
-        worksFor: { '@id': businessId },
+        worksFor: [
+          { '@id': businessId },
+          {
+            '@type': 'Organization',
+            name: site.employer.name,
+            url: site.employer.url,
+            sameAs: site.employer.wikidata,
+          },
+        ],
+        alumniOf: site.formerEmployers.map((org) => ({
+          '@type': 'Organization',
+          name: org.name,
+          url: org.url,
+          sameAs: org.wikidata,
+        })),
+        memberOf: {
+          '@type': 'Organization',
+          name: site.volunteer.name,
+          url: site.volunteer.url,
+          sameAs: site.volunteer.wikidata,
+        },
         address,
         homeLocation: { '@type': 'City', name: site.city, sameAs: site.cityKg },
         knowsLanguage: languages,
