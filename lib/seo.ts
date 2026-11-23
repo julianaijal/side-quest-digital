@@ -126,7 +126,26 @@ export function jsonLd() {
         description: site.llms.intro,
         jobTitle: site.jobTitle,
         url: site.personalSite,
-        worksFor: { '@id': businessId },
+        worksFor: [
+          { '@id': businessId },
+          {
+            '@type': 'Organization',
+            name: site.employer.name,
+            url: site.employer.url,
+            sameAs: site.employer.wikidata,
+          },
+        ],
+        alumniOf: site.formerEmployers.map((org) => ({
+          '@type': 'Organization',
+          name: org.name,
+          url: org.url,
+          sameAs: org.wikidata,
+        })),
+        memberOf: {
+          '@type': 'Organization',
+          name: site.volunteer.name,
+          url: site.volunteer.url,
+        },
         address,
         homeLocation: { '@type': 'City', name: site.city, sameAs: site.cityKg },
         knowsLanguage: languages,

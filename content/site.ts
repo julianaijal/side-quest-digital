@@ -33,7 +33,29 @@ export const site = {
     'https://thenextweb.com/author/julianaijal',
     'https://www.crunchbase.com/person/julian-aijal',
     'https://www.credential.net/profile/julianaijal489646/wallet',
+    'https://lumar.io/blog/author/julian-aijal/',
   ],
+
+  // Employer, former employers and volunteer roles, used in the Person
+  // JSON-LD to strengthen entity signals. Wikidata links let search engines
+  // match the organisations to their knowledge graph entries.
+  employer: {
+    name: 'DPG Media',
+    url: 'https://www.dpgmediagroup.com/',
+    wikidata: 'https://www.wikidata.org/wiki/Q1757862',
+  },
+  formerEmployers: [
+    {
+      name: 'The Next Web',
+      url: 'https://thenextweb.com/',
+      wikidata: 'https://www.wikidata.org/wiki/Q680765',
+    },
+  ],
+  volunteer: {
+    name: 'TEDxAmsterdam',
+    url: 'https://www.tedxamsterdam.nl/',
+    role: 'Website Developer',
+  },
 
   // Topics Julian knows about beyond the services Side Quest Digital
   // sells. Added to the Person node's knowsAbout so the person is tied to
