@@ -6,6 +6,8 @@ import { site } from '../content/site.ts';
 const codePaths = new Set(['snippets.robots', 'snippets.component']);
 // Keys that hold identifiers, not visible copy.
 const idKeys = new Set(['id', 'slug', 'snippet', 'domain', 'emailUser', 'emailDomain', 'personalSite']);
+// Compound words that require a hyphen and have no single word form.
+const allowedHyphenated = new Set(['in-house']);
 
 function collectStrings(value: unknown, path: string, out: Array<[string, string]>): void {
   if (codePaths.has(path) || idKeys.has(path.split('.').pop() ?? '')) return;
@@ -32,7 +34,9 @@ test('copy contains no en or em dashes', () => {
 test('copy contains no hyphenated words', () => {
   for (const [path, text] of strings) {
     if (/^https?:\/\//.test(text)) continue;
-    assert.doesNotMatch(text, /\p{L}-\p{L}/u, `${path}: "${text}"`);
+    let check = text;
+    for (const word of allowedHyphenated) check = check.replaceAll(word, word.replace('-', ''));
+    assert.doesNotMatch(check, /\p{L}-\p{L}/u, `${path}: "${text}"`);
   }
 });
 
