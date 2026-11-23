@@ -36,7 +36,15 @@ export function About({ site }: { site: Site }) {
           {about.facts.map((fact) => (
             <div key={fact.label} className={fact.mobile ? undefined : styles.desktopOnly}>
               <dt className={styles.label}>{fact.label}</dt>
-              <dd className={styles.value}>{fact.value}</dd>
+              <dd className={styles.value}>
+                {Array.isArray(fact.value)
+                  ? fact.value.map((item) => (
+                      <span key={item} className={styles.valueItem}>
+                        {item}
+                      </span>
+                    ))
+                  : fact.value}
+              </dd>
             </div>
           ))}
         </dl>

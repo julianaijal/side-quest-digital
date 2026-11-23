@@ -203,6 +203,7 @@ export const site = {
       { label: 'Based in', value: 'Amsterdam', mobile: true },
       { label: 'In SEO since', value: '2011', mobile: true },
       { label: 'Works in', value: 'English and Dutch', mobile: false },
+      { label: 'Built', value: ['thenextweb.com', 'TNW Conference', 'tq.co', 'tedxamsterdam.nl'], mobile: true },
     ],
     // The photo block only shows once this is set, e.g. '/julian.jpg' (in public/).
     photo: null as string | null,
