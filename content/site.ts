@@ -171,7 +171,7 @@ export const site = {
   about: {
     title: 'Hi, I’m Julian Aijal.',
     paragraphs: [
-      'I’ve worked in SEO since 2011, for large media sites and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
+      'I’ve worked in SEO since 2011, at DPG Media, The Next Web and international platforms, with a few years as a frontend developer along the way. That’s why I’m most at home where SEO and code meet.',
       'Through Side Quest Digital I take on a limited number of projects, so each one gets proper time and attention.',
     ],
     facts: [
