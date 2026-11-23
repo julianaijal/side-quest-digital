@@ -37,13 +37,15 @@ export function About({ site }: { site: Site }) {
             <div key={fact.label} className={fact.mobile ? undefined : styles.desktopOnly}>
               <dt className={styles.label}>{fact.label}</dt>
               <dd className={styles.value}>
-                {Array.isArray(fact.value)
-                  ? fact.value.map((item) => (
-                      <span key={item} className={styles.valueItem}>
-                        {item}
-                      </span>
-                    ))
-                  : fact.value}
+                {Array.isArray(fact.value) ? (
+                  <ul className={styles.valueList}>
+                    {fact.value.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  fact.value
+                )}
               </dd>
             </div>
           ))}
