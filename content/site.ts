@@ -301,12 +301,12 @@ export const site = {
         description: 'See how much rendering time a browser or search engine spends on a page.',
         tag: 'Technical SEO',
         intro:
-          'Each milestone on this page appears after a set number of milliseconds. Paste the ?auto URL into Google Search Console (URL Inspection), hit "Test Live URL", and check the rendered HTML. The last milestone that shows up is how long Googlebot spent rendering.',
+          'I use this to measure how long Googlebot spends rendering a page. Each milestone appears after a set number of milliseconds. Paste the ?auto URL into URL Inspection in Search Console, hit "Test Live URL", and check the rendered HTML. The last milestone that shows up is the rendering budget Googlebot spent.',
         startLabel: 'Start',
         resetLabel: 'Reset',
         completeLabel: 'Complete',
         autoDescription:
-          'Paste this URL into URL Inspection in any Google Search Console account. The ?auto parameter starts the timer on page load so it runs without a click.',
+          'The ?auto parameter starts the timer on page load so it runs without a click. Paste this URL into URL Inspection in Search Console to see which milestones Googlebot reaches.',
         copyLabel: 'Copy URL',
         copiedLabel: 'Copied',
       },
