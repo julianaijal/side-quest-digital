@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   authors: [{ name: site.person }],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
+  verification: { other: { 'msvalidate.01': '6C74C8EC533D4FDCF004DF6D2255BC0B' } },
   openGraph: {
     type: 'website',
     locale: 'en_US',
