@@ -17,6 +17,7 @@ export const site = {
   // Julian's personal site, linked from the Person in the JSON-LD.
   personalSite: 'https://julianaijal.com/',
   kvk: '42206724',
+  foundingDate: '2026',
   city: 'Amsterdam',
   // Google Knowledge Graph entity id for Amsterdam, so the Person's
   // homeLocation resolves to the same entity search engines already know.
