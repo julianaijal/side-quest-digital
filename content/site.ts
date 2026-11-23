@@ -42,13 +42,13 @@ export const site = {
   employer: {
     name: 'DPG Media',
     url: 'https://www.dpgmediagroup.com/',
-    wikidata: 'https://www.wikidata.org/wiki/Q1757862',
+    wikidata: 'https://www.wikidata.org/wiki/Q63020424',
   },
   formerEmployers: [
     {
       name: 'The Next Web',
       url: 'https://thenextweb.com/',
-      wikidata: 'https://www.wikidata.org/wiki/Q680765',
+      wikidata: 'https://www.wikidata.org/wiki/Q2913725',
     },
   ],
   volunteer: {
