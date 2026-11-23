@@ -298,15 +298,15 @@ export const site = {
       {
         slug: 'rendering-timer',
         title: 'Rendering timer',
-        description: 'See how much rendering time a browser or search engine spends on a page.',
+        description: 'Measure how long Googlebot spends rendering JavaScript on a page.',
         tag: 'Technical SEO',
         intro:
-          'I use this to measure how long Googlebot spends rendering a page. Each milestone appears after a set number of milliseconds. Paste the ?auto URL into URL Inspection in Search Console, hit "Test Live URL", and check the rendered HTML. The last milestone that shows up is the rendering budget Googlebot spent.',
+          'Googlebot renders JavaScript, but not forever. If your page needs more rendering time than it gets, content stays invisible to Google. I built this to find out how much time Googlebot actually spends. Each milestone below appears after a set number of milliseconds. I paste the ?auto URL into URL Inspection in my Search Console, hit "Test Live URL", and check the rendered HTML. The last milestone that shows up tells me how far Googlebot got. URL Inspection only works on your own site, so to try this yourself you would need to host a similar page on your domain.',
         startLabel: 'Start',
         resetLabel: 'Reset',
         completeLabel: 'Complete',
         autoDescription:
-          'The ?auto parameter starts the timer on page load so it runs without a click. Paste this URL into URL Inspection in Search Console to see which milestones Googlebot reaches.',
+          'The ?auto parameter starts the timer on page load so it runs without a click.',
         copyLabel: 'Copy URL',
         copiedLabel: 'Copied',
       },
