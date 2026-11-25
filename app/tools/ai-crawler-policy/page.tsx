@@ -3,6 +3,7 @@ import { site } from '@/content/site';
 import { absoluteUrl } from '@/lib/seo';
 import { JsonLd } from '@/components/JsonLd';
 import { AiCrawlerPolicy } from '@/components/AiCrawlerPolicy/AiCrawlerPolicy';
+import { crawlers } from '@/components/AiCrawlerPolicy/crawlers';
 import { crawlerDocs } from '@/lib/crawler-docs';
 import styles from './page.module.scss';
 
@@ -31,6 +32,57 @@ export default function AiCrawlerPolicyPage() {
         copyLabel={tool.copyLabel}
         copiedLabel={tool.copiedLabel}
       />
+      <section className={styles.crawlers} aria-labelledby="crawlers-title">
+        <h2 id="crawlers-title" className={styles.crawlersTitle}>
+          {tool.crawlersTitle}
+        </h2>
+        <p className={styles.crawlersNote}>{tool.crawlersNote}</p>
+        <p className={styles.crawlersCount}>
+          {crawlers.length} user agents from{' '}
+          {new Set(crawlers.map((c) => c.operator)).size} operators
+        </p>
+        {(['training', 'search', 'both'] as const).map((purpose) => {
+          const group = crawlers.filter((c) => c.purpose === purpose);
+          const label =
+            purpose === 'search'
+              ? tool.crawlersSearchLabel
+              : purpose === 'training'
+                ? tool.crawlersTrainingLabel
+                : tool.crawlersBothLabel;
+          const description =
+            purpose === 'search'
+              ? tool.crawlersSearchDescription
+              : purpose === 'training'
+                ? tool.crawlersTrainingDescription
+                : tool.crawlersBothDescription;
+          return (
+            <div key={purpose} className={styles.crawlerGroup}>
+              <h3 className={styles.crawlerGroupTitle}>
+                {label}
+                <span className={styles.crawlerGroupCount}>{group.length}</span>
+              </h3>
+              <p className={styles.crawlerGroupDescription}>{description}</p>
+              <table className={styles.crawlerTable}>
+                <thead>
+                  <tr>
+                    <th>User agent</th>
+                    <th>Operator</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {group.map((crawler) => (
+                    <tr key={crawler.name}>
+                      <td className={styles.crawlerName}>{crawler.name}</td>
+                      <td>{crawler.operator}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
+      </section>
+
       <section className={styles.resources} aria-labelledby="resources-title">
         <h2 id="resources-title" className={styles.resourcesTitle}>
           {tool.resourcesTitle}
