@@ -48,6 +48,58 @@ jobs:
             gh issue create --title "Live site check failed" --label site-check --body-file report.md
           fi
 
+  crawler-updates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      - name: Check for crawler list changes
+        id: crawlers
+        run: |
+          node scripts/update-crawlers.ts 2> warnings.txt
+          if git diff --quiet components/AiCrawlerPolicy/crawlers.ts; then
+            changed=false
+          else
+            changed=true
+            git diff components/AiCrawlerPolicy/crawlers.ts > diff.txt
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          warnings=$(cat warnings.txt)
+          echo "warnings=$([[ -n "$warnings" ]] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          {
+            if [ "$changed" = true ]; then
+              echo "The upstream AI crawler list has changed. Run \`npm run update:crawlers\`, review the diff and commit."
+              echo
+              echo '```diff'
+              cat diff.txt
+              echo '```'
+            fi
+            if [ -n "$warnings" ]; then
+              echo
+              echo '### Warnings'
+              echo
+              echo '```'
+              cat warnings.txt
+              echo '```'
+            fi
+          } > crawler-body.md
+          cat crawler-body.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open an issue for crawler changes
+        if: steps.crawlers.outputs.changed == 'true' || steps.crawlers.outputs.warnings == 'true'
+        run: |
+          gh label create crawler-update --color 0E8A16 --description "AI crawler list changed upstream" --force
+          issue=$(gh issue list --label crawler-update --state open --json number --jq '.[0].number')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --body-file crawler-body.md
+          else
+            gh issue create --title "AI crawler list has upstream changes" --label crawler-update --body-file crawler-body.md
+          fi
+
   spec-changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
