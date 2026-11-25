@@ -46,6 +46,7 @@ function stripMarkdown(s: string): string {
 function cleanOperator(raw: string): string {
   let s = stripMarkdown(raw);
   if (!s || s.toLowerCase().startsWith('unclear')) return '';
+  if (/^https?:\/\//.test(s)) return operatorFromUrl(s);
   s = s.replace(/\(.*$/, '').trim();
   const stop = s.search(/\bthat\b|\bwhich\b|\bwho\b|\bto\b/i);
   if (stop > 0) s = s.slice(0, stop).trim();
@@ -62,6 +63,7 @@ const DOMAIN_OPERATORS: Record<string, string> = {
   'docs.aws.amazon.com': 'Amazon',
   'azure.microsoft.com': 'Microsoft',
   'developers.facebook.com': 'Meta',
+  'safe.search.brave.com': 'Brave',
   'knownagents.com': '',
   'datadome.co': '',
   'github.com': '',
