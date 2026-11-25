@@ -115,7 +115,7 @@
   min-width: 0;
   background: $theme-inset;
   border-radius: $radius-md;
-  font-size: 0.8125rem;
+  font-size: $fs-label;
 
   @include below($bp-sm) {
     margin-top: space(1);
@@ -177,7 +177,7 @@
   justify-content: space-between;
   padding: 10px 14px;
   border-bottom: 1px solid $theme-border;
-  font-size: 0.75rem;
+  font-size: $fs-caption;
   color: $theme-text-3;
 
   @include below($bp-sm) {
@@ -202,7 +202,7 @@
   margin: 0;
   padding: space(4) 14px;
   font-family: $font-mono;
-  font-size: 0.8125rem;
+  font-size: $fs-label;
   line-height: 1.8;
   letter-spacing: 0;
   color: $theme-text-2;
@@ -211,7 +211,7 @@
 
   @include below($bp-sm) {
     padding: space(3);
-    font-size: 0.75rem;
+    font-size: $fs-caption;
     line-height: 1.75;
   }
 }
@@ -249,7 +249,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.75rem;
+  font-size: $fs-caption;
   font-weight: $fw-semibold;
   color: $theme-accent;
   background: $theme-chip;
@@ -259,7 +259,7 @@
 
 // Web vitals
 .caption {
-  font-size: 0.75rem;
+  font-size: $fs-caption;
   font-weight: $fw-semibold;
   color: $theme-text-3;
 }
@@ -307,7 +307,7 @@
   align-items: center;
   gap: space(3);
   flex-wrap: wrap;
-  font-size: 0.75rem;
+  font-size: $fs-caption;
   color: $theme-text-3;
 }
 
