@@ -32,7 +32,12 @@ export const crawlerDocs: CrawlerDoc[] = [
   {
     operator: 'Meta/Facebook',
     url: 'https://developers.facebook.com/docs/sharing/webmasters/web-crawlers',
-    note: 'meta-externalagent and Meta-ExternalFetcher',
+    note: 'FacebookBot and facebookexternalhit for link previews',
+  },
+  {
+    operator: 'Meta',
+    url: 'https://developers.facebook.com/docs/sharing/webmasters/web-crawlers',
+    note: 'meta-externalagent and meta-webindexer for AI features',
   },
   {
     operator: 'Perplexity',
@@ -58,6 +63,16 @@ export const crawlerDocs: CrawlerDoc[] = [
     operator: 'Mistral AI',
     url: 'https://docs.mistral.ai/robots',
     note: 'MistralAI-User, MistralAI-Training and MistralAI-Index',
+  },
+  {
+    operator: 'Ai2',
+    url: 'https://allenai.org/crawler',
+    note: 'AI2Bot and Ai2Bot-Dolma for Open Language Model research',
+  },
+  {
+    operator: 'Moonshot AI',
+    url: 'https://kimi.com/policies/kimi-crawlers',
+    note: 'KimiBot, Kimi-SearchBot and Kimi-User',
   },
   {
     operator: 'Diffbot',
