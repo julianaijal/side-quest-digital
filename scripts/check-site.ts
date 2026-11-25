@@ -10,6 +10,7 @@
 // prints a Markdown report, so CI can paste it into an issue.
 
 import { INDEXNOW_KEY } from '../lib/indexnow.ts';
+import { crawlerDocs } from '../lib/crawler-docs.ts';
 
 const args = process.argv.slice(2);
 const base = (args.find((arg) => !arg.startsWith('--')) ?? 'http://localhost:3000').replace(/\/$/, '');
@@ -197,6 +198,11 @@ async function main() {
   check('/.well-known/security.txt', 'served with Contact', /^Contact: /m.test(security.body));
   const daysLeft = Math.floor((expires - Date.now()) / 86_400_000);
   check('/.well-known/security.txt', 'Expires more than 30 days ahead', daysLeft > 30, `${daysLeft} days left, deploy to renew`);
+
+  for (const doc of crawlerDocs) {
+    const res = await fetch(doc.url, { method: 'HEAD', redirect: 'follow' });
+    check('crawler docs', `${doc.operator} doc link reachable`, res.ok, `${res.status} ${doc.url}`);
+  }
 
   if (live) {
     const url = new URL(base);
