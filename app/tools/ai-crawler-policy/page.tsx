@@ -46,10 +46,6 @@ export default function AiCrawlerPolicyPage() {
             {tool.crawlersSource2Label}
           </a>
           {tool.crawlersNoteAfter}
-          <a href="https://bots.fyi/" rel="noopener noreferrer" target="_blank">
-            {tool.crawlersSource3Label}
-          </a>
-          {tool.crawlersNoteEnd}
         </p>
         <p className={styles.crawlersCount}>
           {crawlers.length} user agents from{' '}
