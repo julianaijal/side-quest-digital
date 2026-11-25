@@ -41,7 +41,7 @@ export default function AiCrawlerPolicyPage() {
           {crawlers.length} user agents from{' '}
           {new Set(crawlers.map((c) => c.operator)).size} operators
         </p>
-        {(['training', 'search', 'both'] as const).map((purpose) => {
+        {(['both', 'training', 'search'] as const).map((purpose) => {
           const group = crawlers.filter((c) => c.purpose === purpose);
           const label =
             purpose === 'search'
