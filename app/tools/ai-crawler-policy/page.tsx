@@ -3,6 +3,7 @@ import { site } from '@/content/site';
 import { absoluteUrl } from '@/lib/seo';
 import { JsonLd } from '@/components/JsonLd';
 import { AiCrawlerPolicy } from '@/components/AiCrawlerPolicy/AiCrawlerPolicy';
+import { crawlerDocs } from '@/lib/crawler-docs';
 import styles from './page.module.scss';
 
 const tool = site.tools.items[1];
@@ -30,6 +31,22 @@ export default function AiCrawlerPolicyPage() {
         copyLabel={tool.copyLabel}
         copiedLabel={tool.copiedLabel}
       />
+      <section className={styles.resources} aria-labelledby="resources-title">
+        <h2 id="resources-title" className={styles.resourcesTitle}>
+          {tool.resourcesTitle}
+        </h2>
+        <p className={styles.resourcesNote}>{tool.resourcesNote}</p>
+        <ul className={styles.resourcesList}>
+          {crawlerDocs.map((doc) => (
+            <li key={doc.operator}>
+              <a href={doc.url} rel="noopener noreferrer" target="_blank">
+                {doc.operator}
+              </a>
+              <span className={styles.resourcesDetail}>{doc.note}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
       <JsonLd
         data={{
           '@context': 'https://schema.org',
