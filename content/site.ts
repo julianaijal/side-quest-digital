@@ -322,6 +322,12 @@ export const site = {
         aiTrainingLabel: 'AI model training',
         copyLabel: 'Copy',
         copiedLabel: 'Copied',
+        crawlersTitle: 'Known AI crawlers',
+        crawlersNote:
+          'These are all the AI related user agents I know of. The list is sourced from an open community project and checked for updates every week.',
+        crawlersSearchLabel: 'AI search',
+        crawlersTrainingLabel: 'Training',
+        crawlersBothLabel: 'Both',
         resourcesTitle: 'Crawler documentation',
         resourcesNote:
           'Each operator documents its own bots and how to control them. These are the official pages I check when the rules change. The crawler list and these links are checked automatically every week.',
