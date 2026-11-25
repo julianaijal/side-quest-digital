@@ -9,7 +9,16 @@ interface Props {
   userAgentLabel: string;
 }
 
-const AGENTS = ['Googlebot', 'Bingbot', 'GPTBot'] as const;
+const AGENTS = [
+  'Googlebot',
+  'Bingbot',
+  'GPTBot',
+  'ClaudeBot',
+  'PerplexityBot',
+  'Google-Extended',
+  'Bytespider',
+  'CCBot',
+] as const;
 
 export function CrawlPolicyResolver({ resolveLabel, userAgentLabel }: Props) {
   const [robotsTxt, setRobotsTxt] = useState('');
