@@ -36,7 +36,21 @@ export default function AiCrawlerPolicyPage() {
         <h2 id="crawlers-title" className={styles.crawlersTitle}>
           {tool.crawlersTitle}
         </h2>
-        <p className={styles.crawlersNote}>{tool.crawlersNote}</p>
+        <p className={styles.crawlersNote}>
+          {tool.crawlersNoteBefore}
+          <a href="https://github.com/ai-robots-txt/ai.robots.txt" rel="noopener noreferrer" target="_blank">
+            {tool.crawlersSource1Label}
+          </a>
+          {' and '}
+          <a href="https://github.com/monperrus/crawler-user-agents" rel="noopener noreferrer" target="_blank">
+            {tool.crawlersSource2Label}
+          </a>
+          {tool.crawlersNoteAfter}
+          <a href="https://bots.fyi/" rel="noopener noreferrer" target="_blank">
+            {tool.crawlersSource3Label}
+          </a>
+          {tool.crawlersNoteEnd}
+        </p>
         <p className={styles.crawlersCount}>
           {crawlers.length} user agents from{' '}
           {new Set(crawlers.map((c) => c.operator)).size} operators
