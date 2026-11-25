@@ -28,6 +28,13 @@
   font-size: $fs-small;
   line-height: $lh-long;
   color: $theme-text-3;
+
+  a {
+    font-weight: $fw-medium;
+    text-decoration: underline;
+    text-decoration-color: $theme-accent;
+    text-underline-offset: 3px;
+  }
 }
 
 .crawlersCount {
