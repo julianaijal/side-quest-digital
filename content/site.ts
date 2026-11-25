@@ -323,8 +323,13 @@ export const site = {
         copyLabel: 'Copy',
         copiedLabel: 'Copied',
         crawlersTitle: 'Known AI crawlers',
-        crawlersNote:
-          'These are all the AI related user agents I know of. The list is sourced from an open community project and checked for updates every week.',
+        crawlersNoteBefore:
+          'These are all the AI related user agents I know of. The list is compiled from ',
+        crawlersSource1Label: 'ai.robots.txt',
+        crawlersSource2Label: 'crawler-user-agents',
+        crawlersSource3Label: 'bots.fyi',
+        crawlersNoteAfter: ' (both MIT licensed), cross checked with ',
+        crawlersNoteEnd: ' and updated every week.',
         crawlersSearchLabel: 'AI search only',
         crawlersSearchDescription:
           'Dedicated search bots that fetch your content for AI powered answers. Blocking them removes your site from their results.',
