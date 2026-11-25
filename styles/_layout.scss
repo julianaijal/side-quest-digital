@@ -23,7 +23,7 @@ $bp-sm: 640px;
   color: $theme-accent;
 
   @include below($bp-sm) {
-    font-size: 0.75rem;
+    font-size: $fs-caption;
   }
 }
 

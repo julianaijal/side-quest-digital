@@ -125,11 +125,11 @@
 }
 
 .label {
-  font-size: 0.875rem;
+  font-size: $fs-meta;
   color: $theme-text-3;
 
   @include below($bp-sm) {
-    font-size: 0.8125rem;
+    font-size: $fs-label;
   }
 }
 

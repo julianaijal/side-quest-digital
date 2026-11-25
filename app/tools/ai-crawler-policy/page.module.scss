@@ -25,7 +25,7 @@
 
 .resourcesNote {
   margin-top: space(2);
-  font-size: 0.9375rem;
+  font-size: $fs-small;
   line-height: $lh-long;
   color: $theme-text-3;
 }
@@ -49,6 +49,6 @@
 .resourcesDetail {
   display: block;
   margin-top: 2px;
-  font-size: 0.8125rem;
+  font-size: $fs-label;
   color: $theme-text-3;
 }
