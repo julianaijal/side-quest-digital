@@ -326,7 +326,7 @@ export const site = {
         crawlersNoteBefore:
           'These are all the AI related user agents I know of. The list is compiled from ',
         crawlersSource1Label: 'ai.robots.txt',
-        crawlersSource2Label: 'crawler-user-agents',
+        crawlersSource2Label: 'Crawler user agents',
         crawlersNoteAfter: ' (both MIT licensed) and checked for updates every week.',
         crawlersSearchLabel: 'AI search only',
         crawlersSearchDescription:
