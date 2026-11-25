@@ -325,15 +325,15 @@ export const site = {
         crawlersTitle: 'Known AI crawlers',
         crawlersNote:
           'These are all the AI related user agents I know of. The list is sourced from an open community project and checked for updates every week.',
-        crawlersSearchLabel: 'AI search',
+        crawlersSearchLabel: 'AI search only',
         crawlersSearchDescription:
-          'These bots fetch your content to generate AI powered search answers. Blocking them removes your site from AI search results.',
-        crawlersTrainingLabel: 'Training',
+          'Dedicated search bots that fetch your content for AI powered answers. Blocking them removes your site from their results.',
+        crawlersTrainingLabel: 'Training only',
         crawlersTrainingDescription:
           'These bots scrape content to train AI models. Blocking them does not affect your visibility in search or AI answers.',
         crawlersBothLabel: 'Search and training',
         crawlersBothDescription:
-          'These bots serve both purposes. Blocking them may affect AI search answers as well as training.',
+          'These bots both answer search queries and collect training data. Most major AI assistants (ChatGPT, Claude, Perplexity, Gemini) fall into this category. Blocking them affects your AI search visibility.',
         resourcesTitle: 'Crawler documentation',
         resourcesNote:
           'Each operator documents its own bots and how to control them. These are the official pages I check when the rules change. The crawler list and these links are checked automatically every week.',
