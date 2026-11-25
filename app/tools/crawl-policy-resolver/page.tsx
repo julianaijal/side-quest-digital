@@ -27,6 +27,11 @@ export default function CrawlPolicyResolverPage() {
         resolveLabel={tool.resolveLabel}
         userAgentLabel={tool.userAgentLabel}
       />
+      <p className={styles.crawlerNote}>
+        {tool.crawlerNoteBefore}
+        <a href="/tools/ai-crawler-policy/">{tool.crawlerNoteLink}</a>
+        {tool.crawlerNoteAfter}
+      </p>
       <JsonLd
         data={{
           '@context': 'https://schema.org',
