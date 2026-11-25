@@ -99,6 +99,27 @@ ${lines.join('\n')}
 
   writeFileSync(OUTPUT, output);
   console.log(`Wrote ${entries.length} crawlers to ${OUTPUT}`);
+
+  const { crawlerDocs } = await import('../lib/crawler-docs.ts');
+  const operators = new Set(entries.map((e) => e.operator));
+  const stale = crawlerDocs
+    .filter((d: { operator: string }) => !operators.has(d.operator))
+    .map((d: { operator: string }) => d.operator);
+  if (stale.length) {
+    console.warn(`\nDoc entries with no matching crawlers: ${stale.join(', ')}`);
+    console.warn('Check lib/crawler-docs.ts for outdated operator names.\n');
+  }
+
+  const multiBot = new Map<string, number>();
+  for (const e of entries) multiBot.set(e.operator, (multiBot.get(e.operator) ?? 0) + 1);
+  const documented = new Set(crawlerDocs.map((d: { operator: string }) => d.operator));
+  const notable = [...multiBot.entries()]
+    .filter(([op, count]) => count >= 3 && !documented.has(op))
+    .map(([op, count]) => `${op} (${count} bots)`);
+  if (notable.length) {
+    console.warn(`\nNotable operators without docs entry: ${notable.join(', ')}`);
+    console.warn('Consider adding them to lib/crawler-docs.ts.\n');
+  }
 }
 
 main();
