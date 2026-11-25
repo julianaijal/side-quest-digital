@@ -327,9 +327,7 @@ export const site = {
           'These are all the AI related user agents I know of. The list is compiled from ',
         crawlersSource1Label: 'ai.robots.txt',
         crawlersSource2Label: 'crawler-user-agents',
-        crawlersSource3Label: 'bots.fyi',
-        crawlersNoteAfter: ' (both MIT licensed), cross checked with ',
-        crawlersNoteEnd: ' and updated every week.',
+        crawlersNoteAfter: ' (both MIT licensed) and checked for updates every week.',
         crawlersSearchLabel: 'AI search only',
         crawlersSearchDescription:
           'Dedicated search bots that fetch your content for AI powered answers. Blocking them removes your site from their results.',
