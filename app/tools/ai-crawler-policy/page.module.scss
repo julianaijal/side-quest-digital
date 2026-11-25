@@ -12,6 +12,95 @@
   color: $theme-text-2;
 }
 
+.crawlers {
+  margin-top: space(8);
+  padding-top: space(6);
+  border-top: 1px solid $theme-border;
+}
+
+.crawlersTitle {
+  font-size: 1.25rem;
+  font-weight: $fw-semibold;
+}
+
+.crawlersNote {
+  margin-top: space(2);
+  font-size: $fs-small;
+  line-height: $lh-long;
+  color: $theme-text-3;
+}
+
+.crawlersCount {
+  margin-top: space(1);
+  font-size: $fs-label;
+  color: $theme-text-3;
+}
+
+.crawlerTable {
+  margin-top: space(4);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $fs-small;
+
+  th,
+  td {
+    padding: space(2) space(3);
+    text-align: left;
+    border-bottom: 1px solid $theme-border;
+  }
+
+  th {
+    font-weight: $fw-medium;
+    color: $theme-text-3;
+    font-size: $fs-label;
+    text-transform: uppercase;
+    letter-spacing: $ls-label;
+  }
+
+  td {
+    color: $theme-text-card;
+  }
+}
+
+.crawlerGroup {
+  margin-top: space(5);
+}
+
+.crawlerGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+  font-size: 1.125rem;
+  font-weight: $fw-semibold;
+  line-height: $lh-h3;
+}
+
+.crawlerGroupCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 24px;
+  padding-inline: space(2);
+  font-size: $fs-label;
+  font-weight: $fw-medium;
+  line-height: 1;
+  border-radius: $radius-full;
+  background: $theme-chip;
+  color: $theme-accent;
+}
+
+.crawlerGroupDescription {
+  margin-top: space(1);
+  font-size: $fs-small;
+  line-height: $lh-body;
+  color: $theme-text-3;
+}
+
+.crawlerName {
+  font-family: $font-mono;
+}
+
 .resources {
   margin-top: space(8);
   padding-top: space(6);
