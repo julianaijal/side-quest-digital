@@ -322,6 +322,9 @@ export const site = {
         aiTrainingLabel: 'AI model training',
         copyLabel: 'Copy',
         copiedLabel: 'Copied',
+        resourcesTitle: 'Crawler documentation',
+        resourcesNote:
+          'Each operator documents its own bots and how to control them. These are the official pages I check when the rules change.',
       },
       {
         slug: 'crawl-policy-resolver',
