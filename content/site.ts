@@ -324,7 +324,7 @@ export const site = {
         copiedLabel: 'Copied',
         resourcesTitle: 'Crawler documentation',
         resourcesNote:
-          'Each operator documents its own bots and how to control them. These are the official pages I check when the rules change.',
+          'Each operator documents its own bots and how to control them. These are the official pages I check when the rules change. The crawler list and these links are checked automatically every week.',
       },
       {
         slug: 'crawl-policy-resolver',
