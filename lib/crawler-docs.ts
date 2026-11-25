@@ -36,7 +36,7 @@ export const crawlerDocs: CrawlerDoc[] = [
   },
   {
     operator: 'Perplexity',
-    url: 'https://docs.perplexity.ai/docs/perplexitybot',
+    url: 'https://docs.perplexity.ai/docs/resources/perplexity-crawlers.md',
     note: 'PerplexityBot user agent and robots.txt',
   },
   {
